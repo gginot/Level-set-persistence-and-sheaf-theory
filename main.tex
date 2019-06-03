@@ -642,7 +642,7 @@ The graded bottleneck distance is isometric to the convolution.
 Let $Fb^\bullet,\, G^\bullet$ be two objects of $\D^b_{\R c}(\kk_\R)$. Then we have 
 $$ d_C(F,G) =  d_B(\B(F),\B(G))$$
 \end{thm} 
-\subsection{Extending level-set persistence modules as pre-sheaves over $\R$}
+\subsection{Extending level-set persistence modules as pre-sheaves over $\R$}\label{SS:levelsettopresheaves}
 In this section we interpret level-set persistence modules as (pre)sheaves on the line $\R$. 
 
 
@@ -778,6 +778,41 @@ In particular, the restriction of the sheafification functor $\bar{\cdot}:\Pe(\D
 \end{pf}
 
 
+The level set persistence to sheaves functor $\Bar{(\cdot)}$ preserves interleavings. More precisely we have the following lemma.
+\begin{lem}\label{L:Barpreserveentre} Let $M, N\in \Obj(\Pe(\Delta^+))$ be pointwise finite dimensional. If $M \sim_\varepsilon^{\Delta^+} N$, then 
+ $$ \Bar{M} \sim_\varepsilon \Bar{N}.$$
+\end{lem}
+\begin{pf}
+ By Theorem~\ref{thm:exactdecomp}, we have  isomorphisms 
+ $M \cong\bigoplus_{B\in \mathbb{B}(M)} \kk^B$, 
+ $N \cong \bigoplus_{B\in \mathbb{B}(N)} \kk^B$ of persistence modules and by lemma~\ref{L:shiftofBlock} 
+ we thus get 
+ \begin{align*}\overline{M[\vec{\varepsilon}]} &\cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^{B -\vec{\varepsilon}}}  \\ 
+  \quad \overline{N[\vec{\varepsilon}]} &\cong \bigoplus_{B'\in \mathbb{B}(N)} \overline{\kk^{B' -\vec{\varepsilon}} }
+  \end{align*}
+ where each $\overline{\kk^{B -\vec{\varepsilon}}}$ is of the form 
+ $\kk_{I(B, \varepsilon)}$ where $I(B, \varepsilon)$ is an interval $<a,b>=p((B-\vec{\varepsilon})\cap \Delta)$ whose type (closed, open,...) depends only on the type (death, birth, vertical...) of $B$. 
+Therefore we have: 
+\begin{eqnarray*} 
+ \text{if $B$ is of type \textbf{dquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
+ & \cong & \kk_{]a+\varepsilon, b-\varepsilon [},\\
+ \text{if $B$ is of type \textbf{bquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
+ & \cong & \kk_{[a-\varepsilon, b+\varepsilon ]}, \\
+ \text{if $B$ is of type \textbf{vquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
+ & \cong & \kk_{]a-\varepsilon, b+\varepsilon ]}, \\
+ \text{if $B$ is of type \textbf{hquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
+ & \cong & \kk_{[a-\varepsilon, b-\varepsilon [}.
+\end{eqnarray*}
+ Using~\cite[Proposition 3.8]{Berk18}, we thus get that  in all cases, 
+ $$ \overline{\kk^{B-\vec{\varepsilon}}} 
+ \; \cong \;  \overline{\kk^B} \star K_\varepsilon $$ and the same holds for the blocks $B'\in 
+ \mathbb{B}(N)$.  
+ We thus get 
+ $$\overline{M [\vec{\varepsilon}]} \cong \Bar{M}\star K_{\varepsilon}, \quad  \overline{N [\vec{\varepsilon}]} \cong \Bar{N}\star K_{\varepsilon}$$
+ Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\Bar{\cdot}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
+ $ \Bar{M}\stackrel{\Bar{f}}\to \overline{N[\vec{\varepsilon}]}\cong \overline{N}\star K_\varepsilon$ 
+ and $\Bar{N}\stackrel{\Bar{g}}\to \overline{M[\vec{\varepsilon}]}\cong \overline{M}\star K_{\varepsilon}$.
+\end{pf}
 
 Lien : l'extension sur la diagonale représente la faisceautisation
 Au passage : decomposition des pré-faisceaux de MV qui sont de dim finie sur les ouvert relativement compacts
@@ -786,8 +821,9 @@ Au passage : decomposition des pré-faisceaux de MV qui sont de dim finie sur le
 
 
 \section{ Almost isometric equivalence between $\mbox{MV}(\R)^\s$ and $\D^b_{\R c}(\kk_\R)$}
+In this section, we explain why the interleaving distance between level set persistence is essentially the same as the derived bottleneck distance between the associated sheaves.
 
-
+In order to express this we will relate constructible sheaves by an isometry to a specific type of graded persistence modules, that is those satisfying the following definition.
 \begin{defi}\label{D:spfd}
  A middle-exact persistence module $M\in \Pers(\Delta^+)$, is said to be \textbf{strongly pointwise finite dimensional}, if it is pointwise finite dimensional and satisfies the following additional condition : 
 
@@ -800,7 +836,7 @@ The full subcategory of MV($\R$) whose objects are strongly pointwise finite dim
 
 
 
-This section is devoted to build two functors : 
+We will now  build two functors : 
 
 
 $$\xymatrix{
@@ -808,16 +844,16 @@ $$\xymatrix{
 \pi^{\text{MV}}  & : \D^b_{\R c}(\kk_\R) \ar[r] & \text{MV}(\R)^\s 
 }$$
 
-Satisfying $(\overline{~\cdot~ })^{\text{MV}} \circ \pi^{\text{MV}} \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ and for every $M\in \text{MV}(\R)^\s$, $d_I^{\text{MV}}(M, \pi^\MV ( \overline{M})) = 0$.
-
+Satisfying $(\overline{~\cdot~ })^{\text{MV}} \circ \pi^{\text{MV}} \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ and that for every $M\in \text{MV}(\R)^\s$, $$d_I^{\text{MV}}(M, \pi^\MV ( \overline{M})) = 0.$$
+See Corollary~\ref{C:MVcircPsiisId} and Corollary~\ref{C:MVdisO}.
 \subsection{Construction of $(\overline{~\cdot~ })^{\text{MV}}$}
 We will now apply section~\ref{SS:levelsettopresheaves} to compare the Mayer-Vietoris persistence systems and constructible sheaves. To do so, we first consider the direct sum of the level set persistence to sheaves functor: 
 
 Let $\ell$ be the localization functor sending the category of complexes of sheaves over $\R$ to its derived category $\D(\kk_\R)$.
 \begin{defi}\label{D:MVtoSheaves} The \emph{M-V sheafification functor}: $\overline{(-)}^{MV}: \text{M-V}(\R) \to  \D(\kk_\R)$ is the functor given, on
 objects $S=(S_i, \delta_i^S)_{i\in \Z, s\in \R^2_{>0}}\in \Obj(\text{M-V}(\R))$, by 
-$$ \overline{S}^{MV} := \ell\Big(\bigoplus_{i\in \Z} \overline{S_i})[i]\Big)$$ and, on morphisms $(S_i\stackrel{\varphi_i}\to T_i)_{i\in \Z}$, by 
-$$\overline{(\varphi_i)_{i\in \Z}} := \ell(\bigoplus \overline{\varphi_i}). $$ 
+$$ \overline{S}^{MV} := \ell\Big(\bigoplus_{i\in \Z} \overline{S_i}[i]\Big)$$ and, on morphisms $(S_i\stackrel{\varphi_i}\to T_i)_{i\in \Z}$, by 
+$$\overline{(\varphi_i)_{i\in \Z}} := \ell\left(\bigoplus \overline{\varphi_i}\right). $$ 
 \end{defi}
 That this is a functor is a direct consequence of section~\ref{SS:levelsettopresheaves}.
 
@@ -931,7 +967,7 @@ Since by definition of sheaf cohomology, one has, $H^i((-x, y, I^\bullet) \cong 
 Since $F$ is constructible, its cohomology groups are finite dimensional in each degree, and there are only finitely many of them. Therefore $\Psi(F)$ is pointwise finite dimensional. Now the proof that $\Psi(F)$ is strongly finite dimensional is an argument similar to the proof of property 4 in Proposition~\ref{P:PropertiesofBar}. Alternatively, one can simply use the structure theorem~\ref{T:KSstructure}
 and proposition~\ref{P:PsionIntervals} below to conlude directly since  strongly pointwise finite dimensional modules are stable under locally finite direct sums.\end{pf}
 
-\begin{cor}
+\begin{cor}\label{P:PropertiesofPsi}
 The rule $F\mapsto \Psi(F)$ defines a functor $\Psi: \D^b_{\R c}(\kk_R)\to \MV(\R)^\s$ 
 which is additive and commutes with shifts.
 \end{cor}
@@ -950,13 +986,13 @@ By definition~\ref{def:block_MV}, all the blocks except the birth blocks lying e
 Now recall the definition~\ref{D:blocksmodulesforMV} of the canonical MV-systems associated to blocks.
 \begin{prop}\label{P:PsionIntervals}  Let $I=\langle a, b\rangle$ be an interval in $\R$. 
 \begin{enumerate}
-    \item If $I$ is open  $\Psi_{\Sigma^i \kk_{\langle a, b\rangle}} \cong 
+    \item If $I$ is open  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{d}^{\langle a, b\rangle}}$.
-    \item If $I=]a,b]$, then  $\Psi_{\Sigma^i \kk_{\langle a, b\rangle}} \cong 
+    \item If $I=]a,b]$, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{v}^{\langle a, b\rangle}}$.
-    \item If $I=[a, b[$, then  $\Psi_{\Sigma^i \kk_{[ a, b[}} \cong 
+    \item If $I=[a, b[$, then  $\Psi ({\Sigma^i \kk_{[ a, b[}}) \cong 
 S_i^{B_{h}^{\langle a, b\rangle}}$. 
-    \item If $I$ is compact, then  $\Psi_{\Sigma^i \kk_{\langle a, b\rangle}} \cong 
+    \item If $I$ is compact, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{b}^{\langle a, b\rangle}}$. 
 \end{enumerate}
 Here all the isomorphisms are isomorphisms of Mayer-Vietoris systems.
@@ -978,8 +1014,35 @@ Now the three other types of intervals, the computation is easier since we only 
 $S_0^{B_b^I}$ when $I$ is of the type $]a, b]$, $[a, b[$ or compact. 
 \end{pf}
 
-\begin{thm}
+\begin{lem}Let $F \in \D^b_{\R c}(\kk_\R)$. For any $\varepsilon \geq 0$, there is a natural isomorphism 
+$ \Psi(F \star K_{\varepsilon}) \; \cong \; \Psi(F)[\vec{\varepsilon}]$ for $\varepsilon$ such that and if $I$ is open then....
+\end{lem}
+\begin{pf}
+ Using theorem~\ref{T:KSdecomposition} and the compatibility of convolution with direct sums and shifts, it is enough to prove the result for $\kk_I$ for an interval $I$.
+\end{pf}
+COMME POUR lE LEMMME 3.23 (il faut me rajouter là), il faut mettre les bonnes condtons sur $\varepsilon$ et expliquer les changements de degrés
 
+\begin{cor}\label{C:MVcircPsiisId}
+ There is a natural equivalence of functors 
+ $(\overline{~\cdot~ })^{\text{MV}} \circ \pi^{\text{MV}} \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ between the composition of $\Psi$ followed by the Mayer-Vietoris sheafification and the identity functor of $\D^b_{\R c}(\kk_\R)$.
+\end{cor}
+\begin{pf}
+ Since both functors $(\overline{~\cdot~ })^{\text{MV}}$ and $ \pi^{\text{MV}} $ commutes with shifts and direct sums (propositions~\ref{P:PropertiesofMVSheafification} and \ref{P:PropertiesofPsi}), in view of the structure theorem~\ref{T:KSdecomposition}, it is enough to construct the equivalence on sheaves of the form $\kk_{I}$. Now proposition~\ref{P:PropertiesofMVSheafification}.4 (for $\varepsilon=0$) and Proposition~\ref{P:PsionIntervals} precisely give the result for an interval.
+\end{pf}
+
+\begin{cor}\label{C:MVdisO}
+ Let $M\in \mbox{MV}(\R)^\s$ be a strongly pointwise finite dimensional Mayer-Vietoris system. Then 
+ $$d_I^{\text{MV}}(M, \Psi ( \overline{M}^{MV})) = 0. $$
+\end{cor}
+In other words, though $\Psi \circ \overline{(\cdot)}^{MV}$ is not an equivalence, it maps an object to an object which is at distance $0$ fom itself.
+\begin{pf}
+ By statement 5 of Proposition~\ref{P:PropertiesofMVSheafification}, it is sufficient to prove that $\overline{M}^{MV}$ and $\overline{\Psi(\overline{M}^{MV})}^{MV}$ are isomorphic in $\D^b_{\R c}(\kk_\R)$. But Corollary~\ref{C:MVcircPsiisId} implies  $\overline{\Psi(\overline{M}^{MV})}^{MV} \cong \overline{M}^{MV}$ and the result follows.
+\end{pf}
+
+
+
+\begin{thm} One has equalities $$d_I(M, N) = d_C^(\overline{M}^{MV}, \overline{N}^{MV}), $$
+$$ d_C(F,G) =d_I(\Psi(F), \Psi(G)).$$
 \end{thm}
 
 
@@ -1010,41 +1073,6 @@ structure and isometry theorems
 \subsection{A refinement of the structure theorem for level set persistence}
 
 
-The level set persistence to sheaves functor $\Bar{\cdot}$ preserves interleavings. More precisely we have the following lemma.
-\begin{lem}\label{L:Barpreserveentre} Let $M, N\in \Obj(\Pe(\Delta^+))$ be pointwise finite dimensional. If $M \sim_\varepsilon^{\Delta^+} N$, then 
- $$ \Bar{M} \sim_\varepsilon \Bar{N}.$$
-\end{lem}
-\begin{pf}
- By Theorem~\ref{thm:exactdecomp}, we have  isomorphisms 
- $M \cong\bigoplus_{B\in \mathbb{B}(M)} \kk^B$, 
- $N \cong \bigoplus_{B\in \mathbb{B}(N)} \kk^B$ of persistence modules and by lemma~\ref{L:shiftofBlock} 
- we thus get 
- \begin{align*}\overline{M[\vec{\varepsilon}]} &\cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^{B -\vec{\varepsilon}}}  \\ 
-  \quad \overline{N[\vec{\varepsilon}]} &\cong \bigoplus_{B'\in \mathbb{B}(N)} \overline{\kk^{B' -\vec{\varepsilon}} }
-  \end{align*}
- where each $\overline{\kk^{B -\vec{\varepsilon}}}$ is of the form 
- $\kk_{I(B, \varepsilon)}$ where $I(B, \varepsilon)$ is an interval $<a,b>=p((B-\vec{\varepsilon})\cap \Delta)$ whose type (closed, open,...) depends only on the type (death, birth, vertical...) of $B$. 
-Therefore we have: 
-\begin{eqnarray*} 
- \text{if $B$ is of type \textbf{dquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
- & \cong & \kk_{]a+\varepsilon, b-\varepsilon [},\\
- \text{if $B$ is of type \textbf{bquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
- & \cong & \kk_{[a-\varepsilon, b+\varepsilon ]}, \\
- \text{if $B$ is of type \textbf{vquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
- & \cong & \kk_{]a-\varepsilon, b+\varepsilon ]}, \\
- \text{if $B$ is of type \textbf{hquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
- & \cong & \kk_{[a-\varepsilon, b-\varepsilon [}.
-\end{eqnarray*}
- Using~\cite[Proposition 3.8]{Berk18}, we thus get that  in all cases, 
- $$ \overline{\kk^{B-\vec{\varepsilon}}} 
- \; \cong \;  \overline{\kk^B} \star K_\varepsilon $$ and the same holds for the blocks $B'\in 
- \mathbb{B}(N)$.  
- We thus get 
- $$\overline{M [\vec{\varepsilon}]} \cong \Bar{M}\star K_{\varepsilon}, \quad  \overline{N [\vec{\varepsilon}]} \cong \Bar{N}\star K_{\varepsilon}$$
- Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\Bar{\cdot}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
- $ \Bar{M}\stackrel{\Bar{f}}\to \overline{N[\vec{\varepsilon}]}\cong \overline{N}\star K_\varepsilon$ 
- and $\Bar{N}\stackrel{\Bar{g}}\to \overline{M[\vec{\varepsilon}]}\cong \overline{M}\star K_{\varepsilon}$.
-\end{pf}
 
 
 \begin{prop}\label{P:BarMViso}
