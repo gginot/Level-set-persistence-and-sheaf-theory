@@ -115,8 +115,9 @@ $\star$ #2\\
 \newtheorem{prop}{Proposition}[section] 
 
 { \theoremsymbol{\flushright{$\square$}} 
- \newtheorem*{pf}{Proof} }
- 
+ \newtheorem*{pf}{Proof.} }
+ { \theoremsymbol{\flushright{$\square$}} 
+ \newtheorem*{pfofLemma}{Proof of the lemma.} }
   \newtheorem{rem}[prop]{Remarque} 
  \newtheorem{ex}[prop]{Example} 
  \newtheorem{cor}[prop]{Corollary}
@@ -147,13 +148,13 @@ $\star$ #2\\
 
 \begin{itemize}
 \item We fix a ground field $\kk$.
-    \item For $s=(s_1,s_2)\in \R^2_{>0}$, we will use the notations $s_x:=(s_1,0)$ and $s_y := (0,s_2)$
+    \item For $s=(s_1,s_2)\in \R^2_{>0}$, we will use the notations $s_x:=(s_1,0)$ and $s_y := (0,s_2)$.
     \item Given a category $\C$, we denote $\C^{\op}$ its opposite category. 
     \item We will use the same notation for a poset $(S, \leq)$ and its associated  category whose objects are the elements of $S$ and whose set of morphims from  $s$ to $t$ consists of a single element if $s\leq t$ and is empty if not.
     \item A functor $M$ from a post $(S, \leq)$ to vector spaces is called \emph{pointwise finite dimensional}, \emph{pfd} for short, if for every $s\in S$, $M(s)$ is finite dimensional. 
-    \item For a death block $B$, define its dual $B^\dag$ in $\R^2$, and vice-versa.
+    \item For a death block $B$, we denote $B^\dag$ its dual  in $\R^2$, and vice-versa, see Definition~\ref{D:dualblocks}.
     \item We denote $t\mapsto \vec{t}$ the functor $(\R ,\leq) \to (\Delta^+, \leq)$.
-    \item Preciser la notation $M^h$ dans la proposition de stabilite 2.21 et que ca donne des exemples canoniques de MV.
+    \item We will use the \emph{french notation} $]a,b[$ for \emph{open intervals} $(a,b)$ in $\R$. The reason is to avoid confusion with points $(a,b)\in \R^2$ which will both be possible values of persistent or sheaf objects.
 \end{itemize}
 
 unsigned intervals and french notations for open intervals to avoid confusion with points in $\Delta^+$.
@@ -217,6 +218,28 @@ A block $B$ is a subset of $\R^2$ of the following type :
 \begin{remark}
 Blocks are defined over the whole $\R^2$ and not just $\R^2_{>0}$.
 \end{remark}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.9]{Blocks.pdf}\label{fig:blocks}
+\caption{On the left a block of type \textbf{bb}$^{-}$ pictured in blue. On the middle a block of type $\textbf{vb}$ pictured in green. On the right 
+a block of type \textbf{db} in red and its dual block of type \textbf{bb}$^{+}$ in yellow.
+The various coordinates refers to the intersection points of the boudnaries of the blocks with the anti-diagonal $\Delta$ as well as the extremum of the birth or death blocks.}
+\end{center}
+\end{figure}
+\begin{remark}\label{R;dualBlocks}
+Note that a deathblock $B$ is characterized by its supremum, that is $\sup \{s\in B\}$ together with the data of wether its two boundary lines are in the block or not (note that the supremum is inside $B$ if and only if both boundaries lines are). Similarly a birth block $B'$  is characterized by is infimum $\inf \{s\in B'\}$ and the data of whether its boundary lines are in $B$ or not.  Note also that the vertical and horizontal blocks never have finite extremums.  
+\end{remark}
+\begin{defi}[Duality between death and birth blocks]
+ \label{D:dualblocks} The dual  of a deathblock $B$ is the birthblock $B^\dagger$ whose infimum is the supremum of $B$ and whose vertical (resp. horizontal) boundary lines are in $B^\dagger$ if and only if the the vertical (resp. horizontal) boundary lines of $B$ are not. 
+ 
+ Dually we define the dual $C^\dagger$ of a birthblock $C$ as the death block whose supremum is the infimum of $C$ and whose vertical (resp. horizontal) boundary lines are in $C^\dagger$ if and only if the the vertical (resp. horizontal) boundary lines of $C$ are not.
+\end{defi}
+\begin{remark}
+ The rule $B\mapsto B^\dagger$ is involutive: $(B^\dagger)^\dagger=B$ and in particular exhibits a perfect duality between death and birth blocks.  Further note that the dual of a deathblock is of type \textbf{bb}$^{+}$ if and only if the deathblock has a non-trivial intersection with $\Delta^+$. 
+\end{remark}
+
+
 We now define the building blocks (that is the indecomposables) of persistence modules over $\Delta^+$.
 \begin{defi}\label{Def:blockmodule}
 Let $B$ be a block, define the \textbf{block module} associated to $B$ by, for any $s\leq t \in \Delta^+$, : 
@@ -270,8 +293,7 @@ Let $\text{B}$ be a block and $j\in \Z$, then define $\text{S}^\text{B}_j$ the M
     \item If B is of type \textbf{db}, then $\text{S}^\text{B}_j = (M_i,\delta_i^s)$ with $M_i = 0$ for all $i\not \in \{j+1,j\} $, $\delta_i^s=0$ for all $s\in \R^2$ and $i\not = j+1$,  $M_{j+1} = \kk_{B^\dag}$, $M_{j}= \kk_{B}$, and define $\delta_{j+1}^s : \kk_{B^\dag}[s] \to \kk_B$ by point-wise identities on $B^\dag [s]\cap B \cap \Delta^+$.
 
     \item Dually, if $B$ is of type \textbf{bb$^+$}, then define $S^{\text{B}}_j$ as $S^{B^\dag}_{j-1}$.
-
-    \end{itemize}  
+\end{itemize}  
 \end{defi}
 
 
@@ -448,18 +470,15 @@ $$d_I^{MV}(M,N) := \inf \{\varepsilon \geq 0 \mid M \sim_\varepsilon^{MV} N  \}.
 
 Let us denote $B -\vec{\varepsilon}=\{ s -\vec{\varepsilon}, \, s\in B\}$; this is a block of the same type as $B$.
 \begin{lem}\label{L:shiftofBlock}
- Let $B$ a block and $\varepsilon >0$. There is a canonical isomorphism 
+ Let $B$ be a block and $\varepsilon >0$. There is a canonical isomorphism 
  $$\kk^B[\vec{\varepsilon}] \, \cong \, \kk^{B-\vec{\varepsilon}}. $$
- If $B'$ is another block such that $B-\vec{\varepsilon} \subset B'$ and $B'-\vec{\varepsilon} \subset B$, then $$\kk^B \sim^{\Delta^+}_{\varepsilon} \kk^{B'}.$$
 \end{lem}
 \begin{pf}
  By definition~\ref{Def:blockmodule}, we have that 
- $$\kk^B[\vec{\varepsilon}](t)= \kk^B(t+(\varepsilon, \varepsilon) = \left\{ \begin{array}{ll} 
+ $$\kk^B[\vec{\varepsilon}](t)= \kk^B(t+(\varepsilon, \varepsilon)) = \left\{ \begin{array}{ll} 
 \kk & \text{if t }\in B -\vec{\varepsilon} \\
 0 & \text{else.}\end{array}\right.$$
 Therefore we have that $$\kk^B[\vec{\varepsilon}] \, \cong \, \kk^{B-\vec{\varepsilon}}.$$
-
-TO COMPLETE (AND CHECK IT IS THE CORRECT INCLUSIONS)
 \end{pf}
 
 We now turn to a main source of examples of Mayer-Vietoris systems. 
@@ -514,17 +533,17 @@ We will use the standard Grothendieck operations on sheaves as in~\cite{Kash90}.
 \subsection{Convolution distance for sheaves after Kashiwara-Schapira}
 In~\cite{KS18} Kashiwara and Schapira have defined a (pseudo)distance on the derived category of sheaves. This distance is a sheaf, and derived by design, version of the interleaving distance of persistence modules. It is based on convolution of sheaves which we now explain. 
 
-Let  $\V$  be an euclidean vector space, which in our case of interest will simply be $\Rr$. We let $s: \V\times \V \to \V$ be the addtion map $(t,t')\mapsto t+t'$.  
+Let  $\V$  be an euclidean vector space, which in our case of interest will simply be $\R$. We let $s: \V\times \V \to \V$ be the addtion map $(t,t')\mapsto t+t'$.  
 
-\begin{defi}\label{D:Convolution} The convolution of sheaves  $\D^b(\kk_\V)\times \D^b(\kk_\V) \to \D^b(\kk_\V)$ is the bifunctor given, 
+\begin{defi}[\cite{KS18}]\label{D:Convolution} The convolution of sheaves  $\D^b(\kk_\V)\times \D^b(\kk_\V) \to \D^b(\kk_\V)$ is the bifunctor given, 
 for $F,G\in \Obj(\D^b(\kk_\V))$,  by the formula : $$F\star G = R s_!(F\boxtimes G)$$ where $\boxtimes$ is the external tensor product of sheaves. 
 \end{defi}
 To define the convolution distance,  we will only need a very specific case : the convolution by the constant sheaf supported on a ball centered at 0. 
 More precisely we define, for $\varepsilon \in \Rr$, 
 \begin{equation}\label{eq:defKepsilon}
  K_\varepsilon :=  \left\{ \begin{array}{cc} 
- \kk_{x\in \V, \mid \|x\|\leq \varepsilon}  & \mbox{si} \varepsilon \geq 0 \\
- \kk_{x\in \V, \mid \|x\|< -\varepsilon}[\dim(\V)]  & \mbox{si} \varepsilon < 0 .\end{array} \right.
+ \kk_{x\in \V, \mid \|x\|\leq \varepsilon}  & \mbox{if } \varepsilon \geq 0 \\
+ \kk_{x\in \V, \mid \|x\|< -\varepsilon}[\dim(\V)]  & \mbox{if } \varepsilon < 0 .\end{array} \right.
 \end{equation}
 The convolution by $K_\varepsilon$ has some nice properties : 
 \begin{prop}\label{P:propertiesofconvolution} Let $\varepsilon, \varepsilon'\in \R$ and $F \in \Obj(\D^b(\kk_\V))$. Then
@@ -592,7 +611,7 @@ Let $G^\bullet\in \Obj(\D^b_{\R c}(\kk_\R))$.
 where $\Ho^j(G^\bullet)$ is seen as a complex concentrated in degree $0$.
 \item For each $j\in \Z$, there is a unique multiset $\B^j(G^\bullet) $ of intervals such that  $\Ho^j(G^\bullet)\simeq \bigoplus_{I \in \B^j(G^\bullet)} \kk_{I}$. 
 \end{enumerate}\end{cor}
-The Corollary allows us to define the graded barcode of an object of $\D^b_{\R c}(\kk_\R)$ following~\cite{Berk18}.
+This corollary allows us to define the graded barcode of an object of $\D^b_{\R c}(\kk_\R)$ following~\cite{Berk18} which is the  derived enhancement of the usual barcode of 1d-persistence modules.
 \begin{defi}\label{D:gradedbarcode}
  The \textbf{graded-barcode} $\B^\bullet(G^\bullet)$ of $G^\bullet$ is the sequence of multisets $(\B^j(G^\bullet))_{j\in \Z}$.
  
@@ -610,7 +629,23 @@ An important point of~\cite{Berk18} is the following:
  the bars of a given type can only be interleaved with a bar of the same type.
  \item Further, an open bar can be $\varepsilon$-interleaved only with a closed bar of degree one more and all other possible $\varepsilon$-interleaving between bars of the same exact types are between bars of same degree. \end{enumerate}
 \end{lem}
-One can characterize the geometric  condition under which two sheaves $\kk_I$ and $\kk_J$ on intervals of the same type are $\varepsilon$-interleaved, precisely in terms of proximity of the endpoints.
+One can characterize the geometric  condition under which two sheaves $\kk_I$ and $\kk_J$ on intervals of the same type are $\varepsilon$-interleaved, precisely in terms of proximity of the endpoints. We will however only need the following result
+
+\begin{prop}[Proposition 3.8 of \cite{Berk18}]\label{P:P38Berk18}
+Let $\varepsilon \geq 0$, and $a\leq b$ in $\R \cup \{\pm \infty\}$. Then : 
+\begin{itemize}
+\item[$\bullet$] $\kk_{[a,b]}\star K_\varepsilon \simeq \kk_{[a-\varepsilon, b + \varepsilon]} $,
+\item[$\bullet$] $\kk_{]a,b[}\star K_\varepsilon \simeq 
+\begin{cases}
+\kk_{]a+\varepsilon,b-\varepsilon[} ~~\text{if} ~~\varepsilon < \frac{b-a }{2} \\
+\kk_{[b- \varepsilon , a+ \varepsilon]}[-1] ~~\text{if} ~~\varepsilon \geq \frac{b-a }{2}
+\end{cases}$
+
+\item[$\bullet$] $\kk_{]a,b]}\star K_\varepsilon \simeq \kk_{]a+\varepsilon, b + \varepsilon]} $,
+\item[$\bullet$] $\kk_{[a,b[}\star K_\varepsilon \simeq \kk_{[a-\varepsilon, b - \varepsilon[} $.
+\end{itemize}
+\end{prop}
+
 
  In order to define the bottleneck distance, we first define the notion of $\varepsilon$-matching. 
  
@@ -639,7 +674,7 @@ Let $\B$ and $\B'$ be two graded-barcodes, then one defines their \textbf{bottle
 \end{defi}
 The graded bottleneck distance is isometric to the convolution.
 \begin{thm}[Isometry~\cite{Berk18}]\label{T:DerivedIsometry}
-Let $Fb^\bullet,\, G^\bullet$ be two objects of $\D^b_{\R c}(\kk_\R)$. Then we have 
+Let $F^\bullet,\, G^\bullet$ be two objects of $\D^b_{\R c}(\kk_\R)$. Then we have 
 $$ d_C(F,G) =  d_B(\B(F),\B(G))$$
 \end{thm} 
 \subsection{Extending level-set persistence modules as pre-sheaves over $\R$}\label{SS:levelsettopresheaves}
@@ -662,7 +697,7 @@ In particular, restricting to objects of those categories,  $\iota$ is a bijecti
 
 
 Given $M \in \Obj(\Pe(\Delta^+))$ we can consider its pointwise dual $ t\mapsto \Hom_{\Mod(\kk)}(M(t);\kk)$ which has a canonical structure of a persistence comodule, that is of an object of  
-$\text{Fun}((\Delta^{+})^{\op}; \Mod(\kk))\cong \text{Fun}(\Delta^+; \Mod(\kk)^{\op})^{\op} $.  We denote by $M^*$ this dual of $M$. More precisely, $M^*$ is the composition of functors
+$$\text{Fun}((\Delta^{+})^{\op}; \Mod(\kk))\,\cong\, \text{Fun}(\Delta^+; \Mod(\kk)^{\op})^{\op}. $$  We denote by $M^*$ this dual of $M$. More precisely, $M^*$ is the composition of functors
 $$M^* :=\, \Delta^{+\op} \stackrel{M^{\op}}\longrightarrow \Mod(\kk)^{\op} \stackrel{\Hom_{\Mod(\kk)}(-;\kk)}\longrightarrow \Mod(\kk). $$
 
 Since $M^*$ is a persistence comodule, for any  open $U \subset \R$, we can consider the module 
@@ -684,8 +719,8 @@ As $\Mod(\kk)$ is complete,  the pointwise formula~\eqref{eq:defMtilde} is an im
 \end{remark}
 Composing $\tilde{-}$ with the (opposite of the) sheafification functor $ \text{PSh}(\R) \to \Mod(\kk_{\R})$ gives the functor from persistence modules on $\Delta^{+}$ to sheaves on $\R$. 
 \begin{defi}\label{D:defofBar}
-We set $\bar{M}$ to be the sheaffification of the presheaf $\tilde{M}$ and write 
-$\Bar{\cdot} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ for the induced functor $M\mapsto \bar{M}$. We call $\Bar{\cdot}$ the level-set persistence to sheaves functor. 
+We set $\overline{M}$ to be the sheafification of the presheaf $\tilde{M}$ and write 
+$\overline{(-)} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ for the induced functor $M\mapsto \overline{M}$. We call $\overline{(-)}$ the level-set persistence to sheaves functor. 
 \end{defi}
 Similarly there is a functor going in the other direction. Indeed, given a sheaf on $\R$, by restriction to open intervals and using the identification of lemme~\ref{L:Defiota}, we get a persistence comodule. Since pointwise duality transforms a persistence comodule into a persistence module we obtain the functor 
 \begin{equation}
@@ -697,17 +732,17 @@ We will also write $\text{bidual}_{\Mod(\kk_\R)}$ the endofunctor of  sheaves  w
 associate its pointwise bidual $N\mapsto (N^*)^*$. There is a canonical natural transformation 
 \begin{equation}\label{eq:unitadjPetoSh} \text{id}_{\Mod(\kk_\R)} \to \text{bidual}_{\Mod(\kk_\R)}\end{equation} given by the pointwise canonical morphism.
 \begin{prop}\label{P:PropertiesofBar}
-The level-set persistence to sheaves functor $\Bar{\cdot} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ satisfies the following properties : 
+The level-set persistence to sheaves functor $\overline{\cdot} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ satisfies the following properties : 
 \begin{enumerate}
-    \item Its composition  with the restriction to the intervals functors is the canonical biduality functor: $\bar{\cdot}\circ \pi = \text{bidual}_{\Mod(\kk_\R)}$. 
+    \item Its composition  with the restriction to the intervals functors is the canonical biduality functor: $\overline{\cdot}\circ \pi = \text{bidual}_{\Mod(\kk_\R)}$. 
     
     In particular the restriction of this composition of functors to the subcategory of pointwise finite dimensional objects is naturally isomorphic to $\text{id}_{\Mod(\kk_\R)^{pfd}}$
     \item It is the right adjoint of the functor $\pi$: 
-    $$\Hom_{\Pe(\Delta^+)}(M, \pi(F)) \; \cong \; \Hom_{\Mod(\kk_\R)^{\op}}(\Bar{M}, F)\; = \; \Hom_{\Mod(\kk_\R)}(F,\Bar{M}) $$ and the map~\eqref{eq:unitadjPetoSh} is the counit of this adjunction.
-    \item If $M$ is point-wise finite dimensional, and $M \simeq \oplus_i M_i$, then $\bar{M} \simeq \oplus_i \bar{M_i} $
-    \item Assume that $M \in \Obj(\Pe(\Delta^{+}))$ is point-wise finite dimensional, then for all $\alpha \in \R$, we have natural isomorphisms  $$ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) \;\simeq\; \tilde{M}_{\alpha}\; \simeq \; \bar{M}_{\alpha}$$ provided that the left hand side is of finite dimension.
+    $$\Hom_{\Pe(\Delta^+)}(M, \pi(F)) \; \cong \; \Hom_{\Mod(\kk_\R)^{\op}}(\overline{M}, F)\; = \; \Hom_{\Mod(\kk_\R)}(F,\overline{M}) $$ and the map~\eqref{eq:unitadjPetoSh} is the counit of this adjunction.
+    \item If $M$ is point-wise finite dimensional, and $M \simeq \oplus_i M_i$, then $\overline{M} \simeq \oplus_i \overline{M_i} $
+    \item Assume that $M \in \Obj(\Pe(\Delta^{+}))$ is point-wise finite dimensional, then for all $\alpha \in \R$, we have natural isomorphisms  $$ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) \;\simeq\; \tilde{M}_{\alpha}\; \simeq \; \overline{M}_{\alpha}$$ provided that the left hand side is of finite dimension.
     
-    \item One can identify $\Bar{M}$ with the image of the morphism of pre-sheaves : $\Tilde{M}\longrightarrow \prod_{\alpha\in\R}\Tilde{M}_{\alpha} $.
+    \item One can identify $\overline{M}$ with the image of the morphism of pre-sheaves : $\Tilde{M}\longrightarrow \prod_{\alpha\in\R}\Tilde{M}_{\alpha} $.
 \end{enumerate}
 
 \end{prop}
@@ -723,7 +758,7 @@ CAREFUL DUE TO OPPOSITE CATEGORIES AND CHOICE WETHER WE CONSIDER DELTAOP OR MODO
    \end{multline*}
    \item Since the sheafification functor is a right adjoint and by universal property of Kan extensions  we have natural isomorphisms:
    \begin{multline*}
-  \Hom_{\Mod(\kk_\R)^{\op}}(\Bar{M}, F)  = \Hom_{\Mod(\kk_\R)}(F,\Bar{M})    \\ \cong \;
+  \Hom_{\Mod(\kk_\R)^{\op}}(\overline{M}, F)  = \Hom_{\Mod(\kk_\R)}(F,\overline{M})    \\ \cong \;
   \Hom_{\text{PSh}(\R)}(F, \tilde{M}) \; \cong \; \Hom_{\text{PSh}(\R)}(F, \text{Lan}_{\iota^{\op}} M^*) \\ \cong \; \Hom_{\Pe(\Delta^+)}(F_{ | \text{op. intervals} }, \Hom_{\kk}(M, \kk)) \\ \cong \; \Hom_{\Pe(\Delta^+)}(F_{ | \text{op. intervals} }\otimes M, \kk) \\ \cong \; 
   \Hom_{\Pe(\Delta^+)}(M, \Hom_{\kk}(F_{ | \text{op. intervals} }, \kk)) \\ \cong \; 
  \Hom_{\Pe(\Delta^+)}(M, \pi(F)). 
@@ -748,7 +783,7 @@ a direct consequence of the proof and the proof of property (1).
         & \simeq \bigoplus_{\substack{I\in \mathbb{B}(M\circ G)\\ 0 \in \text{closure}(I)}} \kk  \\
         &\simeq \varprojlim_{]-x;y[\ni \alpha} \Hom \left ( M((x,y)), \kk \right ) \; \text{ (by~\eqref{eq:DefMoG} and finite dimensionality)}\\ 
         &\simeq \tilde{M}_\alpha \; \text{ (by~\eqref{eq:defMtilde})}\\
-        &\simeq \bar{M}_\alpha.
+        &\simeq \overline{M}_\alpha.
     \end{align*}
     \item This is a general fact for sheaves on a $T_1$-topological space, that is a space for which all   points are closed.
 \end{enumerate}
@@ -764,32 +799,49 @@ Let $B$ be a block. Let $a,b\in \R$ such that $<a,b> = p(B\cap \Delta)$, with th
     \item If $B$ is of type \textbf{hquad}, then $\overline{\kk^B} \simeq \kk_{[a,b[}$.
 \end{enumerate}
 \end{prop}
+\begin{pf}
+Let $B$ be of type \textbf{dquad}. If $B$ is included in $\mathbb{R}^2\setminus \Delta^+$, then $\kk^B$ is identically null as well as $\kk_{]a,b[}$ and there is nothing to prove. If not, $B$ has a non-trivial intersection with $\Delta$ and   $(-a,b)=\sup_{B}(s)$ are the coordinates of the supremum of $B$ for the order relation of $\Delta^+$. Then, for  $s=(s_1,s_2)\in \mathbb{R}^2_{>0}$, one has 
+$$\kk^B(s) =\left\{ \begin{array}{ll} \kk & \mbox{if } (s_1,s_2)< (-a,b) \\
+0 & \mbox{ if } (s_1, s_2) \not\leqslant (-a,b)\end{array}\right . $$ 
+Hence $\kk^B(s)$ is non-zero  if $ a\leq -s_1 <s_2 \leq b$ and always null if either $-s_1<a$ or $s_2 >b$. It follows that 
+that if $\alpha \in \mathbb{R}$, then $ \kk^B(-\alpha-\varepsilon, \alpha+\varepsilon) =0$ 
+if $\alpha \notin ]a,b[$ and for all $\alpha \in ]a,b[$, there exists $\eta >0$ such that 
+$\kk(-\alpha -\eta, \alpha+\eta) =\kk$. It follows that
+\begin{equation}\varprojlim_{]x, y[ \ni \alpha} \kk^B(x,y) = \left\{ \begin{array}{ll} \kk & \mbox{if } \alpha \in ]a,b[ \\
+0 & \mbox{ else }\end{array}\right . 
+ \end{equation}
+By claim 5 of Proposition~\ref{P:PropertiesofBar}, we deduce that $\overline{\kk^B} \cong \kk_{]a,b[}$.
+The three other cases are obtained using a similar analysis.
+\end{pf}
+
 \begin{remark}
-In particular, $\bar{\kk^B}$ does not depend on whether $B$ contains its boundary or not and, if $B$ is of type $\textbf{bb}^+$, then $\overline{\kk^B} =0$. 
+In particular, $\overline{\kk^B}$ does not depend on whether $B$ contains its boundary or not and, if $B$ is of type $\textbf{bb}^+$, then $\overline{\kk^B} =0$. 
 \end{remark}
-\begin{remark}\label{R:caracofab}
- If $B$ is of type $\textbf{bb}^-$, then the numbers $a$ and $b$ satisfies that the point $(-a,b)$ is the infimum of the points in $B$.
+\begin{remark}[characterizations of $(a,b)$]\label{R:caracofab}
+ If $B$ is of type $\textbf{bb}^-$, then the numbers $a$ and $b$ are characterized by the fact that the point $(-b,a)$ is the infimum of the points in $B$, see figure~\eqref{fig:blocks}.
  
- Similarly, if $B$ is of type $\textbf{dquad}$, then the numbers $a$ and $b$ satisfies that the point $(-a,b)$ is the supremum of the points in $B$.
+ Similarly, if $B$ is of type $\textbf{dquad}$, then the numbers $a$ and $b$ satisfies that the point $(-a,b)$ is the supremum of the points in $B$. 
+ 
+ Finally, for $B$ of type \textbf{vquad}, $a$ and $b$ satisfies that $B$ has boundary given by the lines of equation $x=-b$ and $x=-a$, while if it is of type \textbf{hquad}, $a$ and $b$ satisfies that the boundary of $B$ are the horizontal lines of equations $y=a$ and $y=b$.
 \end{remark}
 
 
 \begin{cor}\label{C:pfdimpliesconstructible}
- If $M \in \Obj(\Pe(\Delta^{+}))$ is pointwise finite dimensional, then $\Bar{M}$ is weakly constructible. 
- Further if $M$ is strongly pointwise finite dimensional (definition~\ref{D:spfd}), then $\Bar{M}$ is constructible. 
+ If $M \in \Obj(\Pe(\Delta^{+}))$ is pointwise finite dimensional, then $\overline{M}$ is weakly constructible. 
+ Further if $M$ is strongly pointwise finite dimensional (definition~\ref{D:spfd}), then $\overline{M}$ is constructible. 
 \end{cor}
-In particular, the restriction of the sheafification functor $\bar{\cdot}:\Pe(\Delta^{+})\to \Mod(\kk_\R)$ to the full subcategory of pfd modules takes values in the subcategory $ \Mod_{\R c}(\kk_\R)$ of constructible sheaves.
+In particular, the restriction of the sheafification functor $\overline{\cdot}:\Pe(\Delta^{+})\to \Mod(\kk_\R)$ to the full subcategory of pfd modules takes values in the subcategory $ \Mod_{\R c}(\kk_\R)$ of constructible sheaves.
 \begin{pf}
- By the decomposition Theorem~\ref{thm:exactdecomp}, the pfd module $M$ is isomorphic to a direct sum of blocks $M\cong  \bigoplus_{B\in \mathbb{B}(M)} \kk^B$. Since $\Bar{\cdot}$ commutes with direct sum for pfd modules (Proposition~\ref{P:PropertiesofBar}), Proposition~\ref{P:BarofBlock} yields that $\overline{M} \cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^B} $ is a (pointwise finite when $M$ is strongly pfd) direct sum of sheaves of the form $\kk_{I}$ where $I$ is an interval. 
+ By the decomposition Theorem~\ref{thm:exactdecomp}, the pfd module $M$ is isomorphic to a direct sum of blocks $M\cong  \bigoplus_{B\in \mathbb{B}(M)} \kk^B$. Since $\overline{\cdot}$ commutes with direct sum for pfd modules (Proposition~\ref{P:PropertiesofBar}), Proposition~\ref{P:BarofBlock} yields that $\overline{M} \cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^B} $ is a (pointwise finite when $M$ is strongly pfd) direct sum of sheaves of the form $\kk_{I}$ where $I$ is an interval. 
 \end{pf}
 
 
-The level set persistence to sheaves functor $\Bar{(\cdot)}$ does not preserve
+The level set persistence to sheaves functor $\overline{(\cdot)}$ does not preserve
 interleavings in general. However, the trouble is only related to the death or $\textbf{bb}^+$ quadrant. More precisely we have the following two lemmas.
 \begin{lem}\label{L:Barpreserveentre} Let $M, N\in \Obj(\Pe(\Delta^+))$ be pointwise finite dimensional and such that their barcodes contains only blocks of type $\textbf{bb}^{-}$, $\textbf{vb}$ and $\textbf{hb}$. 
-Then $$\overline{M [\vec{\varepsilon}]} \cong \Bar{M}\star K_{\varepsilon}. $$ Further, 
+Then $$\overline{M [\vec{\varepsilon}]} \cong \overline{M}\star K_{\varepsilon}. $$ Further, 
 if $M \sim_\varepsilon^{\Delta^+} N$, then 
- $$ \Bar{M} \; \sim_\varepsilon \, \Bar{N}.$$
+ $$ \overline{M} \; \sim_\varepsilon \, \overline{N}.$$
 \end{lem}
 \begin{pf}
  By Theorem~\ref{thm:exactdecomp}, we have  isomorphisms 
@@ -813,18 +865,18 @@ Therefore we have:
  \text{if $B$ is of type \textbf{hquad}, then }  \overline{\kk^{B-\vec{\varepsilon}}} 
  & \cong & \kk_{[a-\varepsilon, b-\varepsilon [}.
 \end{eqnarray*}
- Using~\cite[Proposition 3.8]{Berk18}, we thus get that  in all cases, 
+ Using Proposition~\ref{P:P38Berk18}, we thus get that  in all cases, 
  $$ \overline{\kk^{B-\vec{\varepsilon}}} 
- \; \cong \;  \overline{\kk^B} \star K_\varepsilon $$ and by additivity of the convolution functor we obtain $\overline{M [\vec{\varepsilon}]} \cong \Bar{M}\star K_{\varepsilon}$ as claimed.
+ \; \cong \;  \overline{\kk^B} \star K_\varepsilon $$ and by additivity of the convolution functor we obtain $\overline{M [\vec{\varepsilon}]} \cong \overline{M}\star K_{\varepsilon}$ as claimed.
  
  \smallskip
  
  The same results holds for  the blocks $B'\in 
  \mathbb{B}(N)$ so that 
- $$\overline{M [\vec{\varepsilon}]} \cong \Bar{M}\star K_{\varepsilon}, \quad  \overline{N [\vec{\varepsilon}]} \cong \Bar{N}\star K_{\varepsilon}$$
- Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\Bar{\cdot}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
- $ \Bar{M}\stackrel{\Bar{f}}\to \overline{N[\vec{\varepsilon}]}\cong \overline{N}\star K_\varepsilon$ 
- and $\Bar{N}\stackrel{\Bar{g}}\to \overline{M[\vec{\varepsilon}]}\cong \overline{M}\star K_{\varepsilon}$.
+ $$\overline{M [\vec{\varepsilon}]} \cong \overline{M}\star K_{\varepsilon}, \quad  \overline{N [\vec{\varepsilon}]} \cong \overline{N}\star K_{\varepsilon}$$
+ Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\overline{\cdot}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
+ $ \overline{M}\stackrel{\overline{f}}\to \overline{N[\vec{\varepsilon}]}\cong \overline{N}\star K_\varepsilon$ 
+ and $\overline{N}\stackrel{\overline{g}}\to \overline{M[\vec{\varepsilon}]}\cong \overline{M}\star K_{\varepsilon}$.
 \end{pf}
 
 For \emph{deathblocks} or \emph{birthblocks} of type $\textbf{bb}^{+}$, the sheafification functor does not intertwine shifts with convolution in a naive way. 
@@ -833,10 +885,10 @@ recall that to a block $B$, we can associate the two real numbers $a,b\in \R$ su
 If $B$ is a $\textbf{bb}^{+}$ block, its dual death block $B^\dagger$ intersects $\Delta$ and we denote $<a^\dagger,b^\dagger> = p(B^\dagger \cap \Delta)$.
 \begin{lem}\label{L:Barondeathblocks}Let $B$ be a block of type $\textbf{db}$ or $\textbf{bb}^{+}$.  Then for $\varepsilon \geq 0$,
  \begin{eqnarray}
- \text{if $B$ is of type \textbf{dquad}, then, } \overline{\kk^{B}}[\vec{\varepsilon}] 
+ \text{if $B$ is of type \textbf{dquad}, then, } \overline{\kk^{B}[\vec{\varepsilon}] }
  & \cong & \left\{ \begin{array}{ll}  \overline{\kk^{B}}\star K_{\varepsilon} & \mbox{ if $\varepsilon< \frac{b-a}{2}$}\\
  0 & \mbox{ if $\varepsilon \geqslant \frac{b-a}{2}$,} \end{array}                                                                                                                          \right .  \label{eq:Barofdb}\\
- \text{if $B$ is of type $\textbf{bb}^{+}$, then, }\overline{\kk^{B}}[\vec{\varepsilon}] 
+ \text{if $B$ is of type $\textbf{bb}^{+}$, then, }\overline{\kk^{B}[\vec{\varepsilon}]} 
  & \cong &   \left\{ \begin{array}{ll}  0 & \mbox{ if $\varepsilon< \frac{b^\dagger-a^\dagger}{2}$}\\
  \kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} & \mbox{ if $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$.} \end{array}                                                                                                                          \right .  \label{eq:Barofbb+}
  \end{eqnarray}
@@ -849,7 +901,7 @@ By lemma~\ref{L:shiftofBlock} and proposition~\ref{P:BarofBlock}, we thus have t
    \overline{\kk^{B-\vec{\varepsilon}}} 
  \, \cong \, \left\{ \begin{array}{ll}  0 & \mbox{ if $\varepsilon< \frac{b^\dagger-a^\dagger}{2}$}\\
  \kk_{[b^\dagger  -\varepsilon,  a^\dagger + \varepsilon]}& \mbox{ if $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$.} \end{array}                                                                                                                          \right . \]
- Using~\cite[Proposition 3.8]{Berk18}, we see that for  $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$, one has $$\kk_{[b^\dagger  -\varepsilon,  a^\dagger + \varepsilon]} 
+ Using Proposition~\ref{P:P38Berk18}, we see that for  $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$, one has $$\kk_{[b^\dagger  -\varepsilon,  a^\dagger + \varepsilon]} 
  \, \cong \,\kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} $$
  which shows the formula~\eqref{eq:Barofbb+}. 
  
@@ -858,11 +910,15 @@ By lemma~\ref{L:shiftofBlock} and proposition~\ref{P:BarofBlock}, we thus have t
  \[
   \overline{\kk^{B-\vec{\varepsilon}}} 
  \, \cong \,\left\{ \begin{array}{ll}  0 & \mbox{ if $\varepsilon \geq \frac{b^\dagger-a^\dagger}{2}$} \\  \kk_{]a+\varepsilon, b-\varepsilon [}  & \mbox{ if $\varepsilon < \frac{b^\dagger-a^\dagger}{2}$}.\end{array}                                                                                                                          \right . \]
- To prove formula~\eqref{eq:Barofdb}, we are left to apply ~\cite[Proposition 3.8]{Berk18} a last time.
+ To prove formula~\eqref{eq:Barofdb}, we are left to apply  Proposition~\ref{P:P38Berk18} a last time.
 \end{pf}
+\begin{remark} The proof of lemma~\ref{L:Barondeathblocks} and proposition~\ref{P:BarofBlock} also shows that the last equivalence in lemma~\ref{L:Barondeathblocks} also reads, for $\varepsilon \geq \frac{b^\dagger-a^\dagger}{2}$ as
+ \begin{equation}
+  \kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} \; \cong \; \overline{\kk^{B -\vec{\frac{b^\dagger-a^\dagger}{2}}}} \star  K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}}.
+ \end{equation}
 
+\end{remark}
 
-IMPORTANT: FAUT IL ECRIRE $\Delta=\{ (x,-x)\}$ PLUTOT ? IL ME SMEBLE QUE CA REPRESENTE MIEUX LA FACON DONT ON PARAMETRE L'ANTI DAIOGNALE (SUIVANT les $x$ CROISSANT)
 
 \emph{
 Lien : l'extension sur la diagonale représente la faisceautisation
@@ -896,7 +952,7 @@ $$\xymatrix{
 
 Satisfying $(\overline{~\cdot~ })^{\text{MV}} \circ \pi^{\text{MV}} \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ and that for every $M\in \text{MV}(\R)^\s$, $$d_I^{\text{MV}}(M, \pi^\MV ( \overline{M})) = 0.$$
 See Corollary~\ref{C:MVcircPsiisId} and Corollary~\ref{C:MVdisO}.
-\subsection{Construction of $(\overline{~\cdot~ })^{\text{MV}}$}
+\subsection{Construction of $(\overline{~\cdot~ })^{\text{MV}}$}\label{SS:MVfunctor}
 We will now apply section~\ref{SS:levelsettopresheaves} to compare the Mayer-Vietoris persistence systems and constructible sheaves. To do so, we first consider the direct sum of the level set persistence to sheaves functor: 
 
 Let $\ell$ be the localization functor sending the category of complexes of sheaves over $\R$ to its derived category $\D(\kk_\R)$.
@@ -940,7 +996,7 @@ Lemma~\ref{L:Barondeathblocks} we thus have that for the dual block $B^\dagger$ 
   \cong \;\left\{ \begin{array}{ll}  \kk_{]a,b[}\star K_{\varepsilon}[-j] & \mbox{ if $\varepsilon< \frac{b-a}{2}$}\\
  \kk_{[\frac{a+b}{2}, \frac{a+b}{2}]}\star K_{\varepsilon -\frac{b -a}{2}} [-j-1] & \mbox{ if $\varepsilon \geqslant \frac{b-a}{2}$.} \end{array}   \right .
 \end{multline}
-This formula ~\eqref{eq:MVonSofDB} is precisely the formula for $\kk_{]a,b[}\star K_{\varepsilon}$ according to~\cite[Proposition 3.8]{Berk18}. This concludes the proof of claim 2.
+This formula ~\eqref{eq:MVonSofDB} is precisely the formula for $\kk_{]a,b[}\star K_{\varepsilon}$ according to Proposition~\ref{P:P38Berk18}. This concludes the proof of claim 2.
 
 \smallskip
 
@@ -969,7 +1025,7 @@ Therefore, we have an isomomorphism
  \Big(\bigoplus_{B_M\in \mathbb{B}^{\textbf{dq}}_j(M) } \big(\kk_{I(B_M)}[j] \oplus \kk_{I(B_M^\dag)}[j+1]\Big)\right)\\
  \cong \; 
  \bigoplus_{j\in \Z} \left(\Big(\bigoplus_{B_N\in \mathbb{B}_j(N) \setminus \mathbb{B}^{\textbf{dq}}_j(N)} \kk_{I(B_N)}[j]\Big)\oplus 
-\Big( \bigoplus_{B_N\in \mathbb{B}^{\textbf{dq}}_j(N) } \big(\kk_{I(B_N)}[j] \oplus \kk_{I(B_N^\dag)}[j+1]\Big)\right).
+\Big( \bigoplus_{B_N\in \mathbb{B}^{\textbf{dq}}_j(N) } \big(\kk_{I(B_N)}[j] \oplus \kk_{I(B_N^\dag)}[j+1]\Big)\right)
 \end{multline}
 of constructible sheaves. By unicity of the decomposition in Theorem~\ref{T:KSdecomposition}, we obtain  degreewise bijections between 
 the set of associated graded barcodes $\{ I(B_M), \, B_M \in  \mathbb{B}_j(M)\}$ and $\{ I(B_N), \, B_N \in  \mathbb{B}_j(N)\}$
@@ -982,26 +1038,28 @@ $\sigma_j(B_M)$ is a block of the same type as $B_M$ and which is equal to $B_M$
 If $\sigma: \mathcal{B} \to \mathcal{B}'$ is a bijection such that for any $B\in \mathcal{B}$, $\sigma(B)$ is equal to $B$ except maybe on the boundary, then 
 $$d_I^{MV}\left(\bigoplus_{B\in \mathcal{B}} S^B_{j}, \bigoplus_{B'\in \mathcal{B}'} S^{B'}_{j}\right) =0.$$
 \end{lem}
-\begin{pf}[Proof of the lemma] It is enough to check that,
+\begin{pfofLemma} It is enough to check that,
  if $B$ and $B'$ are two blocks of the same type which differs only on their boundary, then $B$ and $B'$ are $\varepsilon$-interleaved for any $\varepsilon >0$. This property follows from Lemma~\ref{L:shiftofBlock} and an immediate application of the definition of the blocks of each type. 
  Then  the direct sum of those interleavings relating each $\mathcal{B}$ to $\sigma(\mathcal{B})$  gives a $\varepsilon$-interleaving in between $\bigoplus_{B\in \mathcal{B}} S^B_{j_B}$ and  $\bigoplus_{B'\in \mathcal{B}'} S^{B'}_{j_{B'}}$ for every $\varepsilon >0$; the lemma follows.
-\end{pf}
-The lemma gives the claimed property 3 since we just prove that we can find such a 
+\end{pfofLemma}
+The  claim property 3 follows from the lemma since we have proved just above that we can find such a 
 permutation relating $\mathbb{B}_j(M)$, $\mathbb{B}_j(N)$ for each degree $j$.
 \end{pf}
 
 
 
-\subsection{Construction of $\Psi$}
+\subsection{Construction of the functor $\Psi$ from constructible sheaves to Mayer-Vietoris systems}\label{SS:Psi}
 
 Given $F \in \D^b_{\R c}(\kk_R)$ and $i \in \Z$, define $\Psi(F)_i$ to be the object of $\Pers(\Delta^+)$ defined by, for $(x,y)\in \Delta^+$ : 
 
 $$\Psi(F)_i =\bigoplus_{k+l = i} \Hom_{\Mod(\kk)}\left ( \Rr^k\Gamma \left ( (-x,y) , \Sigma^l F\right ), \kk \right )  $$
-
-Where $\Rr^k\Gamma \left ( (-x,y) , -\right )$ is the $k$-th right derived functor of the functor of sections on $(-x,y)$, in other words the $k$th cohomology groups of $\Sigma^l F_{|(-xy)}$. Note that since $F$ is assumed to be constructible, there are only finitely many pairs $(k,l)$ such that the right-hand-side vector space is non zero.
+where $\Rr^k\Gamma \left ( (-x,y) , -\right )$ is the $k$-th right derived functor of the functor of sections on $(-x,y)$, in other words the $k$th cohomology groups of $\Sigma^l F_{|(-x, y)}$. Note that since $F$ is assumed to be constructible, there are only finitely many pairs $(k,l)$ such that the right-hand-side vector space is non zero.
+\begin{remark}
+ The functor $\Psi$ is essentially defined as the dual of the derived section of $F$ and not just as the dual fo the homology sheaf of $F$ which could have been a more naive approach. The main reason is that the latter will not carry a Mayer-Vietoris structure; in other words, it will forget too much of the structure of the constructible sheaf. However, the derived construction carries such a structure in a natural way as we will now see.
+\end{remark}
 
 \begin{prop}\label{P:psiofCOnstrisMV}
-The family $(\Psi(F)_i)_{i\in \Z}$ carries the structure of a Mayer-Vietoris system. In addition, it is strongly pointwise finite dimensional. 
+The family $(\Psi(F)_i)_{i\in \Z}$ carries a natural structure of a Mayer-Vietoris system. In addition, it is strongly pointwise finite dimensional (Definition~\ref{D:spfd}). 
 \end{prop}
 
 \begin{pf} The fact that $\Psi_i(F)$ is a persistence module over $\Delta^+$ is an immediate consequence of lemma~\ref{L:Defiota}.
@@ -1019,26 +1077,26 @@ Since by definition of sheaf cohomology, one has, $H^i((-x, y, I^\bullet) \cong 
 Since $F$ is constructible, its cohomology groups are finite dimensional in each degree, and there are only finitely many of them. Therefore $\Psi(F)$ is pointwise finite dimensional. Now the proof that $\Psi(F)$ is strongly finite dimensional is an argument similar to the proof of property 4 in Proposition~\ref{P:PropertiesofBar}. Alternatively, one can simply use the structure theorem~\ref{T:KSstructure}
 and proposition~\ref{P:PsionIntervals} below to conlude directly since  strongly pointwise finite dimensional modules are stable under locally finite direct sums.\end{pf}
 
-\begin{cor}\label{P:PropertiesofPsi}
-The rule $F\mapsto \Psi(F)$ defines a functor $\Psi: \D^b_{\R c}(\kk_R)\to \MV(\R)^\s$ 
+\begin{prop}\label{P:PropertiesofPsi}
+The rule $F\mapsto \Psi(F):= (\Psi_i(F), \delta_i^s)_{i,s}$ defines a functor $\Psi: \D^b_{\R c}(\kk_R)\to \MV(\R)^\s$ 
 which is additive and commutes with shifts.
-\end{cor}
+\end{prop}
 \begin{pf} Since the definition of $\Psi_i$ and the connecting morphism in Mayer-Vietoris long exact sequences are functorial, the fact that $\Psi= (\Psi_i(F), \delta^s_i)_{i,s}$ is 
 The first part is a consequence of the fact that the shift commutes with direct sum as well as the fact that the cohomology functor commutes with direct sum and shifts. 
 \end{pf}
 Recall the definition of the map $p: \Delta\to \R$ given before Proposition~\ref{P:BarofBlock}.
 \begin{lem}\label{L:Blockassociatedtointerval}
- Let  $a<b$ be real numbers. There are unique  blocks $B_{b}^{\langle a, b\rangle}$, $B_{h}^{\langle a, b\rangle}$, $B_{v}^{\langle a, b\rangle}$ and $B_{d}^{\langle a, b\rangle}$ respectively of type $\textbf{bb}^{-}$, $\textbf{hb}$, $\textbf{vb}$ and $\textbf{db}$ such that $p(\Delta\cap B_{-}^{\langle a, b\rangle}) = \langle a,b \rangle$. 
+ Let  $a<b$ be real numbers. There are unique  blocks $B_{b}^{\langle a, b\rangle}$, $B_{h}^{\langle a, b\rangle}$, $B_{v}^{\langle a, b\rangle}$ and $B_{d}^{\langle a, b\rangle}$ respectively of type $\textbf{bb}^{-}$, $\textbf{hb}$, $\textbf{vb}$ and $\textbf{db}$ such that $p(\Delta\cap B_{?}^{\langle a, b\rangle}) = \langle a,b \rangle$. 
 \end{lem}
 \begin{pf}
-By definition~\ref{def:block_MV}, all the blocks except the birth blocks lying entirely in $\Delta^+_{>0}$, that is those of type $\textbf{bb}^{+}$  are uniquely determined by their intersection with the diagonal. RENVOYER A UNE FIGURE
+By definition~\ref{def:block_MV}, all the blocks except the birth blocks lying entirely in $\Delta^+_{>0}$, that is those of type $\textbf{bb}^{+}$,  are uniquely determined by their intersection with the diagonal (also see figure~\ref{fig:blocks}). In fact the points $a, b$ determines the block of any of these types as in remark~\ref{R:caracofab} and more precisely it determines the boundary lines of the block. To determine if the lines are included in the block or not, we look to whether $a$ or $b$ are inside the interval $\langle a, b\rangle$. For instance, for $B_v^{[a,b]}$ we take the vertical block delimited by the vertical lines $x=-b$ and $x=-a$ and containing them, while $B_v^{]a,b[}$ is the block vertical delimited by the same lines but not containing any of them. 
 \end{pf}
 
 
-Now recall the definition~\ref{D:blocksmodulesforMV} of the canonical MV-systems associated to blocks.
+Now recall the definition~\ref{D:blocksmodulesforMV} of the canonical MV-systems $S_i^B$ associated to blocks. The following is the analogue of proposition~\ref{P:BarofBlock}, that is, it describes the action of $\psi$ on the building blocks of a constructible sheaf.
 \begin{prop}\label{P:PsionIntervals}  Let $I=\langle a, b\rangle$ be an interval in $\R$. 
 \begin{enumerate}
-    \item If $I$ is open  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
+    \item If $I$ is open, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{d}^{\langle a, b\rangle}}$.
     \item If $I=]a,b]$, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{v}^{\langle a, b\rangle}}$.
@@ -1047,8 +1105,12 @@ S_i^{B_{h}^{\langle a, b\rangle}}$.
     \item If $I$ is compact, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
 S_i^{B_{b}^{\langle a, b\rangle}}$. 
 \end{enumerate}
-Here all the isomorphisms are isomorphisms of Mayer-Vietoris systems.
+Here all the isomorphisms are isomorphisms of Mayer-Vietoris systems and the blocks $S_{?}^{\langle a, b\rangle}$ are given by lemma~\ref{L:Blockassociatedtointerval}.
 \end{prop}
+%\begin{remark}
+As will be made clear by the proof, the claim 1  relies heavily on the fact that we have taken a derived functor approach for the definiton of $\Psi$. 
+%\end{remark}
+
 \begin{pf}Let us first prove the open interval case.
 In view of the proof of proposition~\ref{P:psiofCOnstrisMV}, using compatibility with shifts and direct sums, we only need to compute the cohomology groups of $\Rr^k\Gamma \left ( (-x,y) , \kk_{I}\right )$ which by definition is isomorphic to 
 $Ext^k_{\kk_\R}\left( \kk_{]-x,y[}, \kk_{I }\right) $. 
@@ -1066,20 +1128,77 @@ Now for the three other types of intervals, the computation is easier since we o
 $S_0^{B_b^I}$ when $I$ is of the type $]a, b]$, $[a, b[$ or compact. 
 \end{pf}
 
-\begin{lem}Let $F \in \D^b_{\R c}(\kk_\R)$. For any $\varepsilon \geq 0$, there is a natural isomorphism 
-$ \Psi(F \star K_{\varepsilon}) \; \cong \; \Psi(F)[\vec{\varepsilon}]$ for $\varepsilon$ such that and if $I$ is open then....
-\end{lem}
+The 
+\begin{prop}\label{P:Psipreservesinterl}Let $F \in \D^b_{\R c}(\kk_\R)$. For any $\varepsilon \geq 0$, there is a natural isomorphism 
+$ \Psi(F \star K_{\varepsilon}) \; \cong \; \Psi(F)[\vec{\varepsilon}]$.
+\end{prop}
 \begin{pf}
- Using theorem~\ref{T:KSdecomposition} and the compatibility of convolution with direct sums and shifts, it is enough to prove the result for $\kk_I$ for an interval $I$.
+ Using theorem~\ref{T:KSdecomposition} we have that $F\cong \bigoplus_{\alpha \in A} \kk_{I_\alpha} $. By compatibility of convolution with direct sums and shifts, it is thus enough to prove the result for $\kk_I$ for an interval $I$. 
+ 
+Let us start with the case where $I= [a,b]$ is compact.    Then by Proposition~\ref{P:P38Berk18}, we obtain 
+\begin{equation}\label{eq:Psiofcpctshift}
+ \Psi(\kk_{[a,b]}[-i] \star K_{\varepsilon}) \,\cong\,  \Psi(\kk_{[a-\varepsilon,b+\varepsilon]}[-i])
+ \, \cong \, S_i^{B_{b}^{\langle a-\varepsilon, b +\varepsilon\rangle}}
+\end{equation}
+where the last isomorphism is given by Proposition~\ref{P:PsionIntervals}. Note that by definition the block $B_b$ is of type \textbf{bb}$^{-}$ (see Lemma~\ref{L:Blockassociatedtointerval} and definition~\ref{D:blocksmodulesforMV}). Therefore as a persistent module over $\Delta_+$, we have 
+$S_i^{B_{b}^{\langle a-\varepsilon, b +\varepsilon\rangle}} \,\cong\, \kk^{B_{b}^{\langle a-\varepsilon, b+\varepsilon \rangle}} [-i]$. By lemma~\ref{L:shiftofBlock} and remark~\ref{R:caracofab} we find that 
+$$\kk^{B_{b}^{\langle a-\varepsilon, b+\varepsilon \rangle}} \, \cong \, \kk^{B_{b}^{\langle a, b\rangle}}[\vec{\varepsilon}]. $$
+Combining the last two isomorphisms with~\eqref{eq:Psiofcpctshift}, we find that 
+\begin{equation}
+ \Psi(\kk_{[a,b]}[-i] \star K_{\varepsilon}) \,\cong\, \Big(\kk^{B_{b}^{\langle a, b\rangle}}[-i]\Big)[\vec{\varepsilon}] \; \cong \;  \Psi(\kk_{[a,b]}[-i])[\vec{\varepsilon}]
+\end{equation}
+using again Proposition~\ref{P:PsionIntervals} for the right isomorphism.
+Similarly, in the case where $I$ is half-open, we obtain, for any $\varepsilon\geq 0$ and $i\in \mathbb{Z}$, 
+\begin{equation}
+ \Psi(\kk_{[a,b[} [-i] \star K_{\varepsilon}) \,\cong \, \Big(\kk^{B_{h}^{\langle a, b\rangle}}[-i]\Big)[\vec{\varepsilon}] \, \cong\, \Psi(\kk_{[a,b[} [-i])[\vec{\varepsilon}] 
+ \end{equation}
+ \begin{equation}
+ \Psi(\kk_{]a,b]} [-i] \star K_{\varepsilon})  \,\cong \, \Big(\kk^{B_{v}^{\langle a, b\rangle}}[-i]\Big)[\vec{\varepsilon}] \, \cong\,\Psi(\kk_{]a,b]} [-i])[\vec{\varepsilon}]
+\end{equation}
+
+\smallskip
+
+It remains to cover the case of an open interval $]a,b[$. Again by  Proposition~\ref{P:P38Berk18}, we have 
+\begin{multline}\label{eq:PsiofcpctshiftBis}
+ \Psi(\kk_{]a,b[}[-i] \star K_{\varepsilon}) \,\cong \,  \left\{ \begin{array}{ll}\Psi(\kk_{]a+\varepsilon,b-\varepsilon[}[-i]) & \mbox{ if }\varepsilon <\frac{b-a}{2} \\
+      \Psi(\kk_{[b-\varepsilon,a+\varepsilon]}[-i]) & \mbox{ if }\varepsilon \leqslant\frac{b-a}{2} \end{array} \right .
+      \\ \, \cong \, \left\{ \begin{array}{ll}S_i^{B_d^{\langle a+\varepsilon,b-\varepsilon\rangle}} & \mbox{ if }\varepsilon <\frac{b-a}{2} \\
+      S_i^{B_b^{\langle b-\varepsilon,a+\varepsilon\rangle}} & \mbox{ if }\varepsilon \leqslant\frac{b-a}{2}                                                          \end{array}\right .
+\end{multline} where the last isomorphism is given by proposition~\ref{P:PsionIntervals}.
+Note that by definition the block $B_d$ is of type \textbf{dquad} (see Lemma~\ref{L:Blockassociatedtointerval} and definition~\ref{D:blocksmodulesforMV}). Therefore as a persistent module over $\Delta_+$, we have, for $\varepsilon < \cfrac{b-a}{2}$, that
+$$S_i^{B_{d}^{\langle a+\varepsilon, b -\varepsilon\rangle}} \,\cong\, \kk^{B_{d}^{\langle a-\varepsilon, b+\varepsilon \rangle}} [-i] \oplus \kk^{(B_{d}^{\langle a-\varepsilon, b+\varepsilon \rangle})^\dagger} [-i-1]$$ where the dual block $(B_{d}^{\langle a-\varepsilon, b+\varepsilon \rangle})^\dagger$ is of type \textbf{bb}$^{+}$.  
+By Lemma~\ref{L:shiftofBlock} and Remark~\ref{R:caracofab} we find that 
+$$\kk^{B_{d}^{\langle a-\varepsilon, b+\varepsilon \rangle}} [-i] \oplus \kk^{(B_{d}^{\langle a-\varepsilon, b+\varepsilon \rangle})^\dagger} [-i-1] \, \cong \,(\kk^{B_{d}^{\langle a, b \rangle}} [-i])[\vec{\varepsilon}] \oplus (\kk^{(B_{d}^{\langle , b\rangle})^\dagger} [-i-1])[\vec{\varepsilon}]. $$
+Combining these last two isomorphisms with~\eqref{eq:PsiofcpctshiftBis}, we find that,  for $\varepsilon < \cfrac{b-a}{2}$,
+\begin{equation} \Psi(\kk_{]a,b[}[-i] \star K_{\varepsilon}) \,\cong \, S_i^{B_d^{\langle a, b\rangle}} [\vec{\varepsilon}]\, \cong \, \Psi(\kk_{]a,b[}[-i]) [\vec{\varepsilon}]
+\end{equation}
+as claimed.
+
+\smallskip
+
+It remains to consider the case  $\varepsilon \geq \cfrac{b-a}{2}$. We have still $\Psi(\kk_{]a,b[}[-i]) [\vec{\varepsilon}] \cong S_i^{B_{d}^{\langle a, b \rangle}} [\vec{\varepsilon}]$. As a graded persistent module over $\Delta_+$, by Lemma~\ref{L:shiftofBlock}, we have  
+ that
+$$S_i^{B_{d}^{\langle a, b \rangle}} [\vec{\varepsilon}] \,\cong\, \kk^{\big(B_{d}^{\langle a, b \rangle} -\vec{\varepsilon}\big)} [-i] \oplus \kk^{\big((B_{d}^{\langle a, b\rangle})^\dagger -\vec{\varepsilon}\big)} [-i-1].$$ 
+But since  $\varepsilon \geq \cfrac{b-a}{2}$, we have that the death block  $\big(B_{d}^{\langle a, b \rangle} -\vec{\varepsilon}\big)$ is concentrated below the diagonal $\Delta$, that is in $\mathbb{R}^2\setminus \Delta^+_{>0}$ and therefore $ \kk^{\big(B_{d}^{\langle a, b \rangle} -\vec{\varepsilon}\big)}\cong 0$.  Similarly, the birth block module  
+$\big((B_{d}^{\langle a, b\rangle})^\dagger -\vec{\varepsilon}\big)$ is of type \textbf{bb}$^{-}$ precisely for $\varepsilon \geq \cfrac{b-a}{2}$. The infimum of the point included in this birth block has coordinates $(\varepsilon -b, a+\varepsilon)$. Therefore, 
+$$\kk^{\big((B_{d}^{\langle a, b\rangle})^\dagger -\vec{\varepsilon}\big)} \, \cong \, \kk^{B_{b}^{\langle b-\varepsilon, a+\varepsilon \rangle}}.$$
+Taking the (shifted) direct sum of this last two isomorphisms thus obtain, that, for $\varepsilon \geq \cfrac{b-a}{2}$, we have  
+$$ S_i^{B_{d}^{\langle a, b \rangle}} [\vec{\varepsilon}] \,\cong\, 0 \oplus S_i^{B_{b}^{\langle b-\varepsilon, a+\varepsilon \rangle}}$$
+and therefore the claim follows from the last case of~\eqref{eq:PsiofcpctshiftBis}.
 \end{pf}
-COMME POUR lE LEMMME 3.23 (il faut me rajouter là), il faut mettre les bonnes condtons sur $\varepsilon$ et expliquer les changements de degrés
+
+\subsection{The isometry theorem between the interleaving distance on $\Delta^+$ and the graded bottleneck distance for sheaves} 
+In this section, we will state and prove our main isometry theorem. 
+Before that, we derive a few corollaries of the results we have obtained in sections~\ref{SS:Psi} and~\ref{SS:MVfunctor}.
+
+\smallskip
 
 \begin{cor}\label{C:MVcircPsiisId}
  There is a natural equivalence of functors 
  $(\overline{~\cdot~ })^{\text{MV}} \circ \Psi\simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ between the composition of $\Psi$ followed by the Mayer-Vietoris sheafification and the identity functor of $\D^b_{\R c}(\kk_\R)$.
 \end{cor}
 \begin{pf}
- Since both functors $(\overline{~\cdot~ })^{\text{MV}}$ and $ \Psi $ commutes with shifts and direct sums (propositions~\ref{P:PropertiesofMVSheafification} and \ref{P:PropertiesofPsi}), in view of the structure theorem~\ref{T:KSdecomposition}, it is enough to construct the equivalence on sheaves of the form $\kk_{I}$. Now proposition~\ref{P:PropertiesofMVSheafification}.3 (for $\varepsilon=0$) and Proposition~\ref{P:PsionIntervals} precisely give the result for an interval.
+ Since both functors $(\overline{~\cdot~ })^{\text{MV}}$ and $ \Psi $ commutes with shifts and direct sums (propositions~\ref{P:PropertiesofMVSheafification} and \ref{P:PropertiesofPsi}), in view of the structure theorem~\ref{T:KSdecomposition}, it is enough to construct the equivalence on sheaves of the form $\kk_{I}$. Now Proposition~\ref{P:PropertiesofMVSheafification}.2 (for $\varepsilon=0$) and Proposition~\ref{P:PsionIntervals} precisely give the result for an interval.
 \end{pf}
 \begin{cor}\label{C:fullorfiathful}
 The functor  $\overline{(-)}^{MV}: \text{M-V}(\R)^{\s} \to  \D^b_{\R c}(\kk_\R)$ is essentially surjective and is a full functor. 
@@ -1103,15 +1222,54 @@ Similarly the natural isomorphism  $(\overline{~\cdot~ })^{\text{MV}} \circ \Psi
 \end{cor}
 In other words, though $\Psi \circ \overline{(\cdot)}^{MV}$ is not an equivalence, it maps an object to an object which is at distance $0$ fom itself.
 \begin{pf}
- By statement 5 of Proposition~\ref{P:PropertiesofMVSheafification}, it is sufficient to prove that $\overline{M}^{MV}$ and $\overline{\Psi(\overline{M}^{MV})}^{MV}$ are isomorphic in $\D^b_{\R c}(\kk_\R)$. But Corollary~\ref{C:MVcircPsiisId} implies  $\overline{\Psi(\overline{M}^{MV})}^{MV} \cong \overline{M}^{MV}$ and the result follows.
+ By statement 3 of Proposition~\ref{P:PropertiesofMVSheafification}, it is sufficient to prove that $\overline{M}^{MV}$ and $\overline{\Psi(\overline{M}^{MV})}^{MV}$ are isomorphic in $\D^b_{\R c}(\kk_\R)$. But Corollary~\ref{C:MVcircPsiisId} implies  $\overline{\Psi(\overline{M}^{MV})}^{MV} \cong \overline{M}^{MV}$ and the result follows.
 \end{pf}
 
 
-
-\begin{thm} One has equalities $$d_I(M, N) = d_C^(\overline{M}^{MV}, \overline{N}^{MV}), $$
-$$ d_C(F,G) =d_I(\Psi(F), \Psi(G)).$$
+We can now state our isometry theorem
+\begin{thm} The Mayer-Vietoris sheafification functor and the functor $\Psi$ are isometry between the interleaving distance and the convolution and bottleneck distances for sheaves. That is, for all $M, N \in \mbox{MV}(\R)^\s$,  one has equalities 
+$$d_I(M, N) = d_C (\overline{M}^{MV}, \overline{N}^{MV}) = d_B(\mathcal{B}(\overline{M}^{MV}), \mathcal{B}(\overline{N}^{MV})). $$ 
+And for all constructible sheaves $F, G \in \D^b_{\R c}(\kk_\R)$, one has 
+$$ d_B(\mathcal{B}(F), \mathcal{B}(G)) = d_C(F,G) =d_I(\Psi(F), \Psi(G)).$$
 \end{thm}
+\begin{pf}Theorem~\ref{T:DerivedIsometry} implies already the equlity between bottleneck and convolution distances. 
 
+ By Proposition~\ref{P:PropertiesofMVSheafification}, the Mayer-Vietoris sheafification functor $\overline{(-)}^{MV}:  \mbox{MV}(\R)^\s\to \D^b_{\R c}(\kk_\R)$ maps the shfit functor $[\vec{\varepsilon}]$ onto the convolution functor $(-)\star K_{\varepsilon}$  and therefore if  $M, N \in \mbox{MV}(\R)^\s$ are $\varepsilon$-interleaved, then $\overline{M}^{MV} \sim_{\varepsilon} \overline{N}^{MV}$ in $ \D^b_{\R c}(\kk_\R)$. Thus,  for all $M, N \in \mbox{MV}(\R)^\s$,  one has 
+ \begin{equation}
+  \label{eq:inegMVtoShv}  d_C (\overline{M}^{MV}, \overline{N}^{MV}) \, \leqslant \, d_I(M, N).
+ \end{equation}
+Similarly,  Proposition~\ref{P:Psipreservesinterl} implies that $\Psi$ sends the convolution  $(-)\star K_{\varepsilon}$ functor to the shift functor and thus, we also have that, for all $F,\, G\in  \D^b_{\R c}(\kk_\R)$, one has  
+\begin{equation}
+  \label{eq:inegSHtoMV} d_I(\Psi(F), \psi(G)) \, \leqslant \, d_C (F, G). 
+ \end{equation}
+ From~\eqref{eq:inegMVtoShv} and~\eqref{eq:inegSHtoMV} we get, for all $M, N \in \mbox{MV}(\R)^\s$, that
+ \begin{equation}\label{ineq:chained}
+  d_I(\Psi\big(\overline{M}^{MV} \big), \psi\big(\overline{N}^{MV} \big)) \, \leqslant \,
+  d_C (\overline{M}^{MV}, \overline{N}^{MV})
+  \, \leqslant \, d_I(M, N).
+ \end{equation}
+The triangular inequality and Corollary~\ref{C:MVdisO} implies
+\begin{multline}\label{ineq:Icomposed}
+ d_I(M,N) \leqslant  d_I(\Psi\big(M, \psi\big(\overline{M}^{MV} \big))
++ d_I(\Psi\big(\overline{M}^{MV} \big), \psi\big(\overline{N}^{MV} \big)) 
++ d_I(\Psi\big(\overline{N}^{MV} \big), N)\\ 
+= d_I(\Psi\big(\overline{M}^{MV} \big), \psi\big(\overline{N}^{MV} \big))
+ \end{multline}
+Combining inequality~\eqref{ineq:Icomposed} with~\eqref{ineq:chained}, we ontain that all inequalities in~\eqref{ineq:chained} are egalites which gives the first claim 
+$$d_I(M, N) = d_C (\overline{M}^{MV}, \overline{N}^{MV}).$$
+To prove the remaining one, we use Corollary~\ref{C:MVcircPsiisId}. 
+This gives us, for any $F, \, G\in  \D^b_{\R c}(\kk_\R)$ isomorphisms 
+$F\cong \overline{\Psi(F)}^{MV}$ and $G\cong \overline{\Psi(G)}^{MV}$ and therefore we have
+\begin{equation}\label{eq:lastegality}
+ d_C(F,G) \, = \, d_C\big( \overline{\Psi(F)}^{MV}, \overline{\Psi(G)}^{MV}\big) \, =
+ d_I(\Psi(F), \Psi(G))
+\end{equation}
+since we just proved that $\overline{(-)}^{MV}$ is an isometry. The equality~\eqref{eq:lastegality} concludes the proof of the theorem.
+\end{pf}
+
+In particular the theorem allows to compute the bottleneck or convolution distance for sheaves using interleaving distance for persistence modules and vice-versa.
+
+COMPARER $\mathbb{R}f_*$ and $M^f$ pour $f:X\to \R$ ?
 
 \subsection{\og $d_I^\Z = d_B$ \fg ~for complete level-set persistence}
 
