@@ -145,31 +145,48 @@ $\star$ #2\\
 \section{Introduction}
 
 \subsection{Notations}
-
+We precise here, for the reader convenience, several notations and convention we will use all along the paper.
 \begin{itemize}
-\item We fix a ground field $\kk$.
+\item We fix a ground (commutative) field denoted $\kk$.
     \item For $s=(s_1,s_2)\in \R^2_{>0}$, we will use the notations $s_x:=(s_1,0)$ and $s_y := (0,s_2)$.
     \item Given a category $\C$, we denote $\C^{\op}$ its opposite category. 
     \item We will use the same notation for a poset $(S, \leq)$ and its associated  category whose objects are the elements of $S$ and whose set of morphims from  $s$ to $t$ consists of a single element if $s\leq t$ and is empty if not.
-    \item A functor $M$ from a post $(S, \leq)$ to vector spaces is called \emph{pointwise finite dimensional}, \emph{pfd} for short, if for every $s\in S$, $M(s)$ is finite dimensional. 
+    \item A functor $M$ from a poset $(S, \leq)$ to vector spaces will be called \emph{pointwise finite dimensional}, \emph{pfd} for short, if for every $s\in S$, $M(s)$ is finite dimensional. 
     \item For a death block $B$, we denote $B^\dag$ its dual  in $\R^2$, and vice-versa, see Definition~\ref{D:dualblocks}.
     \item We denote $t\mapsto \vec{t}$ the functor $(\R ,\leq) \to (\Delta^+, \leq)$.
-    \item We will use the \emph{french notation} $]a,b[$ for \emph{open intervals} $(a,b)$ in $\R$. The reason is to avoid confusion with points $(a,b)\in \R^2$ which will both be possible values of persistent or sheaf objects.
 \end{itemize}
+\subsubsection{Notations for open intervals} We will use the \emph{french notation} $]a,b[$ for \emph{open intervals} $(a,b)$ in $\R$. The reason is to avoid confusion with points $(a,b)\in \R^2$ which will both be possible values of persistent or sheaf objects (and usually appear with similar letters).
+    
+\subsubsection{Notations for shifts of graded and persistent objects}   
+Standard and convenient notations for shifting the degree of a (possibly diferential) graded object or for  shifted (or translated) persistent object are both given by  $[?]$ in the litterature. We will have to use objects which are both differential graded and persistent and we now explain how to avoid confusion about this notation in this paper. 
 
-unsigned intervals and french notations for open intervals to avoid confusion with points in $\Delta^+$.
+For any (differential) \emph{graded} object $C$, we will use the notation $C[i]$ for the (differential) graded objects $C[i]^n:= C^{i+n}$ where $i\in \Z$. The letter $i$ could be replaced by $j$, $k$, $n$; $m$ or $\ell$ in the paper and the notation with one of this letter will always mean such a grading shift  in this paper. Those letters could arise with subscripts though. 
+
+\smallskip
+
+ For a \emph{persistent} object $P$ (over $\Delta^+$ or $\R^2$, see~\ref{D:PerModule}) we will also use the standard notation $P[s]$ (where $s$ is in $\R^2$) for its shifted by the vector $s$ persistant object (Definition~\ref{D:shiftedpersitent}). Note that the shift is by a vector, i.e., a point in $\R^2$ not an integer.  We will also use letters such as $t$, $x$ or $\vec{\epsilon}$, $s_x$, $s_y$ for those operations.  This should cause no confusion since we will \emph{never} use those letters for grading shifts nor use $i,j,k,\ell, n, m$ for the persitence structural shift. 
+ 
+ \smallskip
+ 
+ For instance for a graded persistent object $P^\bullet$, $(P^\bullet[i])[s]=(P^\bullet[s])[i]$, where $i\in \Z$ and $s\in \R^2_{>0}$, will thus means the  persistent object defined by $(P[i])[s] (x)^n:= P^{n+i}(x+s)$.
 
 \section{The category of Mayer-Vietoris systems over $\R$}
+In this section we study the notion of Mayer-Vietoris system which are persistence modules over $\{(x,y)\mid x+y > 0\}$ with additional structure. We firts start by the latter notion. 
 \subsection{Middle-exact persistence modules over $\Delta^+$}
 
-We define $\Delta^+ := \{(x,y)\mid x+y > 0\}\subset \R^2$, equipped with the product (partial) order $(x,y)\leq (x',y')$ if and only if $x\leq x'$ and $y\leq y' $. Recall that for $s=(s_1,s_2)\in \R^2_{>0}$, we denote $s_x:=(s_1,0)$ and $s_y := (0,s_2)$. 
+We define $\Delta^+ := \{(x,y)\mid x+y > 0\}\subset \R^2$, equipped with the product (partial) order $(x,y)\leq (x',y')$ if and only if $x\leq x'$ and $y\leq y' $. 
+In other words, $\Delta^+$ is the upper half-space above the antidiagonal $\Delta$ of $\R^2$, equipped with the induced product partial order of $(\R, \leq)\times (\R, \leq)$.
+
+\smallskip
+
+Recall that for $s=(s_1,s_2)\in \R^2_{>0}$, we denote $s_x:=(s_1,0)$ and $s_y := (0,s_2)$. 
 
 \begin{defi}\label{D:PerModule}
 A persistence module over $\Delta^+$ is a functor $M : (\Delta^+,\leq) \longrightarrow \Mod(\kk)$, where $\Mod(\kk)$ is the category of $\kk$-vector spaces.
 
 Persistence modules over $\Delta^+$ together with natural transformations of functors form a category, denoted $\Pers(\Delta^+)$.
 
-Similarly the category of persistence comodules over $\Delta^+$ is the category of functors $(\Delta^+,\leq)^{\Op} \longrightarrow \Mod(\kk)$
+Similarly the category of persistence comodules over $\Delta^+$ is the category of functors $(\Delta^+,\leq)^{\op} \longrightarrow \Mod(\kk)$.
 \end{defi}
 In particular, the data of a  persistence module over $\Delta^+$ is encoded by the  structural  morphisms  
 \begin{equation}\label{eq:structmorphism}
@@ -177,7 +194,7 @@ In particular, the data of a  persistence module over $\Delta^+$ is encoded by t
 \end{equation}
 defined for any $v=(v_1,v_2)\in \Delta^+$ and $s\in \R^2_{>0}$ and their compatibilities. 
 
-\begin{defi} For $s\in \R^2_{>0}$ and $M\in \Obj( \Pers(\Delta^+))$, we define 
+\begin{defi}\label{D:shiftedpersitent} For $s\in \R^2_{>0}$ and $M\in \Obj( \Pers(\Delta^+))$, we define 
 $M[s]$ to be the persistence module given, for any $v\in \Delta^+$, by $M[s](v)= M(v+s)$ with structural morphisms induced by those of $M$: for any $t\in \R^2_{>0}$:
 $$ M[s](v)=M(v+s) \longrightarrow M(v+s+t)=M[s](v+t).$$
 We extend the definition to $s=0$ by $M[0]=M$ with the identity for  $M\to M[0]$.
@@ -187,7 +204,7 @@ induces, for any $t\in \R^2_{>0}$ the canonical translation maps:
 \begin{equation}\label{eq:translmorphism}
    \tau_{s}^M: M \longrightarrow M[s].
 \end{equation}
-We will adopt the convention that when we do not need explicitly a notation for a translation or structural morphism we simply do not labeled it. 
+We will adopt the convention that when we do not need explicitly a notation for a translation or structural morphism we simply do not label it. 
 
 \smallskip
 
@@ -199,8 +216,8 @@ where the first map is $\left( \begin{array}{c} \tau^M_{s_x}\\ -\tau^M_{s_y}\end
 $M(t+s_x)\oplus M(t+s_y) \ni (v,w) \mapsto \tau^{M[s_x]}_{s_y}(v)+\tau^{M[s_y]}_{s_x}(w)$. 
 The fact that~\eqref{eq:secforPersModule} is a complex is an immediate consequence of definition~\ref{D:PerModule}.
 
-\begin{defi}\label{D:middleexact}
-$M\in \Obj(\Pers(\Delta^+)$ is said to be \textbf{middle-exact} if the complexes $M\{s\}$ are exact for every $s\in\R^2_{>0} $.
+\begin{defi}\label{D:middleexact} An object
+$M\in \Pers(\Delta^+$ is said to be \textbf{middle-exact} if the complexes $M\{s\}$ are exact for every $s\in\R^2_{>0} $.
 \end{defi}
 \begin{remark}
 We think of middle-exact complexes as being the analogue for the poset $\Delta^+$ of half the terms of the Mayer-Vietoris long exact sequence relating the various homology groups of two open subsets of a space, their reunion and intersection. What is missing to have a long exact sequence are precisely the connecting homomorphisms relating homology groups of different degrees. In Section~\ref{S:ClassMVSystems}, we will precisely introduce an additional data on a (graded) middle-exact object of $\Pers(\Delta^+)$ to obtain such long exact sequences. 
@@ -210,7 +227,8 @@ Persistence modules have a barcode decomposition similar to peristence modules o
 A block $B$ is a subset of $\R^2$ of the following type : 
 \begin{enumerate}
     \item A \textbf{birthblock} (\textbf{bb} for short) if there exists $(a,b)\in \R^2$ such that $B = <a,\infty> \times <b,\infty>$, where $a$ and $b$ can eventually worth $-\infty$ simultaneously. Moreover, we will write that $B$ is of type \textbf{bb$^+$} if $a+b > 0$, and of type \textbf{bb$^-$} if $a+b \leq 0$. 
-    \item A \textbf{deathblock} (\textbf{db} for short) if there exists $(a,b)\in \R^2$ such that $B = <-\infty,a> \times <-\infty,b>$.
+    \item A \textbf{deathblock} (\textbf{db} for short) if there exists $(a,b)\in \R^2$ such that $B = <-\infty,a> \times <-\infty,b>$. 
+    Moreover, we will write that $B$ is of type \textbf{db}$^+$ if it has a non trivial intersection with $\Delta^+$  (equivalenty $a+b>0$) and of type \textbf{db$^-$} if not. 
      \item A \textbf{horizontalblock} (\textbf{hb} for short) if there exists $a\in \R$ and $b\in \R\cup \{+\infty\}$ such that $B = \R \times <a,b>$.
      \item A \textbf{verticalblock} (\textbf{vb} for short) if there exists $a\in \R\cup \{+\infty\}$ and $b\in \R$ such that $B = <a,b> \times \R$.
 \end{enumerate}
@@ -228,7 +246,7 @@ The various coordinates refers to the intersection points of the boudnaries of t
 \end{center}
 \end{figure}
 \begin{remark}\label{R;dualBlocks}
-Note that a deathblock $B$ is characterized by its supremum, that is $\sup \{s\in B\}$ together with the data of wether its two boundary lines are in the block or not (note that the supremum is inside $B$ if and only if both boundaries lines are). Similarly a birth block $B'$  is characterized by is infimum $\inf \{s\in B'\}$ and the data of whether its boundary lines are in $B$ or not.  Note also that the vertical and horizontal blocks never have finite extremums.  
+Note that a deathblock $B$ is characterized by its supremum, that is $\sup \{s\in B\}$ together with the data of whether its two boundary lines are in the block or not (note that the supremum is inside $B$ if and only if both boundaries lines are). Similarly a birth block $B'$  is characterized by is infimum $\inf \{s\in B'\}$ and the data of whether its boundary lines are in $B$ or not.  Note also that the vertical and horizontal blocks never have finite extremums.  
 \end{remark}
 \begin{defi}[Duality between death and birth blocks]
  \label{D:dualblocks} The dual  of a deathblock $B$ is the birthblock $B^\dagger$ whose infimum is the supremum of $B$ and whose vertical (resp. horizontal) boundary lines are in $B^\dagger$ if and only if the the vertical (resp. horizontal) boundary lines of $B$ are not. 
@@ -236,7 +254,7 @@ Note that a deathblock $B$ is characterized by its supremum, that is $\sup \{s\i
  Dually we define the dual $C^\dagger$ of a birthblock $C$ as the death block whose supremum is the infimum of $C$ and whose vertical (resp. horizontal) boundary lines are in $C^\dagger$ if and only if the the vertical (resp. horizontal) boundary lines of $C$ are not.
 \end{defi}
 \begin{remark}
- The rule $B\mapsto B^\dagger$ is involutive: $(B^\dagger)^\dagger=B$ and in particular exhibits a perfect duality between death and birth blocks.  Further note that the dual of a deathblock is of type \textbf{bb}$^{+}$ if and only if the deathblock has a non-trivial intersection with $\Delta^+$. 
+ The rule $B\mapsto B^\dagger$ is involutive: $(B^\dagger)^\dagger=B$ and in particular exhibits a perfect duality between death and birth blocks.  Further note that the dual of a deathblock is of type \textbf{bb}$^{+}$ if and only if the deathblock has a non-trivial intersection with $\Delta^+$ i.e. is in \textbf{db}$^+$. 
 \end{remark}
 
 
@@ -246,27 +264,42 @@ Let $B$ be a block, define the \textbf{block module} associated to $B$ by, for a
 $$\kk^B(s) = \begin{cases} \kk \text{~if~}s\in B \\ 0 \text{~else}
 \end{cases} ~~~\kk^B(s\leq t) = \begin{cases} \text{id}_\kk \text{~if~} (s,t)\in B^2 \\ 0 \text{~else} \end{cases} $$
 \end{defi}
+\begin{remark}\label{R:trivaildbmoins}
+ If $B$ is in \textbf{db}$^{-}$, then $\kk^B=0$. Therefore we will usually not consider the block modules associated to such negative deathblocks. The reader can safely assume that when we speak about a deathblock in the latter, unless otherwise specified it is an element of \textbf{db}$^+$.
+\end{remark}
 
+
+Let us denote, for $s\in \Delta^+$, $B -s=\{ t -s, \, t\in B\}$; this is a block of the same type as $B$.
+\begin{lem}\label{L:shiftofBlock}
+ Let $B$ be a block and $s\in \Delta^+$. There is a canonical isomorphism 
+ $$\kk^B[s] \, \cong \, \kk^{B-s}. $$
+\end{lem}
+\begin{pf}
+ By definition~\ref{Def:blockmodule}, we have that 
+ $$\kk^B[s](t)= \kk^B(t+(s_1, s_2)) = \left\{ \begin{array}{ll} 
+\kk & \text{if t }\in B -s \\
+0 & \text{else.}\end{array}\right.$$
+Therefore we have that $$\kk^B[s] \, \cong \, \kk^{B-s}.$$
+\end{pf}
 \begin{thm}[Cochoy-Oudot~\cite{CO17}, Botnan-Crawley-Boevey~\cite{BotCra18}] \label{thm:exactdecomp}
 Let $M\in \Pers(\Delta^+)$ be middle exact and pointwise finite dimensional (pfd). Then there exists a unique multiset of blocks $\mathbb{B}(M)$ such that : 
 
-$$M \simeq \bigoplus_{B\in \mathbb{B}(M)} \kk^B $$
+$$M \simeq \bigoplus_{B\in \mathbb{B}(M)} \kk^B. $$
 \end{thm}
 
 
 
 
-\subsection{Classification of Mayer-Vietoris systems over $\R$}\label{S:ClassMVSystems}
+\subsection{Mayer-Vietoris systems over $\R$ and their classification}\label{S:ClassMVSystems}
 
 \begin{defi}\label{D:MVSystem}
 We define the category $\text{M-V}(\R)$ of \textbf{Mayer-Vietoris persistent systems over} $\R$ as follows : 
 
 \begin{itemize}
-    \item[$\bullet$] Objects : collections $S=(S_i,\delta_i^s)_{i\in \Z,s\in \R_{>0}^2}$ where $S_i$ is in $\text{pers}(\Delta^+)$ and $\delta_i^s\in \Hom_{\Delta^+}(S_i[s], S_{i-1})$, such that for all $i\in \Z$ and all $s\in \R_{>0}^2$, the following sequence is exact : 
+    \item[$\bullet$] Objects : collections $S=(S_i,\delta_i^s)_{i\in \Z,s\in \R_{>0}^2}$ where $S_i$ is in $\text{Pers}(\Delta^+)$ and $\delta_i^s\in \Hom_{\Delta^+}(S_i[s], S_{i-1})$, such that for all $i\in \Z$ and all $s\in \R_{>0}^2$, the following sequence 
     \begin{equation}\xymatrix{S_{i+1}[s] \ar[r]^-{\delta_{i+1}^s} & S_i \ar[r] & S_i[s_x] \oplus S_i[s_y] \ar[r] & S_i[s] \ar[r]^-{\delta_{i}^s} & S_{i-1}}\label{eq:MVSystemles}\end{equation}
-    
-    And the diagram below is commutative, for $s'\geq s$ :  \begin{equation}\label{D:ComSaquareforMV}\xymatrix{  S_i[s] \ar[r]^-{\delta_{i}^{s}} \ar[d] & S_{i-1} \ar[d]^{\text{id}_{S_{i-1}}} \\
-    S_i[s'] \ar[r]^-{{\delta}_{i}^{s'}} & S_{i-1}}\end{equation}
+    is exact and the following diagram  is commutative, for $s'\geq s$ :  \begin{equation}\label{D:ComSaquareforMV}\xymatrix{  S_i[s] \ar[r]^-{\delta_{i}^{s}} \ar[d] & S_{i-1} \ar[d]^{\text{id}_{S_{i-1}}} \\
+    S_i[s'] \ar[r]^-{{\delta}_{i}^{s'}} & S_{i-1}.}\end{equation}
     
     \item[$\bullet$] Morphisms : for $(S_i,\delta_i^s)$ and $(T_i,\tilde{\delta}_i^s)$ two Mayer-Vietoris systems over $\R$, a morphism from $(S_i,\delta_i^s)$ to $(T_i,\tilde{\delta}_i^s)$ is a collection of morphisms $(\varphi_i)_{i\in \Z}$ where $\varphi_i \in \Hom_{\Pers(\Delta^+)}(S_i,T_i)$ such that the following diagram
     
@@ -285,37 +318,78 @@ A natural class of examples of such M-V systems is provided by homology of level
 
 Our remaining goal in this section is to classify Mayer-Vietoris system in a way similar to Theorem~\ref{thm:exactdecomp}. For this, we introduce building blocks for those.
 \begin{defi}\label{D:blocksmodulesforMV}
-Let $\text{B}$ be a block and $j\in \Z$, then define $\text{S}^\text{B}_j$ the Mayer-Vietoris system associated to $\text{B}$ of degree $j$ by : 
+Let $\text{B}$ be a block (Definition~\ref{def:block_MV}) and $j\in \Z$. We define the Mayer-Vietoris system of degree $j$ associated to $\text{B}$, denoted $\text{S}^\text{B}_j$,   by : 
 
 \begin{itemize}
     \item If B is of type \textbf{bb}$^-$, \textbf{hb} or \textbf{vb} then $\text{S}^\text{B}_j = (M_i,0)_{i,s}$ with $M_i = 0$ for all $i\not = j$ and $M_j = \kk_B$
     
-    \item If B is of type \textbf{db}, then $\text{S}^\text{B}_j = (M_i,\delta_i^s)$ with $M_i = 0$ for all $i\not \in \{j+1,j\} $, $\delta_i^s=0$ for all $s\in \R^2$ and $i\not = j+1$,  $M_{j+1} = \kk_{B^\dag}$, $M_{j}= \kk_{B}$, and define $\delta_{j+1}^s : \kk_{B^\dag}[s] \to \kk_B$ by point-wise identities on $B^\dag [s]\cap B \cap \Delta^+$.
+    \item If B is of type \textbf{db}$^+$, then $\text{S}^\text{B}_j = (M_i,\delta_i^s)$ with $M_i = 0$ for all $i\not \in \{j+1,j\} $, $\delta_i^s=0$ for all $s\in \R^2$ and $i\not = j+1$,  $M_{j+1} = \kk_{B^\dag}$, $M_{j}= \kk_{B}$, and define $\delta_{j+1}^s : \kk_{B^\dag}[s] \to \kk_B$ by point-wise identities on $B^\dag [s]\cap B \cap \Delta^+$.
 
     \item Dually, if $B$ is of type \textbf{bb$^+$}, then define $S^{\text{B}}_j$ as $S^{B^\dag}_{j-1}$.
+    \item If B is of type \textbf{db}$^{-}$, then we set $S^B=0$.
 \end{itemize}  
 \end{defi}
+Of course the case of \textbf{db}$^{-}$ matches remark~\ref{R:trivaildbmoins}.
 
-
-\begin{rem}
+\begin{remark}
 One can easily see that the Mayer-Vietoris systems $S_j^B$ are indecomposables.
-\end{rem}
+
+Also note that for a block $B$ of type \textbf{db} or \textbf{bb}$^{+}$ and $j\in \Z$, the graded persistent module $(M_i,0)_{i,s}$ with $M_i = 0$ for all $i\not = j$ and $M_j = \kk_B$ is \emph{not} a Mayer-Vietoris system.
+\end{remark}
+\begin{lem} The graded persistent modules $S_j^{B}$ associated to blocks $B$ in Definition~\ref{D:blocksmodulesforMV} are Mayer-Vietoris systems for any $j$ and block $B$.
+\end{lem}
+\begin{pf} We advise the reader to draw the different cases in a way similar to figure~\ref{fig:translationblocks}. Since $S_j^B =S_{j-1}^{B^\dagger}$, the case of \textbf{db}$^+$ and \textbf{bb}$^+$ are equivalent.
+
+\smallskip 
+
+ Note that every block which is not of type  \textbf{db} is stable by upward vertical and/or left-to-right  horizontal translations. It follows that $\kk^B \to \kk^B[s_x] \oplus \kk^B[s_y]$ is injective. Thus for blocks of type \textbf{vb}, \textbf{hb} or \textbf{bb}$^{-}$,  $S^B_j \to S^B_j[s_x]\oplus S^B_j [s_y]$ is one to one as well in every degree, a well as is the map $S^B_j \to S^B_j[s_x]\oplus S^B_j [s_y]$ in degree $i\neq j$ for $B$ of type \textbf{db} (and therefore also for $S^B_{j-1}$ if $B$ is of type \textbf{bb}$^{+}$ by definition~\ref{D:blocksmodulesforMV}). 
+
+ \smallskip
+ 
+ Note now that for a block $B$, if $z \in \R^2$ and $s\in \R^2_{>0}$ satisfies that $z+s \in B$, then either  $z+s_x$ or $z+s_y$ is in $B$ as well if $B$ is of type different from \textbf{bb}. Further for a block of type \textbf{bb}, the latter property only fails if $x \in B\cap B^\dagger$ where $B^\dagger$ is its dual (death)block. When $B$ is of type \textbf{bb}$^{-}$, those points are not in $\Delta^+$.   
+ Therefore, the maps $\kk^B[s_x]\oplus \kk^B[s_y]\to \kk^B[s]$ are surjective for all blocks of type different from \textbf{bb}$^{+}$. 
+ 
+ \smallskip 
+ 
+ Let us now prove that the subsequences $ \xymatrix{\kk^B \ar[r] & \kk^B[s_x] \oplus \kk^B[s_y] \ar[r] & \kk^B[s]}$ are exact for any $B$; we have already seen that the composition is zero. Now, assume $(\alpha_x, \alpha_y) \in  \kk^B[s_x](v) \oplus \kk^B[s_y](v)$ is a \emph{nonzero} element in the kernel of $\tau_{s_x} \oplus \tau_{s_y}$. Then, if $v+s \in B$ then so are $v+s_x$ and $v+s_b$ and therefore $\tau_{s_x}$ and $\tau_{y}$ are the identity map $\kk \to \kk$. In particular $\alpha_x=\alpha_y=:\alpha$. But since $\kk^{B}[s](v)= \kk^{B}(s+v)=\kk$ as well, then $\kk^B(v)\to  
+  \kk^B[s_x](v) \oplus \kk^B[s_y](v)$ is the map $(id, id)$ and hence $(\alpha, \alpha)$ is in its image. If $v+s\notin B$, then $B$ is not a birthblock and at least one element among $v+s_x$ and $v+s_y$ is not in $B$. If none are, then there is nothing to prove and if not then $B$ is either a vertical or horizontal block. In the first case, $v+s_y \in B$ and therefore $\kk^B \to \kk^B[s_y]$ is teh identity map so that we have a preimage for $\alpha_y$. The other case is dual. This conclude the proof of the lemma for all blocks which are not of type \textbf{db}$^+$. 
+ 
+ \smallskip 
+ 
+ To prove the result for blocks of type \textbf{db}$^+$, since $S_i^B = S^B [-i]$ and by the injectivity result we have obtained at the beggining of tha proof, it is enough to prove that the sequences 
+ $$ \kk^{B^\dagger}[s](v) \to \kk^B(v) \to \kk^B[s_x](v)\oplus \kk^B[s_y](v)  $$
+ are exact for any $s\in \R^2_{>0}$, $s\in \Delta^+$. If $v\notin B$, there is nothing to prove. Thus we assume $v\in B$.
+ First, if both $\kk^B[s_x]$ and $\kk^B[s_y]$ are null, then  $x\in B\cap B^\dagger[s]= B\cap (B-s)^{\dagger}$. 
+ Therefore, $\kk^{B^\dagger}[s](v) \to \kk^B(v)$ is the identity and the sequence is exact. 
+ If both $\kk^B[s_x]$ and $\kk^B[s_y]$ are non-null, then $\kk^B(v) \to \kk^B[s_x](v)\oplus \kk^B[s_y](v) $ identifies with the necessarily injective diagonal inclusion and $v\notin B[s]^\dagger$ so that $\kk^{B^\dagger}[s](v)=0$ and the sequence is thus exact. 
+ Finally if only one $\kk^B[s_x]$ or $\kk^B[s_y]$ is non-null, one of map $\kk^B\to \kk^B[s_x]$ or $\kk^B\to \kk^B[s_y]$  is the identity-hence injective-and  we still have $v\notin B[s]^\dagger$-hence  $\kk^{B^\dagger}[s](v)=0$. The sequence is again exact and the lemma is proved..
+ \end{pf}
+
+\begin{figure}
+ \begin{center}
+  \includegraphics{TranslateofBlocks.pdf}
+  \caption{\emph{On the left:} A deathblock $B$ in yellow (and blue) and the translated deathblock $B-s=B[s]$ in blue where $s$ is the vector drawn. The dotted lines are the boundary of the dual birth block $B^{\dagger}[s]$. 
+    \emph{On the right:} The  value of $\kk^B[s_x]\oplus \kk^B[s_y]$ in every region where the green region is the  translated death block $B-s_x=$, the red is the translated death block $B-s_y$. The value is $0$ on the white region and below the antidiagonal.  }
+  \label{fig:translationblocks}
+ \end{center}
+\end{figure}
+
 
 Denote by M-V$^- (\R)$ the full sub-category of Mayer-Vietoris systems over $\R$ whose objects are the MV systems $S$ such that there exists $N\in\Z$ such that $S_i = 0$ for all $i\geq N$. In other words, M-V$^- (\R)$ is the subcategory of bounded below Mayer-Vietoris systems.
 
 \begin{thm}[Classification of pfd M-V systems]\label{thm:decom_MV}
 
-Let $S$ an object of M-V$^- (\R)$ which is pointwise finite dimensional.  Then there exists a unique collection of multisets of blocks $\mathbb{B}(S) = (\mathbb{B}_j(S))_{j\in \Z}$ of type \textbf{bb$^-$}, \textbf{hb}, \textbf{vb}, and \textbf{db}, such that we have an isomorphism in M-V$(\R)$ : 
+Let $S$ an object of M-V$^- (\R)$ which is pointwise finite dimensional.  Then there exists a unique collection of multisets of blocks $\mathbb{B}(S) = (\mathbb{B}_j(S))_{j\in \Z}$ of type \textbf{bb$^-$}, \textbf{hb}, \textbf{vb}, and \textbf{db}$^{+}$, such that we have an isomorphism in M-V$(\R)$ : 
 
 $$S \simeq \bigoplus_{j\in \Z} \bigoplus_{B\in \mathbb{B}_j(S)} S_j^B $$
 
-$\mathbb{B}(S)$ is the \textbf{barcode} of $S$. It completely determines $S$ up to isomorphism of Mayer-Vietoris systems.
+We call $\mathbb{B}(S)$ the \textbf{barcode} of $S$. It completely determines $S$ up to isomorphism of Mayer-Vietoris systems.
 \end{thm}
 
 \begin{remark}
 By Definition~\ref{def:block_MV}, birth blocks of type \textbf{bb$^+$} generate the same MV systems as their dual death blocks, therefore  they come in pairs in the decomposition given by Theorem~\ref{thm:decom_MV}, which explains why the blocks of type \textbf{bb$^+$} are ignored in the barcode.
 \end{remark}
-NEED TO HAD A FIGURE TO SHOW HOW THE MAPS AND EXACT SEQUENCE WORKS OUT FOR SOME BLOCKS.
+
 
 To prove the theorem~\ref{thm:decom_MV}, we will use the following technical lemmas :
 
@@ -428,14 +502,12 @@ and that this filtration stabilizes point-wise, we deduce the decomposition for 
 
 \end{pf}
 
-%Definition of the category. Classification. Barcodes. Representation of the band (cf. Magnus)
-
 \subsection{Interleaving distance for M-V systems}
-We have a (fully faithfull) functor $(\R ,\leq) \to (\R^2, \leq)$ given by the diagonal embedding  $t\mapsto \vec{t}$ where $\vec{t}=(t,t)$. We also denote  the functor $\vec{(-)}: (\R_{>0} ,\leq) \to (\Delta^+, \leq)$  the induced functor. 
+We have a (fully faithfull) functor $(\R ,\leq) \to (\R^2, \leq)$ given by the diagonal embedding  $t\mapsto \vec{t}$ where $\vec{t}=(t,t)$. \emph{We} also \emph{denote}  the functor $\overrightarrow{(-)}: (\R_{>0} ,\leq) \to (\Delta^+, \leq)$  the induced functor. 
 
 \smallskip
 
-Given $\varepsilon \geq 0$, and $M = (M_i,\delta_i^s)$ a Mayer-Vietoris system over $\R$ (Definition~\ref{D:MVSystem}), observe that the collection $\tau_{\vec{\varepsilon}}^M:=(\tau_{\vec{\varepsilon}}^{M_i})_{i\in\Z}$ is a morphism of Mayer-Vietoris sytems $M \longrightarrow M[\vec{\varepsilon}]$, where $M[\vec{\varepsilon}]:=(M_i[\vec{\varepsilon}],\delta_i^s[\vec{\varepsilon}])$.
+Given $\varepsilon \geq 0$, and $M = (M_i,\delta_i^s)$ a Mayer-Vietoris system over $\R$ (as in Definition~\ref{D:MVSystem}), observe that the collection $\tau_{\vec{\varepsilon}}^M:=(\tau_{\vec{\varepsilon}}^{M_i})_{i\in\Z}$ is a morphism of Mayer-Vietoris systems$M \longrightarrow M[\vec{\varepsilon}]$, where $M[\vec{\varepsilon}]:=(M_i[\vec{\varepsilon}],\delta_i^s[\vec{\varepsilon}])$.
 
 \begin{defi}
 Let $M$ and $N$ two Mayer-Vietoris systems over $\R$. An \textbf{$\varepsilon$-interleaving} between $M$ and $N$ is the data of two morphisms of M-V systems $f = (f_i) : (M_i,\delta_i^s) \longrightarrow (N_i[\vec{\varepsilon}],\tilde{\delta}_i^s [\vec{\varepsilon}])$ and $g = (g_i) : (N_i,\tilde{\delta}_i^s) \longrightarrow (M_i[\vec{\varepsilon}],\delta_i^s[\vec{\varepsilon}]) $ such that the following diagram commutes : 
@@ -452,34 +524,20 @@ If $M$ and $N$ are $\varepsilon$-interleaved, we shall write $M\sim_\varepsilon^
 
 
 \begin{defi}\label{D:InterleavingforMV}
-Define the interleaving distance between two Mayer-Vietoris systems $M$ and $N$ to be the positive or possibly infinite number : 
+Define the interleaving distance between two Mayer-Vietoris systems $M$ and $N$ to be the non-negative or possibly infinite number : 
 
 $$d_I^{MV}(M,N) := \inf \{\varepsilon \geq 0 \mid M \sim_\varepsilon^{MV} N  \}. $$
 \end{defi}
 \begin{remark}\label{R:DMVgeneralizedDstandard}
- The interleaving distance for Mayer-Vietoris system is just the graded extension of the usual interleaving distance in $\Pe(\Delta^+)$ defined, for $M, N \in \Obj(\Pe(\Delta^+))$ by 
+ The interleaving distance for Mayer-Vietoris system is just a derived\footnote{because we precisely requires the morphisms to commute wit the maps $\delta_s^i$ connecting homology groups of different degrees. This claim will be even more supported by the isometry theorem~\ref{T:MainIsometry}} extension of the usual interleaving distance in $\Pe(\Delta^+)$ defined, for $M, N \in \Obj(\Pe(\Delta^+))$ by 
  $$d_I(M,N) := \inf \{\varepsilon \geq 0 \mid M \sim_\varepsilon^{\Delta^+} N  \} $$
  where $M \sim_\varepsilon^{\Delta^+} N$ means that $M$ and $N$ are $\varepsilon$-interleaved as persistence modules, that is there  exists $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ are persistence modules morphisms satisfying that the diagram~\eqref{eq:Interleaving} commutes. 
- 
 \end{remark}
 
  We say that a Mayer-Vietoris system $M=(M_i,\delta_i)_{i\in \Z}$ is \textbf{bounded} if there is only finitely many $M_i$ which are non-zero.
  
  
  
-
-Let us denote $B -\vec{\varepsilon}=\{ s -\vec{\varepsilon}, \, s\in B\}$; this is a block of the same type as $B$.
-\begin{lem}\label{L:shiftofBlock}
- Let $B$ be a block and $\varepsilon >0$. There is a canonical isomorphism 
- $$\kk^B[\vec{\varepsilon}] \, \cong \, \kk^{B-\vec{\varepsilon}}. $$
-\end{lem}
-\begin{pf}
- By definition~\ref{Def:blockmodule}, we have that 
- $$\kk^B[\vec{\varepsilon}](t)= \kk^B(t+(\varepsilon, \varepsilon)) = \left\{ \begin{array}{ll} 
-\kk & \text{if t }\in B -\vec{\varepsilon} \\
-0 & \text{else.}\end{array}\right.$$
-Therefore we have that $$\kk^B[\vec{\varepsilon}] \, \cong \, \kk^{B-\vec{\varepsilon}}.$$
-\end{pf}
 
 We now turn to a main source of examples of Mayer-Vietoris systems. 
 \begin{ex}[Mayer-Vietoris system associated to continuous functions]\label{Ex:MVfromFct}
@@ -1279,6 +1337,11 @@ On peut calculer la distance entre deux MV system comme le max des distances deg
 
 
 
+
+\bibliographystyle{alpha}
+\bibliography{biblio}
+\end{document}
+
 \section{Preliminaries}
 
 \subsection{Notations}
@@ -1287,7 +1350,8 @@ We equip $\R^2$ with the product order $\leq$ and see the associated poset as a 
 
 Let $\Delta^+ = \{(x,y)\in \R^2 \mid  x + y > 0 \}$, observe that it is a full sub-poset of $(\R^2,\leq)$. We identify $\Delta^+$ as the poset of open intervals of $\R$ through the poset morphism $$\iota : \Delta^+ \ni (x,y) \mapsto ]-x,y[ := \{\alpha \in \R \mid -x < \alpha < y\} \in \Op_\R $$
 
-We fix $\kk$ a field, and will denote by $\Mod (\kk)$ the category of $\kk$-vector spaces, $\text{mod}(\kk)$ its full subcategory in which objects are finite dimensional vector spaces. For $P$ a poset, we define the category of persistent modules over $P$ as the functor category $\text{Fun}(P,\Mod(\kk))$, and its full subcategory of point-wise finite dimensional (pfd) persistent modules $\text{Fun}(P,\text{mod}(\kk))$. We denote by $\text{PSh(X)}$ the category of pre-sheaves of $\kk$-vector spaces over $X$ and $\Mod(\kk_\R)$ the category of sheaves of $\kk$-vector spaces over $\R$.  
+We fix $\kk$ a field, and will denote by $\Mod (\kk)$ the category of $\kk$-vector spaces, $\text{mod}(\kk)$ its full subcategory in which objects are finite dimensional vector spaces. 
+For $P$ a poset, we define the category of persistent modules over $P$ as the functor category $\text{Fun}(P,\Mod(\kk))$, and its full subcategory of point-wise finite dimensional (pfd) persistent modules $\text{Fun}(P,\text{mod}(\kk))$. We denote by $\text{PSh(X)}$ the category of pre-sheaves of $\kk$-vector spaces over $X$ and $\Mod(\kk_\R)$ the category of sheaves of $\kk$-vector spaces over $\R$.  
 
 Now observe that 
 
@@ -1328,7 +1392,3 @@ $$...\stackrel{}{\longrightarrow} M_i^f[a] \stackrel{\alpha_i}{\longrightarrow} 
 
 Now observe that since $\alpha_i$  and $\beta_i$ are linear combinations of the internal smoothing morphisms of $M_i^f$, they preserve any barcode decomposition of $M_i^f$.
 \end{pf}
-
-\bibliographystyle{alpha}
-\bibliography{biblio}
-\end{document}
