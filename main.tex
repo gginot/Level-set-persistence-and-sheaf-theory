@@ -228,7 +228,7 @@ A block $B$ is a subset of $\R^2$ of the following type :
 \begin{enumerate}
     \item A \textbf{birthblock} (\textbf{bb} for short) if there exists $(a,b)\in \R^2$ such that $B = <a,\infty> \times <b,\infty>$, where $a$ and $b$ can eventually worth $-\infty$ simultaneously. Moreover, we will write that $B$ is of type \textbf{bb$^+$} if $a+b > 0$, and of type \textbf{bb$^-$} if $a+b \leq 0$. 
     \item A \textbf{deathblock} (\textbf{db} for short) if there exists $(a,b)\in \R^2$ such that $B = <-\infty,a> \times <-\infty,b>$. 
-    Moreover, we will write that $B$ is of type \textbf{db}$^+$ if it has a non trivial intersection with $\Delta^+$  (equivalenty $a+b>0$) and of type \textbf{db$^-$} if not. 
+    Moreover, we will write that $B$ is of type \textbf{db}$^+$ if  $a+b>0$ and of type \textbf{db$^-$} if not. 
      \item A \textbf{horizontalblock} (\textbf{hb} for short) if there exists $a\in \R$ and $b\in \R\cup \{+\infty\}$ such that $B = \R \times <a,b>$.
      \item A \textbf{verticalblock} (\textbf{vb} for short) if there exists $a\in \R\cup \{+\infty\}$ and $b\in \R$ such that $B = <a,b> \times \R$.
 \end{enumerate}
@@ -246,7 +246,8 @@ The various coordinates refers to the intersection points of the boudnaries of t
 \end{center}
 \end{figure}
 \begin{remark}\label{R;dualBlocks}
-Note that a deathblock $B$ is characterized by its supremum, that is $\sup \{s\in B\}$ together with the data of whether its two boundary lines are in the block or not (note that the supremum is inside $B$ if and only if both boundaries lines are). Similarly a birth block $B'$  is characterized by is infimum $\inf \{s\in B'\}$ and the data of whether its boundary lines are in $B$ or not.  Note also that the vertical and horizontal blocks never have finite extremums.  
+Note that a deathblock $B$ is characterized by its supremum\footnote{which is easily seen to be, if $B= <-\infty, x> \times <-\infty,y>$, the point $(x,y)\in \R^2$}, that is $\sup \{s\in B\}$ together with the data of whether its two boundary lines are in the block or not (note that the supremum is inside $B$ if and only if both boundaries lines are). 
+Similarly a birth block $B'$  is characterized by is infimum $\inf \{s\in B'\}$ and the data of whether its boundary lines are in $B$ or not.  Note also that the vertical and horizontal blocks never have finite extremums.  
 \end{remark}
 \begin{defi}[Duality between death and birth blocks]
  \label{D:dualblocks} The dual  of a deathblock $B$ is the birthblock $B^\dagger$ whose infimum is the supremum of $B$ and whose vertical (resp. horizontal) boundary lines are in $B^\dagger$ if and only if the the vertical (resp. horizontal) boundary lines of $B$ are not. 
@@ -334,7 +335,7 @@ Of course the case of \textbf{db}$^{-}$ matches remark~\ref{R:trivaildbmoins}.
 \begin{remark}
 One can easily see that the Mayer-Vietoris systems $S_j^B$ are indecomposables.
 
-Also note that for a block $B$ of type \textbf{db} or \textbf{bb}$^{+}$ and $j\in \Z$, the graded persistent module $(M_i,0)_{i,s}$ with $M_i = 0$ for all $i\not = j$ and $M_j = \kk_B$ is \emph{not} a Mayer-Vietoris system.
+Also note that for a block $B$ of type \textbf{db}$^+$ or \textbf{bb}$^{+}$ and $j\in \Z$, the graded persistent module $(M_i,0)_{i,s}$ with $M_i = 0$ for all $i\not = j$ and $M_j = \kk_B$ is \emph{not} a Mayer-Vietoris system.
 \end{remark}
 \begin{lem} The graded persistent modules $S_j^{B}$ associated to blocks $B$ in Definition~\ref{D:blocksmodulesforMV} are Mayer-Vietoris systems for any $j$ and block $B$.
 \end{lem}
@@ -545,7 +546,7 @@ Let $h: X\to \R$ be a continuous function on a topological space $X$. For any $
 x=(x_1,x_2)\in \Delta^+$, we 
  set $$M_i^h(x):= H_i(h^{-1}(]-x_1, x_2[).$$
  If $x'=(x'_1, x'_2)\geq x$, then we have the inclusion $]-x_1, x_2[\subset ]-x_1', x_2'[$ inducing, for all $i$'s, homomorphisms $M_i^h(x)=H_i(h^{-1}(]-x_1, x_2[) \to H_i(h^{-1}(]-x'_1, x'_2[)= M^h(x')$ in homology. 
- By Lemma~\ref{L:Defiota}, this makes $M_i^h(-)$ a persistence module over $\Delta^+$, which is call the \textbf{level set persistence module associated to $f:X\to \R$}. 
+ By Lemma~\ref{L:Defiota}, this makes $M_i^h(-)$ a persistence module over $\Delta^+$, which is call the \textbf{level set persistence module associated to $h:X\to \R$}. 
  
  \smallskip
  
@@ -553,12 +554,14 @@ x=(x_1,x_2)\in \Delta^+$, we
   \begin{equation}\xymatrix{M^h_{i+1}[s](x) \ar[r]^-{\delta_{i+1}^{s,x}} & M^h_i(x) \ar[r] & M^h_i[s_x](x) \oplus M^h_i[s_y](x) \ar[r] & M^h_i[s](x) \ar[r]^-{\delta_{i}^{s,x}} & M^h_{i-1}}(x).\label{eq:MVSystemfromFct}\end{equation}
   We write $\delta^s_i: M_i^h[s] \to M_{i-1}^h$ the maps given at every point $x$ by $\delta_i^{s,x}$ and for $i\leq 0$ we set $\delta^i=0$.
   \begin{prop}\label{P:MVfromFct}
-  The  $\delta^s_i$'s are persistence modules maps and further makes $(M^h_i, \delta^s_i)_{i\in \Z, s\in \R^2_{>0}}$ a Mayer-Vietoris system over $\R$.
+  The  $\delta^s_i$'s are persistence modules morphisms and further makes $(M^h_i, \delta^s_i)_{i\in \Z, s\in \R^2_{>0}}$ a Mayer-Vietoris system over $\R$.
   \end{prop}
   \begin{pf}
   The fact that the $\delta^s_i$ are persistence modules maps as well as the commutativity of diagram~\eqref{D:ComSaquareforMV} follow from the naturality of the Mayer-Vietoris sequence. The exactness of~\eqref{eq:MVSystemfromFct} implies the condition~\eqref{eq:MVSystemles}.
   \end{pf}
-  We call  $(M^h_i, \delta^s_i)_{i\in \Z, s\in \R^2_{>0}}$, the \textbf{level set Mayer-Vietoris system associated to $f:X\to \R$}. 
+\end{ex}
+\begin{ex}
+ Assume $X$ is a smooth or topological manifold and $h: X\to \R$ is continuous. Then the Mayer Vietoris system $M_i^h$ (given by example~\ref{Ex:MVfromFct}) is bounded since an open subset of a manifold is a manifold and hence has no homology in degrees higher than its dimension.  
 \end{ex}
 
 
@@ -579,7 +582,7 @@ The fact that these maps are Mayer-Vietoris systems morphisms follows again as i
 
 \section{Stable sheaf theoretic interpretation of level-set persistence}
 In this section we follow the standard notations of \cite{Kash90}, \cite{KS18}, \cite{Berk18} for sheaves. 
-In particular,  $\kk$ will denote a field, $\Mod(\kk)$ the category of vector spaces over $\kk$ and, for   a topological space $X$,  we will note $\Mod(\kk_X)$ the category of sheaves of $\kk$-vector spaces on $X$ and $\text{PSh(X)}$ the category fo presheaves of $\kk$-modules on $X$. For shortness, we will also write $\Hom$ for $\Hom_{\Mod(\kk_\R)}$.
+In particular,  $\kk$ will denote a field, $\Mod(\kk)$ the category of vector spaces over $\kk$ and, for   a topological space $X$,  we will note $\Mod(\kk_X)$ the category of sheaves of $\kk$-vector spaces on $X$ and $\text{PSh(X)}$ the category of presheaves of $\kk$-modules on $X$. For shortness, we will also write $\Hom$ for $\Hom_{\Mod(\kk_\R)}$.
 
 Further, $\D^b(\kk)$ will be the \emph{derived} category of complexes of $\kk$-modules with bounded cohomology and $\D^b(\kk_X)$ will be the one of complexes of sheaves with bounded cohomology of $\kk$-modules over $X$. 
  Unless the context is unclear, we will simply use the word  sheaf for an object of $\D^b(\kk_X)$. 
@@ -589,22 +592,22 @@ We will use the standard Grothendieck operations on sheaves as in~\cite{Kash90}.
  CITE CURRY ALSO AND BACKGROUND ADD IDEAS on WHAT IS $\kk_S $ FOR OPEN-CLOSED SETS
  
 \subsection{Convolution distance for sheaves after Kashiwara-Schapira}
-In~\cite{KS18} Kashiwara and Schapira have defined a (pseudo)distance on the derived category of sheaves. This distance is a sheaf, and derived by design, version of the interleaving distance of persistence modules. It is based on convolution of sheaves which we now explain. 
+In~\cite{KS18} Kashiwara and Schapira have defined a (pseudo)distance on the derived category of sheaves. This distance is a sheaf version (derived by design)  of the interleaving distance of persistence modules. It is based on convolution of sheaves which we now explain. 
 
 Let  $\V$  be an euclidean vector space, which in our case of interest will simply be $\R$. We let $s: \V\times \V \to \V$ be the addtion map $(t,t')\mapsto t+t'$.  
 
 \begin{defi}[\cite{KS18}]\label{D:Convolution} The convolution of sheaves  $\D^b(\kk_\V)\times \D^b(\kk_\V) \to \D^b(\kk_\V)$ is the bifunctor given, 
 for $F,G\in \Obj(\D^b(\kk_\V))$,  by the formula : $$F\star G = R s_!(F\boxtimes G)$$ where $\boxtimes$ is the external tensor product of sheaves. 
 \end{defi}
-To define the convolution distance,  we will only need a very specific case : the convolution by the constant sheaf supported on a ball centered at 0. 
-More precisely we define, for $\varepsilon \in \Rr$, 
+To define the convolution distance,  we will only need a very specific case :  convolution by the constant sheaf supported on a ball centered at 0. 
+More precisely we define, for $\varepsilon \in \R$, 
 \begin{equation}\label{eq:defKepsilon}
  K_\varepsilon :=  \left\{ \begin{array}{cc} 
  \kk_{x\in \V, \mid \|x\|\leq \varepsilon}  & \mbox{if } \varepsilon \geq 0 \\
  \kk_{x\in \V, \mid \|x\|< -\varepsilon}[\dim(\V)]  & \mbox{if } \varepsilon < 0 .\end{array} \right.
 \end{equation}
 The convolution by $K_\varepsilon$ has some nice properties : 
-\begin{prop}\label{P:propertiesofconvolution} Let $\varepsilon, \varepsilon'\in \R$ and $F \in \Obj(\D^b(\kk_\V))$. Then
+\begin{prop}[\cite{KS18}]\label{P:propertiesofconvolution} Let $\varepsilon, \varepsilon'\in \R$ and $F \in \Obj(\D^b(\kk_\V))$. Then
 \begin{enumerate}
 \item there are functorial isomorphisms $F\star K_0\simeq F$ and $(F\star K_{\varepsilon} )\star K_{\varepsilon'} \simeq F \star K_{\varepsilon + \varepsilon'} $.
 \item If $\varepsilon' \geq \varepsilon $, there is a canonical morphism of sheaves 
@@ -613,10 +616,10 @@ inducing a natural transformation $F\star K_{\varepsilon'} \to F \star K_{\varep
 In the special case where $\varepsilon = 0$, we simply write $\phi_{F, \varepsilon'}$ for this natural transformation.
 \end{enumerate}
 \end{prop}
-The convolution by $K_{\varepsilon}$ is the sheaf analogue of the canonical shift $F[\varepsilon]$ of a persistence module. Indeed, by
+Convolution by $K_{\varepsilon}$ is the sheaf analogue of the canonical shift $F[\varepsilon]$ of a persistence module. Indeed, by
 Proposition~\ref{P:propertiesofconvolution}.(1),  for any map $f: F\star K_{\varepsilon} \to G$ we get  canonical maps  
 \begin{equation} \label{eq:propertiesofconvolution} f\star K_{\tau}: F\star K_{\varepsilon+\tau}\simeq F\star  K_{\varepsilon}\star K_{\tau}  \to G \star K_{\tau}.\end{equation} 
-The above maps allow us to define interleaving.
+These  maps allow us to define interleaving.
 \begin{defi}\label{D:inteleavingconvolution}
 \begin{enumerate}\item For $F,G\in \Obj(\D^b(\kk_\V))$ and $\varepsilon\geq 0$, one says that $F$ and $G$
 are $\varepsilon$-\textbf{interleaved} if there exists two morphisms in $\D^b(\kk_\V)$, $f : F\star K_\varepsilon \to G$ 
@@ -646,16 +649,16 @@ and the same is true for $\R f_!$ and $\R g_!$.
 
 
 \subsection{Graded barcodes and derived isometry theorem after~\cite{Berk18}}
-There is a notion of barcodes for \emph{constructible} sheaves that mimicks the persistence case. This allow  to define a derived bottleneck distance.
+There is a notion of barcodes for \emph{constructible} sheaves that mimicks the persistence case. This allows  to define a derived bottleneck distance.
 
 
 \begin{defi}
 A sheaf  $F\in \Obj(\Mod(\kk_\V))$, $F$ is said to be \textbf{constructible} if there exists a locally finite stratification of $\V = \sqcup_\alpha S_\alpha$, such that for each stratum $S_\alpha$ is locally closed in $\V$, the restriction $F_{|S_\alpha}$ is locally constant and further,  the stalks $F_x$ are of finite dimension for every $x\in \V$. 
 
-We  write respecively $\Mod_{\R c}(\kk_M)$ and $\D^b_{\R c}(\kk_M)\cong \D^b(\Mod_{\R c}(\kk_M))$ for the  category of constructible sheaves on $M$ and  the full (triangulated) subcategory of $\D^b(\kk_M)$ consisting of complexes of sheaves whose cohomology objects lies in $\Mod_{\R c}(\kk_M)$.
+We  write respectively $\Mod_{\R c}(\kk_M)$ and $\D^b_{\R c}(\kk_M)\cong \D^b(\Mod_{\R c}(\kk_M))$ for the  category of constructible sheaves on $M$ and  the full (triangulated) subcategory of $\D^b(\kk_M)$ consisting of complexes of sheaves whose cohomology objects lies in $\Mod_{\R c}(\kk_M)$.
 \end{defi}
 Note that the notion of constructibility is precisely what is usually called $\R$-constructibility. Since no other notion will show up in this work we simply drop the $\R$. 
-\begin{remark} The condition on the stalks is the sheave counterpart of the condition of being pointwise finite dimensional  for persistence modules.   
+\begin{remark} The condition on the stalks is the sheave analogue of the condition of being pointwise finite dimensional  for persistence modules.   
 \end{remark}
 
 
@@ -666,7 +669,7 @@ Let $F \in \Obj(\Mod_{\R c}(\kk_\R))$, then there exists a locally finite family
 \begin{cor}[Structure]\label{T:KSstructure}
 Let $G^\bullet\in \Obj(\D^b_{\R c}(\kk_\R))$. 
 \begin{enumerate} \item Then there exists an isomorphism in $\D^b_{\R c}(\kk_\R)$ : $$G^\bullet \simeq \bigoplus_{j\in\Z} \Ho^j(G^\bullet)[-j]$$
-where $\Ho^j(G^\bullet)$ is seen as a complex concentrated in degree $0$.
+where $\Ho^j(G^\bullet)$ is seen as a complex of sheaves concentrated in degree $0$.
 \item For each $j\in \Z$, there is a unique multiset $\B^j(G^\bullet) $ of intervals such that  $\Ho^j(G^\bullet)\simeq \bigoplus_{I \in \B^j(G^\bullet)} \kk_{I}$. 
 \end{enumerate}\end{cor}
 This corollary allows us to define the graded barcode of an object of $\D^b_{\R c}(\kk_\R)$ following~\cite{Berk18} which is the  derived enhancement of the usual barcode of 1d-persistence modules.
@@ -675,28 +678,28 @@ This corollary allows us to define the graded barcode of an object of $\D^b_{\R 
  
 We write $\B_C^\bullet(G^\bullet)$, $\B_L^\bullet(G^\bullet)$ and $\B_R^\bullet(G^\bullet)$ for the  sub-multisets of $\B^\bullet(G^\bullet)$ consisting respectively of the closed or bounded open intervals, semi-open intervals which are open on the right,  semi-open intervals which are open on the right (and not equal to $\R$). 
 
-The interval appearing in the respective substes will be calle respectiveley of central type, left type and right type.
+The interval appearing in the respective subsets will be called respectiveley of central type, left type and right type.
  \end{defi}
 By the corollary~\ref{T:KSstructure}, the graded-bracode uniquely determines the complex of sheaves up to isomorphisms in $\D^b_{\R c}(\kk_\R)$ and further we have a unique decomposition $$G^\bullet \cong G_C^\bullet \oplus G_L^\bullet \oplus G_R^\bullet $$ into sheaves whose cohomology only have supports    
-in intervals of central type, left type and right type respectively. This is the CLR decomposition of~\cite{Berk18}.
-An important point of~\cite{Berk18} is the following:
+in intervals of central type, left type and right type respectively. This is called the CLR decomposition in~\cite{Berk18}.
 \begin{lem}[\cite{Berk18}]\label{L:Caracinterleaving} Let $F^\bullet, \, G^\bullet \in \D^b_{\R c}(\kk_\R)$.
-\begin{enumerate}
-\item If $\varepsilon \in \R$, then $G^\bullet$ and $F^\bullet$ are $\varepsilon$-interleaved if and only if 
+%\begin{enumerate}
+%\item 
+If $\varepsilon \in \R$, then $G^\bullet$ and $F^\bullet$ are $\varepsilon$-interleaved if and only if 
  $G_C^\bullet \mathop{\sim}\limits_{\varepsilon} F_C^\bullet$, $G_L^\bullet \mathop{\sim}\limits_{\varepsilon} F_L^\bullet$ and $G_R^\bullet \mathop{\sim}\limits_{\varepsilon} F_R^\bullet$. In particular, 
- the bars of a given type can only be interleaved with a bar of the same type.
- \item Further, an open bar can be $\varepsilon$-interleaved only with a closed bar of degree one more and all other possible $\varepsilon$-interleaving between bars of the same exact types are between bars of same degree. \end{enumerate}
+  bars of a given type can only be interleaved with bars of the same type.
+ %\item An \emph{open} bar can be $\varepsilon$-interleaved  with a closed bar of degree one more and all other possible $\varepsilon$-interleaving between bars of the same exact types are between bars of same degree. \end{enumerate}
 \end{lem}
-One can characterize the geometric  condition under which two sheaves $\kk_I$ and $\kk_J$ on intervals of the same type are $\varepsilon$-interleaved, precisely in terms of proximity of the endpoints. We will however only need the following result
-
-\begin{prop}[Proposition 3.8 of \cite{Berk18}]\label{P:P38Berk18}
+One can characterize the geometric  condition for two sheaves $\kk_I$ and $\kk_J$ on intervals of  same types to be $\varepsilon$-interleaved in terms of their endpoints. 
+We will need the following result.
+\begin{prop}[Proposition 3.8 in \cite{Berk18}]\label{P:P38Berk18}
 Let $\varepsilon \geq 0$, and $a\leq b$ in $\R \cup \{\pm \infty\}$. Then : 
 \begin{itemize}
 \item[$\bullet$] $\kk_{[a,b]}\star K_\varepsilon \simeq \kk_{[a-\varepsilon, b + \varepsilon]} $,
 \item[$\bullet$] $\kk_{]a,b[}\star K_\varepsilon \simeq 
 \begin{cases}
 \kk_{]a+\varepsilon,b-\varepsilon[} ~~\text{if} ~~\varepsilon < \frac{b-a }{2} \\
-\kk_{[b- \varepsilon , a+ \varepsilon]}[-1] ~~\text{if} ~~\varepsilon \geq \frac{b-a }{2}
+\kk_{[b- \varepsilon , a+ \varepsilon]}[-1] ~~\text{if} ~~\varepsilon \geq \frac{b-a }{2}\, ,
 \end{cases}$
 
 \item[$\bullet$] $\kk_{]a,b]}\star K_\varepsilon \simeq \kk_{]a+\varepsilon, b + \varepsilon]} $,
@@ -716,15 +719,15 @@ satisfying that
 \item $(i)$ for any matched pair $I$, $\sigma_R(I)$  (resp. $J$, $\sigma_L (J)$), 
 one has $\kk_I[-i] \sim_\varepsilon\kk_{\sigma_R^j(I)}[-i]$ (resp. $\kk_J[-j] \sim_\varepsilon\kk_{\sigma_L^j(J)}[-j]$) and
 \item $(ii)$ for  the $I \in \B_R$ and $\B_L$ which are not matched,  one has $\kk_I[-i]\sim_\varepsilon 0$.\end{description}
-\item a \emph{bijection} $\sigma^j_C :  \B_C \longrightarrow \B'_C$ satisfying,  for any $I \in B^j_C $, that  $\kk_I \sim_\varepsilon \kk_{\sigma^j_C(I)}[-\delta]$ and further 
+\item a \emph{bijection} $\sigma^j_C :  \B_C \longrightarrow \B'_C$ satisfying,  for any $I \in B^j_C $, that  $\kk_I \sim_\varepsilon \kk_{\sigma^j_C(I)}[-\delta]$ and
 \begin{description}
-\item $(i)$ that $\delta =0 $ if $I$ and $\sigma^j_C(I)$ are both open or both closed 
+\item $(i)$ that $\delta =0 $ if $I$ and $\sigma^j_C(I)$ are both open or both closed, 
 \item $(ii)$ and $\delta = 1$ if $I$ is open and $\sigma^j_C(I)$ is closed, $\delta = -1$ if  $I$ is closed and $\sigma^j_C(I)$ is open.
  \end{description}
 \end{enumerate}
 \end{defi}
 \begin{remark}
- An $\varepsilon$-matching can match bars of different degrees, but only if one them is closed and the other is open which differs in degree by $1$. In all other situations one can only match bars of teh same degrees. The reason for this is given by the point 2 of lemma~\ref{L:Caracinterleaving}.
+ An $\varepsilon$-matching can match bars of different degrees, but only if one of them is compact and  the other one is open and differs in degree by $+1$. In all other situations one can only match bars of same degrees. See~\cite{Berk18}.%The reason for this is given by the point 2 of lemma~\ref{L:Caracinterleaving}.
 \end{remark}
 
 \begin{defi}
@@ -732,19 +735,16 @@ Let $\B$ and $\B'$ be two graded-barcodes, then one defines their \textbf{bottle
 \end{defi}
 The graded bottleneck distance is isometric to the convolution.
 \begin{thm}[Isometry~\cite{Berk18}]\label{T:DerivedIsometry}
-Let $F^\bullet,\, G^\bullet$ be two objects of $\D^b_{\R c}(\kk_\R)$. Then we have 
+Let $F^\bullet,\, G^\bullet$ be two objects of $\D^b_{\R c}(\kk_\R)$. Then 
 $$ d_C(F,G) =  d_B(\B(F),\B(G))$$
 \end{thm} 
 \subsection{Extending level-set persistence modules as pre-sheaves over $\R$}\label{SS:levelsettopresheaves}
 In this section we interpret level-set persistence modules as (pre)sheaves on the line $\R$. 
-
-
- Let $(\Ouv(\R), \subset )$ be the poset of open subsets of $\R$ ordered by the inclusion. We dentoe in the same way the associated category.  
+ Let $(\Ouv(\R), \subset )$ be the poset of open subsets of $\R$ ordered by the inclusion. We denote in the same way the associated category.  
 \begin{lem} \label{L:Defiota}Set $\iota: (\Delta^+, \leq)\to (\Ouv(\R), \subset)$ to be given on objects by 
-  $\iota: s=(s_1, s_2) \mapsto (-s_1, s_2)$ where the right hand side is an open interval. 
-  Then $\iota$ is well defined and a fully faithfull functor.
-  
-  The image of $\iota$ is precisely the full subcategory of bounded open intervals of $\R$ 
+  $\iota: s=(s_1, s_2) \mapsto ]-s_1, s_2[$.% where the right hand side is an open interval. 
+  Then $\iota$ is a well defined  fully faithfull functor.
+  The esential image of $\iota$ is precisely the full subcategory of bounded open intervals of $\R$. 
 \end{lem}
 In particular, restricting to objects of those categories,  $\iota$ is a bijection from $\R^2$ to bounded open intervals of $\R$. 
 \begin{pf}
@@ -758,11 +758,11 @@ Given $M \in \Obj(\Pe(\Delta^+))$ we can consider its pointwise dual $ t\mapsto 
 $$\text{Fun}((\Delta^{+})^{\op}; \Mod(\kk))\,\cong\, \text{Fun}(\Delta^+; \Mod(\kk)^{\op})^{\op}. $$  We denote by $M^*$ this dual of $M$. More precisely, $M^*$ is the composition of functors
 $$M^* :=\, \Delta^{+\op} \stackrel{M^{\op}}\longrightarrow \Mod(\kk)^{\op} \stackrel{\Hom_{\Mod(\kk)}(-;\kk)}\longrightarrow \Mod(\kk). $$
 
-Since $M^*$ is a persistence comodule, for any  open $U \subset \R$, we can consider the module 
+Since $M^*$ is a persistence comodule, for any  open $U \subset \R$, we have a module 
 \begin{equation}\label{eq:defMtilde} 
 \Tilde{M} (U):=  \varprojlim_{]-x,y[\subset U} M^*((x,y)).\end{equation}
                                      
-\begin{lem} There is a functor $\tilde{-}: \Pe(\Delta^+)\to \text{PSh}(\R)^{\op}$   extending the formula~\eqref{eq:defMtilde} into a canonical presheaf on $\R$, that is such that for   $U \in \Obj(\Ouv(\R))$, one has $$\Tilde{M} (U):=  \varprojlim_{]-x,y[\subset U} M^*((x,y)).$$ 
+\begin{lem} There is a functor $\tilde{(-)}: \Pe(\Delta^+)\to \text{PSh}(\R)^{\op}$   extending the formula~\eqref{eq:defMtilde} into a canonical presheaf on $\R$, that is such that for   $U \in \Obj(\Ouv(\R))$, one has $$\Tilde{M} (U):=  \varprojlim_{]-x,y[\subset U} M^*((x,y)).$$ 
 \end{lem}
 \begin{pf} One notice that the formula exhibits  $\Tilde{M}$ as a  left Kan extension which makes it into a presheaf canonically. Indeed, 
  consider $\iota^\text{op} : (\Delta^{+})^{\op}\longrightarrow \Ouv(\R)^{\op}$ the (opposite of the) functor defined previously (see~\ref{L:Defiota}) and let  $\text{Lan}_{\iota^\text{op}} M^*$  be the left Kan extension along $\iota^\text{op}$ of $M^*$, which is therefore by definition an object of $\text{PSh}(X)$ : 
@@ -1285,7 +1285,7 @@ In other words, though $\Psi \circ \overline{(\cdot)}^{MV}$ is not an equivalenc
 
 
 We can now state our isometry theorem
-\begin{thm} The Mayer-Vietoris sheafification functor and the functor $\Psi$ are isometry between the interleaving distance and the convolution and bottleneck distances for sheaves. That is, for all $M, N \in \mbox{MV}(\R)^\s$,  one has equalities 
+\begin{thm}[Isometry]\label{T:MainIsometry} The Mayer-Vietoris sheafification functor and the functor $\Psi$ are isometry between the interleaving distance and the convolution and bottleneck distances for sheaves. That is, for all $M, N \in \mbox{MV}(\R)^\s$,  one has equalities 
 $$d_I(M, N) = d_C (\overline{M}^{MV}, \overline{N}^{MV}) = d_B(\mathcal{B}(\overline{M}^{MV}), \mathcal{B}(\overline{N}^{MV})). $$ 
 And for all constructible sheaves $F, G \in \D^b_{\R c}(\kk_\R)$, one has 
 $$ d_B(\mathcal{B}(F), \mathcal{B}(G)) = d_C(F,G) =d_I(\Psi(F), \Psi(G)).$$
