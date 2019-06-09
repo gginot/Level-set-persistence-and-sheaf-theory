@@ -155,8 +155,11 @@ We precise here, for the reader convenience, several notations and convention we
     \item For a death block $B$, we denote $B^\dag$ its dual  in $\R^2$, and vice-versa, see Definition~\ref{D:dualblocks}.
     \item We denote $t\mapsto \vec{t}$ the functor $(\R ,\leq) \to (\Delta^+, \leq)$.
 \end{itemize}
-\subsubsection{Notations for open intervals} We will use the \emph{french notation} $]a,b[$ for \emph{open intervals} $(a,b)$ in $\R$. The reason is to avoid confusion with points $(a,b)\in \R^2$ which will both be possible values of persistent or sheaf objects (and usually appear with similar letters).
+\subsubsection{Notations for  intervals} 
+\begin{itemize} \item We will use the \emph{french notation} $]a,b[$ for \emph{open intervals} $(a,b)$ in $\R$. The reason is to avoid confusion with points $(a,b)\in \R^2$ which will both be possible values of persistent or sheaf objects (and usually appear with similar letters).
     
+\item For real numbers $a\leq b$, the notation $\langle a, b\rangle$ will mean an  interval whose boundary points are $a$ and $b$. We use this notation $\langle$, $\rangle$  when we do not want to precise if the interval is open, compact, or half-open; in other words as a variable.
+    \end{itemize}
 \subsubsection{Notations for shifts of graded and persistent objects}   
 Standard and convenient notations for shifting the degree of a (possibly diferential) graded object or for  shifted (or translated) persistent object are both given by  $[?]$ in the litterature. We will have to use objects which are both differential graded and persistent and we now explain how to avoid confusion about this notation in this paper. 
 
@@ -324,7 +327,7 @@ Let $\text{B}$ be a block (Definition~\ref{def:block_MV}) and $j\in \Z$. We defi
 \begin{itemize}
     \item If B is of type \textbf{bb}$^-$, \textbf{hb} or \textbf{vb} then $\text{S}^\text{B}_j = (M_i,0)_{i,s}$ with $M_i = 0$ for all $i\not = j$ and $M_j = \kk_B$
     
-    \item If B is of type \textbf{db}$^+$, then $\text{S}^\text{B}_j = (M_i,\delta_i^s)$ with $M_i = 0$ for all $i\not \in \{j+1,j\} $, $\delta_i^s=0$ for all $s\in \R^2$ and $i\not = j+1$,  $M_{j+1} = \kk_{B^\dag}$, $M_{j}= \kk_{B}$, and define $\delta_{j+1}^s : \kk_{B^\dag}[s] \to \kk_B$ by point-wise identities on $B^\dag [s]\cap B \cap \Delta^+$.
+    \item If B is of type \textbf{db}$^+$, then $\text{S}^\text{B}_j = (M_i,\delta_i^s)$ with $M_i = 0$ for all $i\not \in \{j+1,j\} $, $\delta_i^s=0$ for all $s\in \R^2$ and $i\not = j+1$,  $M_{j+1} = \kk_{B^\dag}$, $M_{j}= \kk_{B}$, and define $\delta_{j+1}^s : \kk_{B^\dag}[s] \to \kk_B$ by pointwise identities on $B^\dag [s]\cap B \cap \Delta^+$.
 
     \item Dually, if $B$ is of type \textbf{bb$^+$}, then define $S^{\text{B}}_j$ as $S^{B^\dag}_{j-1}$.
     \item If B is of type \textbf{db}$^{-}$, then we set $S^B=0$.
@@ -496,7 +499,7 @@ Moreover, we can apply our first case result to ${}_n\tilde{S}$. Since :
 
 $$S = \bigcup_{n\geq 0} {}_n\tilde{S} $$
 
-and that this filtration stabilizes point-wise, we deduce the decomposition for $S$.
+and that this filtration stabilizes pointwise, we deduce the decomposition for $S$.
 
 
 \end{itemize}
@@ -764,52 +767,50 @@ Since $M^*$ is a persistence comodule, for any  open $U \subset \R$, we have a m
                                      
 \begin{lem} There is a functor $\tilde{(-)}: \Pe(\Delta^+)\to \text{PSh}(\R)^{\op}$   extending the formula~\eqref{eq:defMtilde} into a canonical presheaf on $\R$, that is such that for   $U \in \Obj(\Ouv(\R))$, one has $$\Tilde{M} (U):=  \varprojlim_{]-x,y[\subset U} M^*((x,y)).$$ 
 \end{lem}
-\begin{pf} One notice that the formula exhibits  $\Tilde{M}$ as a  left Kan extension which makes it into a presheaf canonically. Indeed, 
- consider $\iota^\text{op} : (\Delta^{+})^{\op}\longrightarrow \Ouv(\R)^{\op}$ the (opposite of the) functor defined previously (see~\ref{L:Defiota}) and let  $\text{Lan}_{\iota^\text{op}} M^*$  be the left Kan extension along $\iota^\text{op}$ of $M^*$, which is therefore by definition an object of $\text{PSh}(X)$ : 
+\begin{pf} One notice that the formula exhibits  $\Tilde{M}$ as a   Kan extension which makes it into a presheaf canonically. Indeed, 
+ consider $\iota^\text{op} : (\Delta^{+})^{\op}\longrightarrow \Ouv(\R)^{\op}$ the (opposite of the) functor defined previously (see~\ref{L:Defiota}) and let  $\text{Ran}_{\iota^\text{op}} M^*$  be the right Kan extension along $\iota^\text{op}$ of $M^*$, which is therefore by definition an object of $\text{PSh}(X)$ : 
 $$\xymatrix{ \Delta^{+\text{op}}
-\ar@{^{(}->}[r]^-{\iota} \ar[d]_{M^*} & \Ouv(\R)^\text{op} \ar@{.>}[dl]^{\text{Lan}_\iota M^* =: \Tilde{M}} \\
+\ar@{^{(}->}[r]^-{\iota} \ar[d]_{M^*} & \Ouv(\R)^\text{op} \ar@{.>}[dl]^{\text{Ran}_\iota M^* =: \Tilde{M}} \\
 \Mod(\kk) & } $$
 As $\Mod(\kk)$ is complete,  the pointwise formula~\eqref{eq:defMtilde} is an immediate consequence.  
 %for $U \in \Obj(\Ouv(\R))$ : $$\Tilde{M} (U):= \text{Lan}_\iota M^*(U) = \varprojlim_{]-x,y[\subset U} M^*((x,y))$$
 \end{pf}
 \begin{remark}
- A corollary of the proof is that the restriction morphism of $\Tilde{M}$ are given, for $U\subset V$, by the canonical restrictions $M^*((a,b)) \to M^*((x,y))$ for any $ U\supset (x,y) \subset (a,b)\subset V$ and the induced (by the universal property) map on the limits. 
+ A corollary of the proof is that the restriction morphism of $\Tilde{M}$ are given, for $U\subset V$, by the canonical restrictions $M^*((a,b)) \to M^*((x,y))$ for any $ U\supset ]-x,y[ \subset ]-a,b[\subset V$ and the induced (by the universal property) map on the limits. 
 \end{remark}
-Composing $\tilde{-}$ with the (opposite of the) sheafification functor $ \text{PSh}(\R) \to \Mod(\kk_{\R})$ gives the functor from persistence modules on $\Delta^{+}$ to sheaves on $\R$. 
+Composing $\tilde{(-)}$ with the (opposite of the) sheafification functor $ \text{PSh}(\R) \to \Mod(\kk_{\R})$ gives the functor from persistence modules on $\Delta^{+}$ to sheaves on $\R$. 
 \begin{defi}\label{D:defofBar}
 We set $\overline{M}$ to be the sheafification of the presheaf $\tilde{M}$ and write 
 $\overline{(-)} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ for the induced functor $M\mapsto \overline{M}$. We call $\overline{(-)}$ the level-set persistence to sheaves functor. 
 \end{defi}
-Similarly there is a functor going in the other direction. Indeed, given a sheaf on $\R$, by restriction to open intervals and using the identification of lemme~\ref{L:Defiota}, we get a persistence comodule. Since pointwise duality transforms a persistence comodule into a persistence module we obtain the functor 
+Similarly there is a functor going in the other direction defined as follows. Given a sheaf on $\R$, by restriction to open intervals and using the identification of lemma~\ref{L:Defiota}, we get a persistence comodule. Since pointwise duality transforms a persistence comodule into a persistence module we obtain the functor 
 \begin{equation}
  \label{eq:defpi}  \pi : \Mod(\kk_\R)^{\op} \longrightarrow \Pe(\Delta^+), \quad F\mapsto \Hom_{\Mod(\kk)}(F_{ | \text{open intervals}};\kk)
 \end{equation}
-that we call (abusively) the restriction to the intervals functor.
+where $F_{ | \text{open intervals}}$ is the composition $F\circ \iota^{op}$ (we recall that the image of $\iota^{op}$ is precisely the open subintervals).
+\emph{We call} (abusively) this functor the \emph{restriction-to-intervals functor}. 
 
 We will also write $\text{bidual}_{\Mod(\kk_\R)}$ the endofunctor of  sheaves  which to a sheaf $M$ 
 associate its pointwise bidual $N\mapsto (N^*)^*$. There is a canonical natural transformation 
-\begin{equation}\label{eq:unitadjPetoSh} \text{id}_{\Mod(\kk_\R)} \to \text{bidual}_{\Mod(\kk_\R)}\end{equation} given by the pointwise canonical morphism.
+\begin{equation}\label{eq:unitadjPetoSh} \text{id}_{\Mod(\kk_\R)} \longrightarrow \text{bidual}_{\Mod(\kk_\R)}\end{equation} given by the pointwise canonical morphism.
 \begin{prop}\label{P:PropertiesofBar}
-The level-set persistence to sheaves functor $\overline{\cdot} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ satisfies the following properties : 
+The level-set persistence to sheaves functor $\overline{(-)} : \Pe(\Delta^+)\longrightarrow \Mod (\kk_\R)^{\op}$ satisfies the following properties.
 \begin{enumerate}
-    \item Its composition  with the restriction to the intervals functors is the canonical biduality functor: $\overline{\cdot}\circ \pi = \text{bidual}_{\Mod(\kk_\R)}$. 
+    \item Its composition  with the restriction-to-intervals functors is the canonical biduality functor: $\overline{(-)}\circ \pi = \text{bidual}_{\Mod(\kk_\R)}$. 
     
-    In particular the restriction of this composition of functors to the subcategory of pointwise finite dimensional objects is naturally isomorphic to $\text{id}_{\Mod(\kk_\R)^{pfd}}$
+    In particular the restriction of this composition of functors to the subcategory of pointwise finite dimensional\footnote{where we mean the sheaves whose stalk at each point are finite dimensional} objects is naturally isomorphic to $\text{id}_{\Mod(\kk_\R)^{pfd}}$
     \item It is the right adjoint of the functor $\pi$: 
     $$\Hom_{\Pe(\Delta^+)}(M, \pi(F)) \; \cong \; \Hom_{\Mod(\kk_\R)^{\op}}(\overline{M}, F)\; = \; \Hom_{\Mod(\kk_\R)}(F,\overline{M}) $$ and the map~\eqref{eq:unitadjPetoSh} is the counit of this adjunction.
-    \item If $M$ is point-wise finite dimensional, and $M \simeq \oplus_i M_i$, then $\overline{M} \simeq \oplus_i \overline{M_i} $
-    \item Assume that $M \in \Obj(\Pe(\Delta^{+}))$ is point-wise finite dimensional, then for all $\alpha \in \R$, we have natural isomorphisms  $$ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) \;\simeq\; \tilde{M}_{\alpha}\; \simeq \; \overline{M}_{\alpha}$$ provided that the left hand side is of finite dimension.
+    \item If $M$ is a pointwise finite dimensional persistent module, and $M \simeq \oplus_i M_i$, then $\overline{M} \simeq \oplus_i \overline{M_i} $
+    \item Assume that $M \in \Obj(\Pe(\Delta^{+}))$ is pointwise finite dimensional. Then, for all $\alpha \in \R$, we have natural isomorphisms  $$ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) \;\simeq\; \tilde{M}_{\alpha}\; \simeq \; \overline{M}_{\alpha}$$ provided that the left hand side is finite dimensional.
     
-    \item One can identify $\overline{M}$ with the image of the morphism of pre-sheaves : $\Tilde{M}\longrightarrow \prod_{\alpha\in\R}\Tilde{M}_{\alpha} $.
+    \item One can identify $\overline{M}$ with the image of  pre-sheaves morphism : $\Tilde{M}\longrightarrow \prod_{\alpha\in\R}\Tilde{M}_{\alpha} $.
 \end{enumerate}
-
 \end{prop}
 
-
-CAREFUL DUE TO OPPOSITE CATEGORIES AND CHOICE WETHER WE CONSIDER DELTAOP OR MODOP we mau=y ahve TO CHNAGE LEFT TO RIGHT KAN EXTENSIONS AND SO ON. 
 \begin{pf}
 \begin{enumerate}
-    \item For the second part it is sufficient to check that the canonical transformation $\text{id}_{\Mod(\kk_\R)} \to \text{bidual}_{\Mod(\kk_\R)}$ is an isomorphism on all stalks when restricted to a pointwise finite dimensional sheaf, which reduces the statement to the standard case of finite dimensional vector spaces.  For the first part, if $F$ is a sheaf, then its value on an open $U$ is uniquely determined by its value on any open cover and further for any interval $I$ one has that $$\varprojlim_{(-x,y)\subset I} ((F(I))^*)^* \cong (F(I)^*)^*.$$ In particular, on can restrict to cover by open intervals $(I_j)$ of $U$ and compute the value of the sheaf at $U$ as a limit.
+    \item First, once the formula  $\overline{(-)}\circ \pi =\text{bidual}_{\Mod(\kk_\R)}$ is proved, to check  that the asserted restriction of the composite $\overline{(-)}\circ \pi $ is canonically isomorphic to the identity, it is sufficient  to prove that the canonical transformation $\text{id}_{\Mod(\kk_\R)} \to \text{bidual}_{\Mod(\kk_\R)}$ is an isomorphism on all stalks when restricted to a pointwise finite dimensional sheaf. This reduces the statement to the standard case of finite dimensional vector spaces.  To prove the formula note that the value of a sheaf  $F$ is a  on an open $U$ is uniquely determined by its value on any open cover; further for any open interval $I$ one has that $$\varprojlim_{]-x,y[\subset I} ((F(I))^*)^* \cong (F(I)^*)^*.$$ In particular, on can restrict to cover by open intervals $(I_j)$ of $U$ and compute the value of the sheaf at $U$ as a limit.
    Therefore, noticing that the intersection of two intervvals is an interval, we get that for a sheaf $F$, one has 
    \begin{multline*}\overline{\pi(F)}(U) = \varprojlim \Big(\xymatrix{\overline{\pi(F)}(\coprod U_k) \ar@<1ex>[r] \ar@<-1ex>[r] & \overline{\pi(F)}(\coprod (U_i \cap U_j)) } \Big) \\ 
    \cong \; \varprojlim \Big(\xymatrix{\prod (F(U_k)^*)^* \ar@<1ex>[r] \ar@<-1ex>[r] & \prod(F(U_i \cap U_j)^*)^* } \Big) \\ \cong \; (F(U)^*)^*
@@ -817,13 +818,15 @@ CAREFUL DUE TO OPPOSITE CATEGORIES AND CHOICE WETHER WE CONSIDER DELTAOP OR MODO
    \item Since the sheafification functor is a right adjoint and by universal property of Kan extensions  we have natural isomorphisms:
    \begin{multline*}
   \Hom_{\Mod(\kk_\R)^{\op}}(\overline{M}, F)  = \Hom_{\Mod(\kk_\R)}(F,\overline{M})    \\ \cong \;
-  \Hom_{\text{PSh}(\R)}(F, \tilde{M}) \; \cong \; \Hom_{\text{PSh}(\R)}(F, \text{Lan}_{\iota^{\op}} M^*) \\ \cong \; \Hom_{\Pe(\Delta^+)}(F_{ | \text{op. intervals} }, \Hom_{\kk}(M, \kk)) \\ \cong \; \Hom_{\Pe(\Delta^+)}(F_{ | \text{op. intervals} }\otimes M, \kk) \\ \cong \; 
+  \Hom_{\text{PSh}(\R)}(F, \tilde{M}) \; \cong \; \Hom_{\text{PSh}(\R)}(F, \text{Ran}_{\iota^{\op}} M^*) \\ \cong \; \Hom_{\Pe\big((\Delta^{+})^{ op}\big)}(F_{ | \text{op. intervals} }, \Hom_{\kk}(M, \kk)) \\ \cong \; \Hom_{\kk}(F_{ | \text{op. intervals} }\mathop{\otimes}\limits_{\Delta^+} M, \kk) \\ \cong \; 
   \Hom_{\Pe(\Delta^+)}(M, \Hom_{\kk}(F_{ | \text{op. intervals} }, \kk)) \\ \cong \; 
  \Hom_{\Pe(\Delta^+)}(M, \pi(F)). 
    \end{multline*}
+   Here for a copersistent module $L$ and a persistent module $M$, we denote $L\mathop{\otimes}\limits_{\Delta^+} M$ the coequalizer $$\mathrm{coeq}\left(\coprod_{s_1\stackrel{\phi}\to s_2\in \Delta^+}  L(s_2) \otimes_{\kk} M(s_1) \stackrel{\phi^*\otimes id}{\underset{id\otimes \phi_*}{\rightrightarrows}} \coprod_{s\in \Delta^+} L(s)\otimes_{\kk} M(s) \right)$$ where the upper and lower maps are induced by the (co)persistence structures. 
+   
 This proves the adjunction formula. The fact that the counit is given by~\eqref{eq:unitadjPetoSh} is 
-a direct consequence of the proof and the proof of property (1).
-    \item This comes from the facts that $\Hom(-;\kk)$ and sheafification (which is a right adjoint) commutes with finite direct sums, and that left Kan extensions commute to arbitrary direct sums.
+a direct consequence of  the proof of property (1).
+    \item The functors $\Hom(-;\kk)$, sheafification (which is a right adjoint) as well as right Kan extensions  commute with finite direct sums. This gives the finite sums case. But the assumption ensures it is enough to estblish the resutls on the stalks and therefore the canonical map $\bigoplus \overline{M}_i \to \overline{\bigoplus M_i}$ is an isomorphism.
     \item Write $\text{Int}(\alpha)$ for the (full) subcategory of $\Ouv(\R)$ consisting of intervals containing $\alpha$. Let us fix  $G :  (]0,\infty[,\leq)  \longrightarrow \text{Int}(\alpha)$ defined by 
   $G(\varepsilon) = ]\alpha - \varepsilon , \alpha + \varepsilon[  $. Then $G$ is a functor and is initial among functors $ (]0,\infty[,\leq)  \longrightarrow \text{Int}(\alpha)$. Therefore : 
      $$ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) \simeq \varprojlim_{\varepsilon > 0}M((\varepsilon - \alpha  , \alpha + \varepsilon)) $$
@@ -843,13 +846,15 @@ a direct consequence of the proof and the proof of property (1).
         &\simeq \tilde{M}_\alpha \; \text{ (by~\eqref{eq:defMtilde})}\\
         &\simeq \overline{M}_\alpha.
     \end{align*}
-    \item This is a general fact for sheaves on a $T_1$-topological space, that is a space for which all   points are closed.
+    \item This is a general fact for sheaves on a $T_1$-topological space, that is for sheaves on a space for which all   points are closed.
 \end{enumerate}
 \end{pf}
+\begin{remark} We have sticked in this paper ot the traditionnal point of view of looking at level-set as being given by homology functors and thus as persistent objects; point of view for which computational models are well developped. This is the reason why some (bi)duality shows up in the picture. It is possible (and actually slightly easier) to construct an analogue of $\overline{(-)}$ going from persistence comodules to sheaves.
+\end{remark}
 
-Let $\Delta = \{(-x,x)\mid x\in\R\}$, and $p : \Delta \longrightarrow \R$ the projection onto the second coordinate. Recall that for any block $B$ (Definition~\ref{def:block_MV}) we have defined (see~\ref{Def:blockmodule}) a persistence module $\kk^B\in \Obj(\Pe(\Delta^+))$.
+Let $\Delta = \{(-x,x)\mid x\in\R\}$, and $p : \Delta \longrightarrow \R$ be the projection $(x_1,x_2)\mapsto x_2$ onto the second coordinate. Recall that for any block $B$ (Definition~\ref{def:block_MV}) we have defined (see~\ref{Def:blockmodule}) a persistence module $\kk^B\in \Obj(\Pe(\Delta^+))$.
 \begin{prop}\label{P:BarofBlock}
-Let $B$ be a block. Let $a,b\in \R$ such that $<a,b> = p(B\cap \Delta)$, with the convention that $a=1$ and $b=-1$ when $ p(B\cap \Delta) = \emptyset$.  
+Let $B$ be a block. Let $a,b\in \R$ be such that $<a,b> = p(B\cap \Delta)$, with the convention that $a=1$ and $b=-1$ when $ p(B\cap \Delta) = \emptyset$.  
 \begin{enumerate}
     \item If $B$ is of type \textbf{dquad}, then $\overline{\kk^B} \simeq \kk_{]a,b[}$.
     \item If $B$ is of type \textbf{bquad}, then $\overline{\kk^B} \simeq \kk_{[a,b]}$.
@@ -866,14 +871,14 @@ that if $\alpha \in \mathbb{R}$, then $ \kk^B(-\alpha-\varepsilon, \alpha+\varep
 if $\alpha \notin ]a,b[$ and for all $\alpha \in ]a,b[$, there exists $\eta >0$ such that 
 $\kk(-\alpha -\eta, \alpha+\eta) =\kk$. It follows that
 \begin{equation}\varprojlim_{]x, y[ \ni \alpha} \kk^B(x,y) = \left\{ \begin{array}{ll} \kk & \mbox{if } \alpha \in ]a,b[ \\
-0 & \mbox{ else }\end{array}\right . 
+0 & \mbox{ else. }\end{array}\right . 
  \end{equation}
 By claim 5 of Proposition~\ref{P:PropertiesofBar}, we deduce that $\overline{\kk^B} \cong \kk_{]a,b[}$.
 The three other cases are obtained using a similar analysis.
 \end{pf}
 
 \begin{remark}
-In particular, $\overline{\kk^B}$ does not depend on whether $B$ contains its boundary or not and, if $B$ is of type $\textbf{bb}^+$, then $\overline{\kk^B} =0$. 
+In particular, $\overline{\kk^B}$ does not depend on whether $B$ contains its boundary or not. If $B$ is of type $\textbf{bb}^+$, then $\overline{\kk^B} =0$ (since $B\cap \Delta =\emptyset$). 
 \end{remark}
 \begin{remark}[characterizations of $(a,b)$]\label{R:caracofab}
  If $B$ is of type $\textbf{bb}^-$, then the numbers $a$ and $b$ are characterized by the fact that the point $(-b,a)$ is the infimum of the points in $B$, see figure~\eqref{fig:blocks}.
@@ -885,16 +890,16 @@ In particular, $\overline{\kk^B}$ does not depend on whether $B$ contains its bo
 
 
 \begin{cor}\label{C:pfdimpliesconstructible}
- If $M \in \Obj(\Pe(\Delta^{+}))$ is pointwise finite dimensional, then $\overline{M}$ is weakly constructible. 
- Further if $M$ is strongly pointwise finite dimensional (definition~\ref{D:spfd}), then $\overline{M}$ is constructible. 
+ If $M \in \Obj(\Pe(\Delta^{+}))$ is middle-exact and pointwise finite dimensional, then $\overline{M}$ is weakly constructible. 
+ Further if $M$ is strongly pointwise finite dimensional (definition~\ref{D:spfd}) and midddle-exact, then $\overline{M}$ is constructible. 
 \end{cor}
-In particular, the restriction of the sheafification functor $\overline{\cdot}:\Pe(\Delta^{+})\to \Mod(\kk_\R)$ to the full subcategory of pfd modules takes values in the subcategory $ \Mod_{\R c}(\kk_\R)$ of constructible sheaves.
+In particular, the restriction of the sheafification functor $\overline{(-)}:\Pe(\Delta^{+})\to \Mod(\kk_\R)$ to the full subcategory of pfd modules takes values in the subcategory $ \Mod_{\R c}(\kk_\R)$ of constructible sheaves.
 \begin{pf}
- By the decomposition Theorem~\ref{thm:exactdecomp}, the pfd module $M$ is isomorphic to a direct sum of blocks $M\cong  \bigoplus_{B\in \mathbb{B}(M)} \kk^B$. Since $\overline{\cdot}$ commutes with direct sum for pfd modules (Proposition~\ref{P:PropertiesofBar}), Proposition~\ref{P:BarofBlock} yields that $\overline{M} \cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^B} $ is a (pointwise finite when $M$ is strongly pfd) direct sum of sheaves of the form $\kk_{I}$ where $I$ is an interval. 
+ By the decomposition Theorem~\ref{thm:exactdecomp}, the pfd module $M$ is isomorphic to a direct sum of blocks $M\cong  \bigoplus_{B\in \mathbb{B}(M)} \kk^B$. Since $\overline{(-)}$ commutes with direct sum for pfd modules (Proposition~\ref{P:PropertiesofBar}), Proposition~\ref{P:BarofBlock} yields that $\overline{M} \cong \bigoplus_{B\in \mathbb{B}(M)} \overline{\kk^B} $ is a (pointwise finite when $M$ is strongly pfd) direct sum of sheaves of the form $\kk_{I}$ where $I$ is an interval. 
 \end{pf}
 
 
-The level set persistence to sheaves functor $\overline{(\cdot)}$ does not preserve
+The level set persistence to sheaves functor $\overline{(-)}$ does not preserve
 interleavings in general. However, the trouble is only related to the death or $\textbf{bb}^+$ quadrant. More precisely we have the following two lemmas.
 \begin{lem}\label{L:Barpreserveentre} Let $M, N\in \Obj(\Pe(\Delta^+))$ be pointwise finite dimensional and such that their barcodes contains only blocks of type $\textbf{bb}^{-}$, $\textbf{vb}$ and $\textbf{hb}$. 
 Then $$\overline{M [\vec{\varepsilon}]} \cong \overline{M}\star K_{\varepsilon}. $$ Further, 
@@ -932,24 +937,25 @@ Therefore we have:
  The same results holds for  the blocks $B'\in 
  \mathbb{B}(N)$ so that 
  $$\overline{M [\vec{\varepsilon}]} \cong \overline{M}\star K_{\varepsilon}, \quad  \overline{N [\vec{\varepsilon}]} \cong \overline{N}\star K_{\varepsilon}$$
- Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\overline{\cdot}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
+ Now let $f: M\to N[\vec{\varepsilon}]$ and $g: N\to M[\vec{\varepsilon}]$ be an $\varepsilon$-interleaving between $M$ and $N$, then applying the functor $\overline{(-)}$ to the latter isomorphisms, we obtain  an $\varepsilon$-interleaving in sheaves given by  
  $ \overline{M}\stackrel{\overline{f}}\to \overline{N[\vec{\varepsilon}]}\cong \overline{N}\star K_\varepsilon$ 
  and $\overline{N}\stackrel{\overline{g}}\to \overline{M[\vec{\varepsilon}]}\cong \overline{M}\star K_{\varepsilon}$.
 \end{pf}
 
 For \emph{deathblocks} or \emph{birthblocks} of type $\textbf{bb}^{+}$, the sheafification functor does not intertwine shifts with convolution in a naive way. 
-However we have the following precise result for which we first 
+However we have the following precise result. To state it,  we first 
 recall that to a block $B$, we can associate the two real numbers $a,b\in \R$ such that $<a,b> = p(B\cap \Delta)$;  the convention being that $a=1$ and $b=-1$ when $ p(B\cap \Delta) = \emptyset$. 
-If $B$ is a $\textbf{bb}^{+}$ block, its dual death block $B^\dagger$ intersects $\Delta$ and we denote $<a^\dagger,b^\dagger> = p(B^\dagger \cap \Delta)$.
-\begin{lem}\label{L:Barondeathblocks}Let $B$ be a block of type $\textbf{db}$ or $\textbf{bb}^{+}$.  Then for $\varepsilon \geq 0$,
- \begin{eqnarray}
- \text{if $B$ is of type \textbf{dquad}, then, } \overline{\kk^{B}[\vec{\varepsilon}] }
- & \cong & \left\{ \begin{array}{ll}  \overline{\kk^{B}}\star K_{\varepsilon} & \mbox{ if $\varepsilon< \frac{b-a}{2}$}\\
+\begin{lem}\label{L:Barondeathblocks}Let $B$ be a block of type $\textbf{db}$ or $\textbf{bb}^{+}$. If $B$ is a $\textbf{bb}^{+}$ block, its dual death block $B^\dagger$ intersects $\Delta$ and we denote $<a^\dagger,b^\dagger> = p(B^\dagger \cap \Delta)$.
+
+Further, for any $\varepsilon \geq 0$, we have that,
+ \begin{align}
+ &\text{if $B$ is of type \textbf{dquad}, then, } \overline{\kk^{B}[\vec{\varepsilon}] }
+ \; \cong \; \left\{ \begin{array}{ll}  \overline{\kk^{B}}\star K_{\varepsilon} & \mbox{ if $\varepsilon< \frac{b-a}{2}$}\\
  0 & \mbox{ if $\varepsilon \geqslant \frac{b-a}{2}$,} \end{array}                                                                                                                          \right .  \label{eq:Barofdb}\\
- \text{if $B$ is of type $\textbf{bb}^{+}$, then, }\overline{\kk^{B}[\vec{\varepsilon}]} 
- & \cong &   \left\{ \begin{array}{ll}  0 & \mbox{ if $\varepsilon< \frac{b^\dagger-a^\dagger}{2}$}\\
+& \text{if $B$ is of type $\textbf{bb}^{+}$, then, }\overline{\kk^{B}[\vec{\varepsilon}]} 
+ \;\cong \;  \left\{ \begin{array}{ll}  0 & \mbox{ if $\varepsilon< \frac{b^\dagger-a^\dagger}{2}$}\\
  \kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} & \mbox{ if $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$.} \end{array}                                                                                                                          \right .  \label{eq:Barofbb+}
- \end{eqnarray}
+ \end{align}
 \end{lem}
 \begin{pf}The proof will be similar to the one of lemma~\ref{L:Barpreserveentre}. First note that,  if $B$ is of birthtype $\textbf{bb}^+$, the supremum of $B^\dagger$ is the infimum of $B$ by definition of the dual block. Therefore, by remark~\ref{R:caracofab}, we have that the infimum of the elements of $B$ is the point $(-a^\dagger, b^\dagger)\in \Delta^+$. 
 It follows that $B-\vec{\varepsilon}$ remains of type $\textbf{bb}^+$ as long as $\varepsilon < \frac{b^\dagger-a^\dagger}{2}$ and it becomes of type $\textbf{bb}^{-}$ when  $\varepsilon \geqslant \frac{b^\dagger-a^\dagger}{2}$. Further, in that latter case, we have that 
@@ -972,7 +978,7 @@ By lemma~\ref{L:shiftofBlock} and proposition~\ref{P:BarofBlock}, we thus have t
 \end{pf}
 \begin{remark} The proof of lemma~\ref{L:Barondeathblocks} and proposition~\ref{P:BarofBlock} also shows that the last equivalence in lemma~\ref{L:Barondeathblocks} also reads, for $\varepsilon \geq \frac{b^\dagger-a^\dagger}{2}$ as
  \begin{equation}
-  \kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} \; \cong \; \overline{\kk^{B -\vec{\frac{b^\dagger-a^\dagger}{2}}}} \star  K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}}.
+  \kk_{[\frac{a^\dagger+b^\dagger}{2}, \frac{a^\dagger+b^\dagger}{2}]}\star K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}} \; \cong \; \overline{\kk^{B -\overrightarrow{\frac{b^\dagger-a^\dagger}{2}}}} \star  K_{\varepsilon -\frac{b^\dagger -a^\dagger}{2}}.
  \end{equation}
 
 \end{remark}
@@ -995,60 +1001,60 @@ $$\text{For every $\alpha \in \Delta$,}~ \varprojlim_{]-x;y[\ni \alpha}M((x,y)) 
 
 A  Mayer-Vietoris system $S=(S_i,\delta^s_i)$ is said to be strongly pointwise finite dimensional if each $S_i$ is strongly pointwise finite dimensional  and only finitely many  $S_i$'s are non-zero.
 
-The full subcategory of MV($\R$) whose objects are strongly pointwise finite dimensional MV-systems is denoted by $\text{MV}(\R)^\s$.
+The \emph{full subcategory of MV($\R$)} whose objects are \emph{strongly pointwise finite dimensional MV-systems is denoted by $\text{MV}(\R)^\s$}.
 \end{defi}
 
 
 
-We will now  build two functors : 
+Our goal now is to build two functors : 
 
 
 $$\xymatrix{
-(\overline{~\cdot~ })^{\text{MV}} & : \text{MV}(\R)^\s \ar[r] &\D^b_{\R c}(\kk_\R)  \\
-\pi^{\text{MV}}  & : \D^b_{\R c}(\kk_\R) \ar[r] & \text{MV}(\R)^\s 
+(\overline{~\cdot~ })^{\text{MV}} :&  \text{MV}(\R)^\s \ar[r] &\D^b_{\R c}(\kk_\R)^{\op}  \\
+\Psi  :&  \D^b_{\R c}(\kk_\R)^{\op} \ar[r] & \text{MV}(\R)^\s 
 }$$
 
-Satisfying $(\overline{~\cdot~ })^{\text{MV}} \circ \pi^{\text{MV}} \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ and that for every $M\in \text{MV}(\R)^\s$, $$d_I^{\text{MV}}(M, \pi^\MV ( \overline{M})) = 0.$$
-See Corollary~\ref{C:MVcircPsiisId} and Corollary~\ref{C:MVdisO}.
-\subsection{Construction of $(\overline{~\cdot~ })^{\text{MV}}$}\label{SS:MVfunctor}
+Satisfying $(\overline{~\cdot~ })^{\text{MV}} \circ \Psi \simeq \text{id}_{\D^b_{\R c}(\kk_\R)}$ and that, for every $M\in \text{MV}(\R)^\s$, $$d_I^{\text{MV}}(M, \pi^\MV ( \overline{M})) = 0.$$
+See Corollary~\ref{C:MVcircPsiisId} and Corollary~\ref{C:MVdisO} for those properties.
+\subsection{Construction of the sheafification of MV-systems: the functor $(\overline{~\cdot~ })^{\text{MV}}$}\label{SS:MVfunctor}
 We will now apply section~\ref{SS:levelsettopresheaves} to compare the Mayer-Vietoris persistence systems and constructible sheaves. To do so, we first consider the direct sum of the level set persistence to sheaves functor: 
 
-Let $\ell$ be the localization functor sending the category of complexes of sheaves over $\R$ to its derived category $\D(\kk_\R)$.
-\begin{defi}\label{D:MVtoSheaves} The \emph{M-V sheafification functor}: $\overline{(-)}^{MV}: \text{M-V}(\R) \to  \D(\kk_\R)$ is the functor given, on
+\emph{Let} $\ell:\Mod(\kk_R) \to  \D(\kk_\R)$ \emph{be the localization functor} sending the category of complexes of sheaves over $\R$ to its derived category $\D(\kk_\R)$.
+\begin{defi}\label{D:MVtoSheaves} The \emph{sheafification of MV-systems functor}: $\overline{(-)}^{MV}: \text{M-V}(\R) \to  \D(\kk_\R)^{\op}$ is the functor given, on
 objects $S=(S_i, \delta_i^S)_{i\in \Z, s\in \R^2_{>0}}\in \Obj(\text{M-V}(\R))$, by 
-$$ \overline{S}^{MV} := \ell\Big(\bigoplus_{i\in \Z} \overline{S_i}[i]\Big)$$ and, on morphisms $(S_i\stackrel{\varphi_i}\to T_i)_{i\in \Z}$, by 
+$$ \overline{S}^{MV} := \ell\Big(\bigoplus_{i\in \Z} \overline{S_i}[-i]\Big)$$ and, on morphisms $(S_i\stackrel{\varphi_i}\to T_i)_{i\in \Z}$, by 
 $$\overline{(\varphi_i)_{i\in \Z}} := \ell\left(\bigoplus \overline{\varphi_i}\right). $$ 
 \end{defi}
 That this is a functor is a direct consequence of section~\ref{SS:levelsettopresheaves}.
 
 \begin{lem}
- If $S$ is a pointwise finite dimensional Mayer-Vietoris system, then $\overline{S}^{MV}$ is a constructible sheaf. In particular, we have a commutative diagram of functors:
- $$\xymatrix{ \text{M-V}(\R) \ar[r]^{\quad\overline{(-)}^{MV}} & \D(\kk_\R) \\ 
- \text{M-V}(\R)^{\s} \ar@{^{(}->}[u]\ar[r]^{\quad\overline{(-)}^{MV}} & \D^b_{\R c}(\kk_\R) \ar@{^{(}->}[u].}  $$
+ If $S$ is a strongly pointwise finite dimensional Mayer-Vietoris system, then $\overline{S}^{MV}$ is a constructible sheaf. In particular, we have a commutative diagram of functors:
+ $$\xymatrix{ \text{M-V}(\R) \ar[r]^{\quad\overline{(-)}^{MV}} & \D(\kk_\R)^{\op} \\ 
+ \text{M-V}(\R)^{\s} \ar@{^{(}->}[u]\ar[r]^{\quad\overline{(-)}^{MV}} & \D^b_{\R c}(\kk_\R)^{\op} \ar@{^{(}->}[u].}  $$
 \end{lem}
 \begin{pf}
  We can apply Theorem~\ref{thm:decom_MV} together with proposition~\ref{P:BarofBlock} in a way similar to the proof of corollary~\ref{C:pfdimpliesconstructible}.
 \end{pf}
-
+The same argument shows that if $S$ is only pfd, then $\overline{S}^{MV}$ is weakly constructible.
 
 
 \begin{prop}\label{P:PropertiesofMVSheafification}
-The M-V sheafification functor $\overline{(-)}^{MV}: \text{M-V}(\R)^{\s} \to  \D^b_{\R c}(\kk_\R)$ satisfies the following properties : 
+The sheafification of MV-systems functor $\overline{(-)}^{MV}: \text{M-V}(\R)^{\s} \to  \D^b_{\R c}(\kk_\R)$ satisfies the following properties : 
 \begin{enumerate}
-    \item it commutes with the shift in gradation: for all Mayer-Vietoris system $M$, one has $\overline{M[n]}^{MV} \cong \overline{M}^{MV}[n]$. 
-    \item For $B$ a block of type \textbf{bb$^-$}, \textbf{hb}, \textbf{vb}, \textbf{db}, $j\in \Z$ and $\varepsilon \geq 0$, we have : $$(\overline{S_j^B [\varepsilon]})^{\MV} \simeq \kk_B[-j] \star K_\varepsilon $$
-    \item if $\overline{M}^{MV}$ is isomorphic to  $\overline{N}^{MV}$ (in the derived category), then $d_I^{MV}(M, N)) =0$.
+    \item it commutes with degree shifting operator : for all Mayer-Vietoris system $M$, one has $\overline{M[n]}^{MV} \cong \overline{M}^{MV}[n]$. 
+    \item For  a block $B$ of type \textbf{bb$^-$}, \textbf{hb}, \textbf{vb}, \textbf{db}, $j\in \Z$ and $\varepsilon \geq 0$, we have : $$(\overline{S_j^B [\varepsilon]})^{\MV} \simeq \kk_B[-j] \star K_\varepsilon $$
+    \item If $\overline{M}^{MV}$ is isomorphic to  $\overline{N}^{MV}$ (in the derived category), then $d_I^{MV}(M, N)) =0$.
  \end{enumerate}
 \end{prop}
 \begin{pf}
-First note that assertion 1 is immediate from the definition since we put each $S_i$ in degree $i$.   
+ Note that assertion 1 is immediate from the definition since we put each $\overline{S_i}$ precisely in degree $i$.   
 
 
 \smallskip 
 
 2. First assume $B$ is of type  \textbf{bb$^-$}, \textbf{hb} or \textbf{vb}. Then  definition~\ref{D:blocksmodulesforMV} implies that $S_j^B \cong \kk_B[-j]$. Since  $\overline{(\cdot)}^{MV}$ commutes with direct 
 sum and shifts, Lemma~\ref{L:Barpreserveentre} implies $(\overline{S_j^B [\varepsilon]})^{\MV} \simeq \kk_B[-j] \star K_\varepsilon $. It remains to consider the case of a block of type \textbf{db}. Then definition~\ref{D:blocksmodulesforMV} says that as a graded persistent module, one has $$S_j^B \cong \kk_B[-j] \oplus \kk_{B^\dagger}[-j-1]$$ and therefore  $$\overline{S_j^B[\vec{\varepsilon}]}^{MV} \cong \overline{\kk_B[\varepsilon]}[-j] \oplus \overline{\kk_{B^\dagger}[\varepsilon]}[-j-1].$$ Denote $\langle a, b\rangle =p(B \cap \Delta)$ as before Proposition~\ref{P:BarofBlock}. Following the notation of 
-Lemma~\ref{L:Barondeathblocks} we thus have that for the dual block $B^\dagger$ of type \textbf{bb}$^{+}$, one has that $a^\dagger=a$, $b^\dagger=b$ by definition. Then Lemma~\ref{L:Barondeathblocks}, commutation of convolution wih shifts and Proposition~\ref{P:BarofBlock} imply that 
+Lemma~\ref{L:Barondeathblocks} we thus have that for the dual block $B^\dagger$ of type \textbf{bb}$^{+}$, one has that $a^\dagger=a$, $b^\dagger=b$ by definition. Then, Lemma~\ref{L:Barondeathblocks}, the commutation of convolution wih shifts and Proposition~\ref{P:BarofBlock} imply that 
 \begin{multline}\label{eq:MVonSofDB}
 \overline{\kk_B[\varepsilon]}[-j] \oplus \overline{\kk_{B^\dagger}[\varepsilon]}[-j-1] \;
   \cong \;\left\{ \begin{array}{ll}  \kk_{]a,b[}\star K_{\varepsilon}[-j] & \mbox{ if $\varepsilon< \frac{b-a}{2}$}\\
@@ -1058,9 +1064,9 @@ This formula ~\eqref{eq:MVonSofDB} is precisely the formula for $\kk_{]a,b[}\sta
 
 \smallskip
 
-3. Assume $\overline{M}^{MV} \cong \overline{N}^{MV}$. By Theorem~\ref{thm:decom_MV}, we decompose 
-$M\cong \simeq \bigoplus_{j\in \Z} \bigoplus_{B_M \in \mathbb{B}_j(M)}S_j^{B_M}[j]$ and 
-$N \cong \simeq \bigoplus_{j\in \Z} \bigoplus_{B_N \in \mathbb{B}_j(N)}S_j^{B_N}[j]$ into  Mayer-Vietoris blocks.
+3. Assume $\overline{M}^{MV} \cong \overline{N}^{MV}$. By Theorem~\ref{thm:decom_MV}, we can decompose 
+$M\cong \bigoplus_{j\in \Z} \bigoplus_{B_M \in \mathbb{B}_j(M)}S_j^{B_M}[j]$ and 
+$N \cong  \bigoplus_{j\in \Z} \bigoplus_{B_N \in \mathbb{B}_j(N)}S_j^{B_N}[j]$ into  Mayer-Vietoris blocks.
 Since $\overline{(\cdot)}^{MV}$ commutes with direct 
 sum and shifts (by property 1),  we have isomorphisms
 \begin{eqnarray*}
@@ -1070,22 +1076,24 @@ sum and shifts (by property 1),  we have isomorphisms
  \bigoplus_{j\in \Z} \bigoplus_{B_N\in \mathbb{B}_j(N)} \overline{S_j^{B_N} }^{MV}[j].
 \end{eqnarray*}
 For any vertical, horizontal or \textbf{bb}$^-$ type block $B$, Proposition~\ref{P:BarofBlock} tells us that  
-$\overline{S_j^{B}}^{MV} \cong \kk_{I(B)}$ where $I(B)$ is a non-empty interval (uniquely determined by $p(B\cap \Delta)$. 
-If $B$ is of type \textbf{db}, then 
+$\overline{S_j^{B}}^{MV} \cong \kk_{I(B)}$ where $I(B)$ is a non-empty interval (uniquely determined by $p(B\cap \Delta)$). 
+If $B$ is of type \textbf{db}$^{+}$, then 
 $$
  \overline{S_j^{B}} \; \cong \;  \kk_{I(B)} \oplus \kk_{I(B^\dag)}[1]
 $$
 according to definition~\ref{D:blocksmodulesforMV} and~\ref{D:MVtoSheaves}.  
 Therefore, we have an isomomorphism 
 \begin{multline}
- \label{eq:decofBarMV} 
+ \label{eq:decofBarMV}  
  \bigoplus_{j\in \Z} \left(\Big(\bigoplus_{B_M\in \mathbb{B}_j(M)\setminus \mathbb{B}^{\textbf{dq}}_j(M)} \kk_{I(B_M)}[j] \Big) \oplus 
  \Big(\bigoplus_{B_M\in \mathbb{B}^{\textbf{dq}}_j(M) } \big(\kk_{I(B_M)}[j] \oplus \kk_{I(B_M^\dag)}[j+1]\Big)\right)\\
  \cong \; 
  \bigoplus_{j\in \Z} \left(\Big(\bigoplus_{B_N\in \mathbb{B}_j(N) \setminus \mathbb{B}^{\textbf{dq}}_j(N)} \kk_{I(B_N)}[j]\Big)\oplus 
-\Big( \bigoplus_{B_N\in \mathbb{B}^{\textbf{dq}}_j(N) } \big(\kk_{I(B_N)}[j] \oplus \kk_{I(B_N^\dag)}[j+1]\Big)\right)
+\Big( \bigoplus_{B_N\in \mathbb{B}^{\textbf{dq}}_j(N) } \big(\kk_{I(B_N)}[j] \oplus \kk_{I(B_N^\dag)}[j+1]\Big)\right)   
 \end{multline}
-of constructible sheaves. By unicity of the decomposition in Theorem~\ref{T:KSdecomposition}, we obtain  degreewise bijections between 
+of constructible sheaves. Here $\mathbb{B}^{\textbf{dq}}_j(M)$, $\mathbb{B}^{\textbf{dq}}_j(N) $ are the subsets of those bars that are of type \textbf{db}$^{+}$ in the respective decompositions of $M$ and $N$. 
+
+By unicity of the decomposition in Theorem~\ref{T:KSdecomposition}, we obtain  degreewise bijections between 
 the set of associated graded barcodes $\{ I(B_M), \, B_M \in  \mathbb{B}_j(M)\}$ and $\{ I(B_N), \, B_N \in  \mathbb{B}_j(N)\}$
 and therefore  bijections $\sigma_j: \mathbb{B}_j(M) \cong \mathbb{B}_j(N)$ with the property that  for any $B_M\in \mathbb{B}_j(M)$, 
 $\sigma_j(B_M)$ is a block of the same type as $B_M$ and which is equal to $B_M$ except maybe on the boundary.
@@ -1106,42 +1114,93 @@ permutation relating $\mathbb{B}_j(M)$, $\mathbb{B}_j(N)$ for each degree $j$.
 
 
 
-\subsection{Construction of the functor $\Psi$ from constructible sheaves to Mayer-Vietoris systems}\label{SS:Psi}
+\subsection{ The functor $\Psi$ from constructible sheaves to Mayer-Vietoris systems}\label{SS:Psi}
+We now turn to the construction of a section of the sheafification of MV-systems. We have the following intrinsic definition. 
+\begin{defi}\label{def:Psi}Given $F^\bullet \in \D \big(\Mod(\kk_{\mathbb{R}})\big)$ and $i \in \Z$, we define  $\Psi(F^\bullet)_i$ to be the object of $\Pers(\Delta^+)$ given, for $(x,y)\in \Delta^+$ by :
+\begin{equation}\label{eq:defPsiHypercohom}
+ \Psi(F^\bullet)_i \; = \; \Hom_{\Mod(\kk)}\left ( \mathbb{H}^i(F^\bullet_{|\, ]-x,y[}), \kk\right)
+\end{equation}
+where $\mathbb{H}^*(-)$ is the hypercohomology of  complexes of sheaves and $F^\bullet_{|\, ]-x,y[})$ is the restriction of $F^\bullet$ to the open $]-x, y[$.  
+\end{defi}
+There is a slightly less homological algebraic involved formula for constructible sheaves, see Lemma~\ref{L:DefadnFunctorialityPsi} below.  Since
+those are our case of interest, the reader can take the formula~\eqref{eq:Psifocosntructible} for the definition of $\Psi_i$ for the rest of the paper. 
 
-Given $F \in \D^b_{\R c}(\kk_R)$ and $i \in \Z$, define $\Psi(F)_i$ to be the object of $\Pers(\Delta^+)$ defined by, for $(x,y)\in \Delta^+$ : 
+\smallskip
 
-$$\Psi(F)_i =\bigoplus_{k+l = i} \Hom_{\Mod(\kk)}\left ( \Rr^k\Gamma \left ( (-x,y) , \Sigma^l F\right ), \kk \right )  $$
-where $\Rr^k\Gamma \left ( (-x,y) , -\right )$ is the $k$-th right derived functor of the functor of sections on $(-x,y)$, in other words the $k$th cohomology groups of $\Sigma^l F_{|(-x, y)}$. Note that since $F$ is assumed to be constructible, there are only finitely many pairs $(k,l)$ such that the right-hand-side vector space is non zero.
+That $\Psi(F^\bullet)_i$ is a persistent module follows from Lemma~\ref{L:Defiota}. Since hypercohomology and duality are functors, then it is immediate that for all $i\in \Z$,
+\begin{equation}
+ \Psi(-)_i: \D \big(\Mod(\kk_{\mathbb{R}})\big)^{\op} \longrightarrow \Pers(\Delta^+) \mbox{ is a functor.}
+\end{equation}
+ Note that the hypercohomology (see~\cite{DanilovHyperhomology, Tohoku} for standard references) of a complex of sheaves $G^\bullet$ on a space $X$ is obtained by replacing $G^\bullet$ by a quasi-isomorphic \emph{injective complex} of sheaves\footnote{that is a fibrant resolution in the model category of sheaves} $I^\bullet$ (which in the case where $F^\bullet$ is bounded on the left is the same as a quasi-isomorphic chain complex whose terms are injective sheaves) and then taking the cohomology of the section of this  complex $I^\bullet$: 
+  $$\mathbb{H}^i(G^\bullet)\; =\; H^i( \Gamma(I^\bullet)) .$$
+
+  \smallskip 
+  
+For constructible sheaves $\bigoplus \kk_{I}[n_I]$, one can simply compute the hypercohomology by  computing the derived sections of the sheaf as follows immediately from the following lemma (since the homology is equal to the sheaf in that case).  
+\begin{lem}\label{L:DefadnFunctorialityPsi}
+ Let $F$ be in $\D^b_{\R c}(\kk_\R)$. Then for any $i\in \Z$, and $(x,y)\in \Delta^+$, one has an natural isomorphism
+ \begin{equation}\label{eq:Psifocosntructible}\Psi(F)_i(x,y)\; \cong\; \bigoplus_{k+l = i} \Hom_{\Mod(\kk)}\left ( \Rr^k\Gamma \left ( ]-x,y[ ,  H^l(F)\right ), \kk \right )  \end{equation}
+ where $\Rr^k\Gamma \left ( ]-x,y[ , -\right )$ is the $k$-th right derived functor of the functor of sections on $]-x,y[$ and $H^*(F)$ is the graded sheaf given by the homology of the underlying complex of $F$. 
+\end{lem}
+Note that since $F$ is assumed to be constructible, \emph{there are only finitely many} pairs $(k,l)$ such that the right-hand-side vector space is non zero.
+
+
+  \begin{pf}
+  The reader who knows the spectral sequences associated to hypercohomology can also imemdiately deduce the result of the lemma by noticing that the assumption on $F$ implies its degenracy at the $E_2$-page which is exactly the right hand side of~\eqref{eq:Psifocosntructible}.
+   
+   \smallskip
+   
+   Alternatively, let $F$ be any complex of sheaves on a space $X$. Denote $\Gamma(-,F): \Ouv(X)^{\op}\to \Mod(\kk)$ be the functor sending an open $U$ to the sections $F(U)$ of $F$ over $U$. Denote 
+   $\Rr^*\Gamma(-,F): \Ouv(X)^{\op}\to \D(\Mod(\kk))$ is the derived functor, which, by definition is given by $\Gamma(-, I^\bullet)$ where $I^*$ is an injective complex of sheaves quasi-isomorphic to $F$.  Note also that 
+   $\Rr^* \Gamma(U, F) \cong \Rr^*(F_{|U})$ and that for any sheaf $F$, one has $\Rr^k(U,F)= H^k(\Rr^*\Gamma(U,F)$, see~\cite{Kash90} or another classical textbook.
+   
+   Then according to definition~\ref{def:Psi} $\Psi_i(F)$ is the persistent object given by the composite functor
+  \begin{equation}\label{eq:Psiascomposite}\xymatrix{\Delta^+ \ar[r]^{\iota\qquad} &\Ouv(\R) \ar[rr]^{\Rr^*\Gamma(-,F)\quad } && \D(\Mod(\kk))^{\op} \ar[r]^{\;\;H^i(-)} & \Mod(\kk)^{\op} \ar[rr]^{\Hom_{\kk}( - , \kk)} && \Mod(\kk).}\end{equation}
+  Now we asume $F \in \D^b_{\R c}(\kk_\R)$. By Theorem~\ref{T:KSstructure}, we have an isomorphism of complexes of sheaves 
+  $F \cong \bigoplus_{j\in \Z} H^j(F)[-j]$. Therefore we can replace $F$ by its homology in~\eqref{eq:Psiascomposite}. Then  for $I^\bullet$, we can take the direct sum of injective resolutions of each $\bigoplus H^j(F)[-j]$. Then the lemma is given by the fact that only finitely many $k$ and $l$ gives non-zero terms as noted above and therefore the functors in~\eqref{eq:Psiascomposite} commutes with the (finite) direct sum.
+  \end{pf}
+
 \begin{remark}
- The functor $\Psi$ is essentially defined as the dual of the derived section of $F$ and not just as the dual fo the homology sheaf of $F$ which could have been a more naive approach. The main reason is that the latter will not carry a Mayer-Vietoris structure; in other words, it will forget too much of the structure of the constructible sheaf. However, the derived construction carries such a structure in a natural way as we will now see.
+ The functor $\Psi$ is thus essentially defined as  the dual of the derived section of $F$ and not just as the dual of the homology sheaf of $F$ which could have been a more naive approach. The main reason is that the latter will not carry a Mayer-Vietoris structure; in other words, it will forget too much of the structure of the constructible sheaf. However, the derived construction carries such a structure in a natural way as we will now see.
 \end{remark}
 
+
 \begin{prop}\label{P:psiofCOnstrisMV}
-The family $(\Psi(F)_i)_{i\in \Z}$ carries a natural structure of a Mayer-Vietoris system. In addition, it is strongly pointwise finite dimensional (Definition~\ref{D:spfd}). 
+The family $(\Psi(F)_i)_{i\in \Z}$ carries a natural structure of a Mayer-Vietoris system. In addition, if $F\in \D^b_{\R c}(\kk_\R)$, then  it is strongly pointwise finite dimensional (Definition~\ref{D:spfd}). 
 \end{prop}
 
-\begin{pf} The fact that $\Psi_i(F)$ is a persistence module over $\Delta^+$ is an immediate consequence of lemma~\ref{L:Defiota}.
-For $s = (s_1,s_2)\in \R^2_{>0}$ and $i\in\Z$, we have to build the connection morphism $\delta_i^2$. Let $I^\bullet\in C^b(\kk_\R)$ an injective resolution of $F$ in the category of constructible sheaves. Consider $(-x,y)\in \Delta^+$, then we have the Mayer-Vietoris sequence associated to the cover $(-x - s_1 , y) \cup (-x , y + s_2) $ of $(-x - s_1 , y + s_2)$ which is the short exact sequence of complexes of sheaves 
+\begin{pf} We have already seen  that $\Psi_i(F)$ is a persistence module over $\Delta^+$ as an immediate consequence of lemma~\ref{L:Defiota}.
+For $s = (s_1,s_2)\in \R^2_{>0}$ and $i\in\Z$, we have to build the connection morphism $\delta_i^2$. Let $I^\bullet\in C^b(\kk_\R)$ an injective resolution of $F$ in the category of constructible sheaves. Consider $(x,y)\in \Delta^+$, then we have the Mayer-Vietoris sequence associated to the cover $]-x - s_1 , y[ \cup ]-x , y + s_2[ $ of $]-x - s_1 , y + s_2[$ which is the short exact sequence of complexes of sheaves 
 
-$$0 \longrightarrow \Gamma((-x - s_1 , y + s_2), I^\bullet) \longrightarrow \Gamma((-x - s_1 , y), I^\bullet) \oplus  \Gamma((-x , y+s_2), I^\bullet) \longrightarrow \Gamma((-x,y), I^\bullet) \longrightarrow 0 .$$
-Passing to cohomology, we obtain a long exact sequence (see~\cite{Kash90}) 
+$$0 \longrightarrow \Gamma(]-x - s_1 , y + s_2[, I^\bullet) \longrightarrow \Gamma(]-x - s_1 , y[, I^\bullet) \oplus  \Gamma(]-x , y+s_2[, I^\bullet) \longrightarrow \Gamma(]-x,y[, I^\bullet) \longrightarrow 0 .$$
+Let us write $H^i(U, I^\bullet)$ for the $i$-th cohomology groups $\Rr^i(U, I^\bullet)$. 
+Passing to cohomology, we thus obtain a long exact sequence (see~\cite{Kash90}) 
 \begin{multline}\label{eq:lessheavesforPi} 
-\dots \to     H^i((-x-s_1, y+s_2, I^\bullet) \to 
- H^i((-x-s_1, y, I^\bullet) \oplus  H^i((-x, y+s_2, I^\bullet) \\ \to 
-  H^i((-x, y, I^\bullet) \stackrel{\delta}\to H^{i+1}((-x-s_1, y+s_2, I^\bullet) \to \dots.
+\dots \to     H^i(]-x-s_1, y+s_2[, I^\bullet) \to 
+ H^i(]-x-s_1, y[, I^\bullet) \oplus  H^i(]-x, y+s_2[, I^\bullet) \\ \to 
+  H^i(]-x, y[, I^\bullet) \stackrel{\delta}\to H^{i+1}(]-x-s_1, y+s_2[, I^\bullet) \to \dots.
 \end{multline}
-Since by definition of sheaf cohomology, one has, $H^i((-x, y, I^\bullet) \cong \Rr^i\Gamma \left ( (-x,y) , \Sigma^l F\right )$ and $\Sigma^l I^\bullet$ is an injective resolution of $\Sigma^l F$, the linear dual of the direct sum of the maps $\delta$ given by the exact sequence~\eqref{eq:lessheavesforPi} yields linear maps $\delta_i^s:\psi_i(F)((x,y)) \to \psi(F)[s](x,y)$ for all $(x,y) \in \Delta^+$. The exactness of~\eqref{eq:lessheavesforPi} and Lemma~\ref{L:Defiota} also implies that the collection $(\psi_i(F), \delta_i^s)_{i,s}$ is a Mayer-Vietoris system over $\R$.
+Since by definition of sheaf cohomology, one has, $H^i(]-x, y[, I^\bullet) \cong \Rr^i\Gamma \left ( (]x,y[ , \Sigma^l F\right )$ and $\Sigma^l I^\bullet$ is an injective resolution of $\Sigma^l F$, the linear dual of the direct sum of the maps $\delta$ given by the exact sequence~\eqref{eq:lessheavesforPi} yields linear maps $\delta_i^s:\psi_i(F)((x,y)) \to \psi(F)[s](x,y)$ for all $(x,y) \in \Delta^+$. The exactness of~\eqref{eq:lessheavesforPi} and Lemma~\ref{L:Defiota} also implies that the collection $(\psi_i(F), \delta_i^s)_{i,s}$ is a Mayer-Vietoris system over $\R$.
 
-Since $F$ is constructible, its cohomology groups are finite dimensional in each degree, and there are only finitely many of them. Therefore $\Psi(F)$ is pointwise finite dimensional. Now the proof that $\Psi(F)$ is strongly finite dimensional is an argument similar to the proof of property 4 in Proposition~\ref{P:PropertiesofBar}. Alternatively, one can simply use the structure theorem~\ref{T:KSstructure}
+\smallskip 
+
+When $F$ is constructible, its cohomology groups are finite dimensional in each degree, and there are only finitely many of them. Therefore $\Psi(F)$ is pointwise finite dimensional. Now the proof that $\Psi(F)$ is strongly finite dimensional is an argument similar to the proof of property 4 in Proposition~\ref{P:PropertiesofBar}. Alternatively, one can simply use the structure theorem~\ref{T:KSstructure}
 and proposition~\ref{P:PsionIntervals} below to conlude directly since  strongly pointwise finite dimensional modules are stable under locally finite direct sums.\end{pf}
 
 \begin{prop}\label{P:PropertiesofPsi}
-The rule $F\mapsto \Psi(F):= (\Psi_i(F), \delta_i^s)_{i,s}$ defines a functor $\Psi: \D^b_{\R c}(\kk_R)\to \MV(\R)^\s$ 
+The rule $F\mapsto \Psi(F):= (\Psi_i(F), \delta_i^s)_{i,s}$ defines a functor $\Psi: \D^b_{\R c}(\kk_R)^{\op}\to \MV(\R)^\s$ as well as a functor 
+$\Psi: \D_{\Mod(\kk_{\R}}(\kk_R)^{\op}\to \MV(\R)$
 which is additive and commutes with shifts.
 \end{prop}
-\begin{pf} Since the definition of $\Psi_i$ and the connecting morphism in Mayer-Vietoris long exact sequences are functorial, the fact that $\Psi= (\Psi_i(F), \delta^s_i)_{i,s}$ is 
-The first part is a consequence of the fact that the shift commutes with direct sum as well as the fact that the cohomology functor commutes with direct sum and shifts. 
+\begin{pf} Since the definition of $\Psi_i$ is functorial  and the connecting morphism in Mayer-Vietoris long exact sequences is also functorial, we obtain  that $\Psi= (\Psi_i(F), \delta^s_i)_{i,s}$ is a morphism. Proposition~\ref{P:psiofCOnstrisMV} gives the fact that $\Psi$ sends the subcategory of constructible sheaves to sthe one of trongly pointwise finite dimensional systems.  The last assertion follows from the fact that hyperchohomology commutes with direct sums and shifts. 
 \end{pf}
+\begin{ex}\label{ex:ValueofPsiondirectsum}
+ Let $F =\bigoplus_{I} \kk_I[n_I]$ be a sheaf. Then by Proposition~\ref{P:PropertiesofMVSheafification} and Lemma~\ref{L:DefadnFunctorialityPsi} we obtain, for any $(x,y)\in \Delta^+$, the simple formula 
+ $$\Psi(F)_i (x,y) ) \, \cong \, \bigoplus_{I} \bigoplus_{k} \Rr^k\left(]-,x,y[, \kk_I\right)[n_i+k]$$ for $\Psi(F)$ (one can also note that the only values of $k$ for which we have a non zero term are $0$ and $1$ from Proposition~\ref{P:BarofBlock}).
+\end{ex}
+
+
+
 Recall the definition of the map $p: \Delta\to \R$ given before Proposition~\ref{P:BarofBlock}.
 \begin{lem}\label{L:Blockassociatedtointerval}
  Let  $a<b$ be real numbers. There are unique  blocks $B_{b}^{\langle a, b\rangle}$, $B_{h}^{\langle a, b\rangle}$, $B_{v}^{\langle a, b\rangle}$ and $B_{d}^{\langle a, b\rangle}$ respectively of type $\textbf{bb}^{-}$, $\textbf{hb}$, $\textbf{vb}$ and $\textbf{db}$ such that $p(\Delta\cap B_{?}^{\langle a, b\rangle}) = \langle a,b \rangle$. 
@@ -1151,17 +1210,17 @@ By definition~\ref{def:block_MV}, all the blocks except the birth blocks lying e
 \end{pf}
 
 
-Now recall the definition~\ref{D:blocksmodulesforMV} of the canonical MV-systems $S_i^B$ associated to blocks. The following is the analogue of proposition~\ref{P:BarofBlock}, that is, it describes the action of $\psi$ on the building blocks of a constructible sheaf.
+Now recall the definition~\ref{D:blocksmodulesforMV} of the canonical MV-systems $S_i^B$ associated to blocks. The following is the analogue of proposition~\ref{P:BarofBlock}, that is, it describes the action of $\psi$ on the building blocks of a constructible sheaf. Together with example~\ref{ex:ValueofPsiondirectsum}, it allows to compute the value of $\Psi$ explicitly. 
 \begin{prop}\label{P:PsionIntervals}  Let $I=\langle a, b\rangle$ be an interval in $\R$. 
 \begin{enumerate}
-    \item If $I$ is open, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
-S_i^{B_{d}^{\langle a, b\rangle}}$.
-    \item If $I=]a,b]$, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
-S_i^{B_{v}^{\langle a, b\rangle}}$.
-    \item If $I=[a, b[$, then  $\Psi ({\Sigma^i \kk_{[ a, b[}}) \cong 
-S_i^{B_{h}^{\langle a, b\rangle}}$. 
-    \item If $I$ is compact, then  $\Psi ({\Sigma^i \kk_{\langle a, b\rangle}}) \cong 
-S_i^{B_{b}^{\langle a, b\rangle}}$. 
+    \item If $I$ is open, then  $\Psi ({\kk_{] a, b[}}[i]) \cong 
+S_i^{B_{d}^{] a, b [}}$.
+    \item If $I=]a,b]$, then  $\Psi ({ \kk_{] a, b]}}[i]) \cong 
+S_i^{B_{v}^{] a, b]}}$.
+    \item If $I=[a, b[$, then  $\Psi ({ \kk_{[ a, b[}}[i]) \cong 
+S_i^{B_{h}^{[a, b[}}$. 
+    \item If $I$ is compact, then  $\Psi ({ \kk_{[ a, b]}}[i]) \cong 
+S_i^{B_{b}^{[a, b]}}$. 
 \end{enumerate}
 Here all the isomorphisms are isomorphisms of Mayer-Vietoris systems and the blocks $S_{?}^{\langle a, b\rangle}$ are given by lemma~\ref{L:Blockassociatedtointerval}.
 \end{prop}
@@ -1341,54 +1400,3 @@ On peut calculer la distance entre deux MV system comme le max des distances deg
 \bibliographystyle{alpha}
 \bibliography{biblio}
 \end{document}
-
-\section{Preliminaries}
-
-\subsection{Notations}
-
-We equip $\R^2$ with the product order $\leq$ and see the associated poset as a category. For any topological space $X$, we will denote by $\Op_X$ the category of its open subsets. Except when otherwise stated, $\R$ will be equipped of the euclidean topology. 
-
-Let $\Delta^+ = \{(x,y)\in \R^2 \mid  x + y > 0 \}$, observe that it is a full sub-poset of $(\R^2,\leq)$. We identify $\Delta^+$ as the poset of open intervals of $\R$ through the poset morphism $$\iota : \Delta^+ \ni (x,y) \mapsto ]-x,y[ := \{\alpha \in \R \mid -x < \alpha < y\} \in \Op_\R $$
-
-We fix $\kk$ a field, and will denote by $\Mod (\kk)$ the category of $\kk$-vector spaces, $\text{mod}(\kk)$ its full subcategory in which objects are finite dimensional vector spaces. 
-For $P$ a poset, we define the category of persistent modules over $P$ as the functor category $\text{Fun}(P,\Mod(\kk))$, and its full subcategory of point-wise finite dimensional (pfd) persistent modules $\text{Fun}(P,\text{mod}(\kk))$. We denote by $\text{PSh(X)}$ the category of pre-sheaves of $\kk$-vector spaces over $X$ and $\Mod(\kk_\R)$ the category of sheaves of $\kk$-vector spaces over $\R$.  
-
-Now observe that 
-
-\subsection{Structure theorems for sheaves and level-set persistence}
-
-structure and isometry theorems
-
-\subsection{A refinement of the structure theorem for level set persistence}
-
-
-
-
-\begin{prop}\label{P:BarMViso}
-The functor $\overline{(-)}^{MV}: \text{MV-}(\R) \to \D^b_{\R c}(\R)$ is $1$-lipschitz: for any MV-systems $S$, $T$, one has
-$$d_C(\overline{S}^{MV},\overline{T}^{MV}) \; \leq \; d_I^{MV}( S, T).$$
-\end{prop}
-\begin{pf}
-Since the distance are given by the infimum of interleavings, it is enough to prove that if $S \sim_{\varepsilon}^{MV} T$, then $\overline{S}^{MV} \simeq_{\varepsilon} \overline{T}^{MV}$. 
-Assume given $f=(f_i): S\to T[\vec{\varepsilon}] $ and $g=(g_i): T\to S[\vec{\varepsilon}]$ an $\varepsilon$-interleaving.
-Then by definition~\ref{D:InterleavingforMV}, for all $i\in \Z$, the maps $f_i$ and $g_i$  give us that    $S_i \sim_{\varepsilon} T_i$. By Lemma~\ref{L:Barpreserveentre}, we obtain that 
-$\overline{S_i} \sim_{\varepsilon} \overline{T_i}$; we write $\psi_i: \overline{S_i}\to \overline{T_i}*K_\varepsilon$ and $\kappa_i: \overline{T_i} \to \overline{S_i} \star K_\varepsilon$. Taking the direct sum of the (shifts of the) maps, and using that convolution commutes with shifts and direct sum,  we obtain maps
-$$ \Psi: \overline{S}^{MV} =  \ell\Big(\bigoplus_{i\in \Z} \overline{S_i})[i]\Big)\stackrel{\ell(\bigoplus \psi_i [i])}\longrightarrow \ell\Big(\bigoplus_{i\in \Z} \overline{T_i})\star K_\varepsilon[i]\Big) 
-\; \cong \; \ell\Big(\bigoplus_{i\in \Z} \overline{T_i})[i]\Big) \star K_\varepsilon 
-\cong \overline{T}^{MV}\star K_\varepsilon$$ and similarly
-$$\kappa: \overline{T}^{MV} =  \ell\Big(\bigoplus_{i\in \Z} \overline{T_i})[i]\Big)\stackrel{\ell(\bigoplus \kappa_i [i])}\longrightarrow \ell\Big(\bigoplus_{i\in \Z} \overline{S_i})\star K_\varepsilon[i]\Big) 
-\; \cong \; \ell\Big(\bigoplus_{i\in \Z} \overline{S_i})[i]\Big) \star K_\varepsilon 
-\cong \overline{S}^{MV}\star K_\varepsilon$$ which gives an $\varepsilon$-interleaving of sheaves.
-\end{pf}
-
-\begin{thm}
-Let $X$ be a topological space, $f: X \to \R$ a continuous pfd map, and $(M_i^f)_{i\in \Z_{\geq 0}}$ its associated level-set persistence modules. Then, for $i\in\Z_\geq 0$ there is a one to one mapping between the death-quadrants appearing in the barcode of $M_i^f$ and the birth-quadrants appearing in the barcode of $M_{i+1}^f$ that does not intersect with the line of equation $x + y = 0$. 
-\end{thm}
-
-\begin{pf}
-The proof relies on the fact that the family $(M_i^f)$ satisfies a stronger form of exactness, induced by the Mayer-Vietoris sequence. Indeed, we have for any \textcolor{red}{square} $(a,b,c,d)$, the long-exact Mayer-Vietoris sequence in $\Pe(\Delta^+)$ : 
-
-$$...\stackrel{}{\longrightarrow} M_i^f[a] \stackrel{\alpha_i}{\longrightarrow} M_i^f[b] \oplus M_i^f[d] \stackrel{\beta_i}{\longrightarrow} M_i^f[c] \stackrel{\gamma_i}{\longrightarrow} M_{i-1}^f[a] \longrightarrow ...  $$
-
-Now observe that since $\alpha_i$  and $\beta_i$ are linear combinations of the internal smoothing morphisms of $M_i^f$, they preserve any barcode decomposition of $M_i^f$.
-\end{pf}
